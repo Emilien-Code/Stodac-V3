@@ -2,7 +2,7 @@ import React from "react";
 import "../assets/styles/components/pages/conditions.scss"
 
 const MentionsLegales = ()=>{
-    return <section>
+    return <section className="condition-wrapper">
       <article>
         <h1>MENTIONS LEGALES</h1>
         <h2>INFORMATIONS EDITORIALES</h2>

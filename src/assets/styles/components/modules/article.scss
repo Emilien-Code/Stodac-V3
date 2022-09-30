@@ -1,0 +1,41 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.article{
+    background-color: map-get($brands-primary ,"secondary-white" );
+
+    margin: 16px;
+    h2{
+        font-size: 32px;
+    }
+    width: 591px;
+    figure{
+        margin: 0;
+        width: 550px;
+        display: flex;
+    }
+    figcaption{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 24px;
+
+
+        .button:first-child {
+            margin-top: 24px;
+        }
+        .button{
+            margin-top: 16px;
+        }
+    }
+    picture{
+        width : 263px;
+
+        img{
+            width: 263px;
+            height: 356px;
+            object-fit: cover;
+        }
+    }
+
+}

@@ -1,9 +1,10 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 header{
+    margin-bottom: 64px;
     background-color: map-get( $brands-primary , "secondary-white" );
     nav{
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         height: 125px;
         font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;

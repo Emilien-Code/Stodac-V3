@@ -7,13 +7,16 @@ button{
     border: none;
     cursor: pointer;
 
-    // &:hover{
-    //     transition: 500ms;
-    //     background-color: map-get($brands-primary, "black");
-    //     &.svg svg path {
-    //         fill: map-get($brands-primary, "green");
-    //     }
-    // }
+    &.quantity{
+
+    }
+    
+    &.text{
+        line-height: 28px;
+        width: 280px;
+        padding: 12px 80px;
+        border-radius: 80px;
+    }
 
     &.green{
         background-color: map-get($brands-primary, "green");
@@ -22,5 +25,16 @@ button{
         background-color: map-get($brands-primary, "black");
         color: map-get($brands-primary, "white");
         
+    }
+}
+.qty-select{
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px map-get($brands-primary , "black" );
+    line-height: 28px;
+    padding: 12px 0;
+    border-radius: 80px;
+    button{
+        margin: 0 20px;
     }
 }
