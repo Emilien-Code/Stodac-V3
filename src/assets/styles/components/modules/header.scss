@@ -1,0 +1,45 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+header{
+    background-color: map-get( $brands-primary , "secondary-white" );
+    nav{
+        width: 80%;
+        margin: 0 auto;
+        height: 125px;
+        font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: map-get($fonts-sizes-desktop, "nav" );
+
+        ul{
+            display: flex;
+            li {
+                margin-right: 40px;
+            }
+            &.buttons{
+                li{
+                    margin-right: 24px;
+                }
+                li:last-child{
+                    display: none;
+                }
+            }
+        } 
+
+        @include mq("tablet-wide", max) {
+            .links{
+                display: none;
+            }
+            ul.buttons{
+                li{
+                    margin-right: 12px;
+                }
+                li:last-child{
+                    display: block;
+                }
+            }
+        }
+    }
+
+}

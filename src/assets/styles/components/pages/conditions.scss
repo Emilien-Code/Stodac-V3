@@ -1,0 +1,30 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+section{
+    width: 80%;
+    margin: 160px auto;
+    article:first-child{
+        margin-bottom: 128px;
+        text-align: justify-all;
+    }
+    h1{
+        margin-bottom: 48px;
+    }
+    h2{
+        margin-bottom: 16px;
+        font-size: map-get($fonts-sizes-desktop, "h2-conditions" );
+    }
+    h3{
+        margin-bottom: 8px;
+        font-size: map-get($fonts-sizes-desktop, "h3-conditions" );
+    }
+    p{
+        font-size: map-get($fonts-sizes-desktop, "p" );
+        line-height: map-get($fonts-sizes-desktop, "p-condition-line" );
+        margin-bottom: 32px;
+    }
+    article     {
+        margin-bottom: 64px ;
+    }
+}
