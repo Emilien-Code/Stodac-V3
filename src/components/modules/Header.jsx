@@ -8,7 +8,7 @@ const Header = ()=>{
     return (
         <header>
             <nav>
-                <a href={`/`}>Stodac.</a>
+                <a className="header-stodac" href={`/`}>Stodac.</a>
                 <ul className="links">
                     <li>
                         <a href={`/Boutique`}>Boutique</a>

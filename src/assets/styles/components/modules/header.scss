@@ -10,34 +10,34 @@ header{
         font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         font-size: map-get($fonts-sizes-desktop, "nav" );
 
+        .header-stodac{
+            position: absolute;
+            left: 5%;
+        }
+
         ul{
+            &:first-of-type{
+                width: 480px;
+            }
+            &:last-of-type{
+                position: absolute;
+                right: 5%;
+                width: 120px;
+            }
             display: flex;
-            li {
-                margin-right: 40px;
-            }
-            &.buttons{
-                li{
-                    margin-right: 24px;
-                }
-                li:last-child{
-                    display: none;
-                }
-            }
-        } 
+            justify-content: space-between;
+        }
 
         @include mq("tablet-wide", max) {
             .links{
                 display: none;
             }
-            ul.buttons{
-                li{
-                    margin-right: 12px;
-                }
-                li:last-child{
-                    display: block;
+            ul{
+                &:last-of-type{
+                    width: 112px;
                 }
             }
         }
