@@ -1,0 +1,46 @@
+// Create colors variables
+$brands-primary:(
+    "black": #1D1D1D,
+    "white": #FFF5E5,
+    "white+": #FFFFFF
+);
+
+
+
+// Create breakpoints variables
+$breakpoints:(
+  "phone-small": 320px,
+  "tablet": 768px,
+  "tablet-wide": 1024px,
+  "desktop": 1440px,
+  "desktop-wide": 1920px,
+);
+
+// Create fonts sizes variables
+$fonts-sizes-desktop:(
+  "h1": 96px,
+  "h1-line": 112px,
+
+  "article-card": 32px,
+  "article-card-line": 37.5px,
+
+  "login-title": 40px,
+  "login-title-line": 48px,
+
+  "menu": 20px,
+  "menu-line": 24px
+);
+
+$fonts-sizes-mobile:(
+  "h1": 48px,
+  "h1-line": 48px,
+
+  "article-card": 20px,
+  "article-card-line": 23.44px,
+  
+  "login-title": 24px,
+  "login-title-line": 32px,
+
+  "menu": 16px,
+  "menu-line": 20px
+);

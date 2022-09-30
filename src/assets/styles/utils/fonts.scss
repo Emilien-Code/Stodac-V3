@@ -1,0 +1,17 @@
+// Load all fonts for use in the project
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("../../fonts/Roboto-Regular.otf") format("opentype");
+  font-display: swap;
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../../fonts/Roboto-Bold.otf") format("opentype");
+    font-display: swap;
+    font-weight: bold;
+    font-style: normal;
+}

@@ -1,0 +1,95 @@
+@import "./reset.scss";
+@import "./fonts.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+
+/* SCROLL BAR */
+html {
+  --scrollbarBG: transparent;
+  --thumbBG: #90a4ae;
+}
+@include mq("tablet", min) {
+  *::-webkit-scrollbar {
+    width: 11px;
+  }
+  *{
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
+  }
+}
+
+html {
+  min-height: 100%;
+  max-height: 100%;
+}
+body {
+  background-color: map-get($brands-primary, "white");
+  color: map-get($brands-primary, "black");
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  min-height: 100%;
+  width: 100%;  
+  
+  .bi-title-primary,
+  h1 {
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    font-size: map-get($fonts-sizes-desktop, "h1");
+    line-height: map-get($fonts-sizes-desktop, "h1-line");
+    @include mq("tablet", max) {
+      font-size: map-get($fonts-sizes-mobile, "h1");
+      line-height: map-get($fonts-sizes-mobile, "h1-line");
+    }
+  }
+  .bi-title-secondary,
+  h2 {
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    font-size: map-get($fonts-sizes-desktop, "h2");
+    line-height: map-get($fonts-sizes-desktop, "h2-line");
+    @include mq("tablet", max) {
+      font-size: map-get($fonts-sizes-mobile, "h2");
+      line-height: map-get($fonts-sizes-mobile, "h2-line");
+    }
+  }
+  .bi-title-tertiary,
+  h3 {
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    font-size: map-get($fonts-sizes-desktop, "h3");
+    line-height: map-get($fonts-sizes-desktop, "h3-line");
+    @include mq("tablet", max) {
+      font-size: map-get($fonts-sizes-mobile, "h3");
+      line-height: map-get($fonts-sizes-mobile, "h3-line");
+    }
+  }
+  .bi-title-quaternary,
+  h4 {
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    font-size: map-get($fonts-sizes-desktop, "h4");
+    line-height: map-get($fonts-sizes-desktop, "h4-line");
+    @include mq("tablet", max) {
+      font-size: map-get($fonts-sizes-mobile, "h4");
+      line-height: map-get($fonts-sizes-mobile, "h4-line");
+    }
+  }
+  .small,
+  .small p {
+    font-family: "Roboto Regular", Arial, Helvetica, sans-serif;
+    font-size: map-get($fonts-sizes-desktop, "p-secondary");
+    line-height: map-get($fonts-sizes-desktop, "p-secondary-line");
+    @include mq("tablet", max) {
+      font-size: map-get($fonts-sizes-mobile, "p-secondary");
+      line-height: map-get($fonts-sizes-mobile, "p-secondary-line");
+    }
+  }
+}
+
+picture[data-parallax="true"]{
+  overflow: hidden!important;
+}
