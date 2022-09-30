@@ -22,6 +22,12 @@ $fonts-sizes-desktop:(
   "h1": 96px,
   "h1-line": 112px,
 
+  "p": 24px,
+  "p-condition-line": 42px,
+
+  "h2-conditions" : 40px,
+  "h3-conditions" : 32px,
+
   "article-card": 32px,
   "article-card-line": 37.5px,
 
@@ -29,7 +35,10 @@ $fonts-sizes-desktop:(
   "login-title-line": 48px,
 
   "menu": 20px,
-  "menu-line": 24px
+  "menu-line": 24px,
+
+  "nav": 24px,
+  "nav-line": 28px,
 );
 
 $fonts-sizes-mobile:(

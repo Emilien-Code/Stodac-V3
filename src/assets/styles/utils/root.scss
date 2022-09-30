@@ -31,6 +31,7 @@ html {
   max-height: 100%;
 }
 body {
+  font-family: "Roboto Regular", Arial, Helvetica, sans-serif;
   background-color: map-get($brands-primary, "white");
   color: map-get($brands-primary, "black");
   overflow-x: hidden;
@@ -80,7 +81,6 @@ body {
   }
   .small,
   .small p {
-    font-family: "Roboto Regular", Arial, Helvetica, sans-serif;
     font-size: map-get($fonts-sizes-desktop, "p-secondary");
     line-height: map-get($fonts-sizes-desktop, "p-secondary-line");
     @include mq("tablet", max) {

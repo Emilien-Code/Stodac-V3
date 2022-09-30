@@ -1,0 +1,26 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+button{
+
+    background-color: transparent ;
+    border: none;
+    cursor: pointer;
+
+    // &:hover{
+    //     transition: 500ms;
+    //     background-color: map-get($brands-primary, "black");
+    //     &.svg svg path {
+    //         fill: map-get($brands-primary, "green");
+    //     }
+    // }
+
+    &.green{
+        background-color: map-get($brands-primary, "green");
+    }
+    &.black{
+        background-color: map-get($brands-primary, "black");
+        color: map-get($brands-primary, "white");
+        
+    }
+}
