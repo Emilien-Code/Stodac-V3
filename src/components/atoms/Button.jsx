@@ -4,14 +4,14 @@ import "../../assets/styles/components/atoms/buttons.scss"
 
 const Button = ({content, type, color})=>{
     if(type === "svg") {
-        return <button className={"button " + type + " " + color}> <Icon type={content}/></button>
+        return <button className={"button " + type + " " + color + " "}> <Icon type={content}/></button>
     }
     if(type === "text"){
-        return <button className={"button " + type + " " + color}>{content}</button>
+        return <button className={"button " + type + " " + color + " "}>{content}</button>
     }
 
     if(type === "qty-select"){
-        return  <div className={"button " + type + " " + color}>
+        return  <div className={"button " + type + " " + color + " "}>
                     <button>-</button>
                     0
                     <button>+</button>
