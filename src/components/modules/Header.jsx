@@ -11,13 +11,13 @@ const Header = ()=>{
                 <a className="header-stodac nav-link" href={`/`}>Stodac.</a>
                 <ul className="links">
                     <li>
-                        <a className="nav-link" href={`/Boutique`}>Boutique</a>
+                        <a className="nav-link" href={`/boutique`}>Boutique</a>
                     </li>
                     <li>
-                        <a  className="nav-link" href={`/MesCommandes`}>Mes commandes</a>
+                        <a  className="nav-link" href={`/mes-commandes`}>Mes commandes</a>
                     </li>
                     <li>
-                        <a  className="nav-link" href={`/Assistance`}>Assistance</a>
+                        <a  className="nav-link" href={`/assistance`}>Assistance</a>
                     </li>
                 </ul>
                 <ul className="buttons">
@@ -25,7 +25,7 @@ const Header = ()=>{
                         <Button  type="svg" content="basket"/>
                     </li>
                     <li>
-                        <a className="nav-link" href={`/SeConecter`}>
+                        <a className="nav-link" href={`/se-conecter`}>
                             <Icon className="nav-link" type="login"/>
                         </a>
                     </li>

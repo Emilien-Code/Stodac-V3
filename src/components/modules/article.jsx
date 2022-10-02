@@ -12,7 +12,6 @@ const Article = ({data})=>{
             window.location.href = `/article/${data._id}`;
     }
 
-
     return (
         <a className="article" onClick={pushToArticle} href="/article">
             <figure>

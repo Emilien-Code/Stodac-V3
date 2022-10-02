@@ -51,6 +51,19 @@ const Icon = ({type})=>{
                     </svg>
 
                 )
+            }{
+                type==="left" && (
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.61673 0.451985L8.6084 1.46136L2.53444 7.53532L8.6084 13.6093L7.61673 14.6187L0.533397 7.53532L7.61673 0.451985Z" fill="#1D1D1D"/>
+                    </svg>
+
+                )
+            }{
+                type==="right" && (
+                    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.38327 15.548L4.3916 14.5386L10.4656 8.46468L4.3916 2.39072L5.38327 1.38135L12.4666 8.46468L5.38327 15.548Z" fill="#1D1D1D"/>
+                    </svg>
+                )
             }
         </>
     )

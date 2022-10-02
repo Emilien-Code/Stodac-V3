@@ -7,6 +7,7 @@ button{
     border: none;
     cursor: pointer;
     overflow: hidden;
+    color: map-get($brands-primary, "black");
     
     &.text{
         font-size: 16px;
@@ -27,7 +28,6 @@ button{
 
     &.green{
         background-color: map-get($brands-primary, "green");
-        color: map-get($brands-primary, "black");
     }
     &.black{
         background-color: map-get($brands-primary, "black");
@@ -35,7 +35,7 @@ button{
         
     }
 }
-.qty-select{
+.qty-select,.page-select{
     display: flex;
     justify-content: space-between;
     border: solid 1px map-get($brands-primary , "black" );
@@ -53,6 +53,10 @@ button{
             color: map-get($brands-primary, "white");
             background-color: map-get($brands-primary, "black");
             transition: background-color 300ms;
+
+            svg path {
+                fill: map-get($brands-primary, "white");
+            }
         }
     }
 }
