@@ -1,0 +1,62 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+footer{
+    position: relative;
+    padding: 90px 120px;
+    background-color: map-get($brands-primary, "secondary-white" );
+    color: map-get($brands-primary, "black" );
+    @include mq("tablet-wide", max) {
+        padding: 120px 0 120px 24px;
+    }
+
+    h3{
+        font-size: 32px;
+        margin-bottom: 8px;
+        @include mq("tablet", max) {
+            font-size: 24px;
+            margin-bottom: 16px;
+
+        }
+    }
+    ul{
+        font-size: 24px;
+        @include mq("tablet", max) {
+            font-size: 16px;
+        }
+        li{
+            margin-bottom: 8px;
+        }
+    }
+
+    .infos{
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+
+        article{
+            margin-right: 120px;
+            margin-top: 80px;
+        }
+    }
+
+    .slider{
+        font-size: map-get($fonts-sizes-desktop , "h1");
+        font-family:"Roboto Black", Arial, Arial, Helvetica, sans-serif;
+        @include mq("tablet", max) {
+            font-size: map-get($fonts-sizes-mobile , "h1");
+        }
+        span{
+            margin-left: 40px;
+        }
+    }
+    .copy-rights{
+        position: absolute;
+        bottom: 90px;
+        right: 80px;
+        @include mq("tablet-wide", max) {
+            bottom: 40px;
+            left: 24px;
+        }
+    }
+}
