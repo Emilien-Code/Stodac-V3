@@ -14,6 +14,16 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
         if(value > 1)
             callBack(value - 1);
     }
+    const nextPage = (e)=>{
+        e.preventDefault();
+        
+        callBack(true);
+    }
+    const prevPage = (e)=>{
+        e.preventDefault();
+        
+        callBack(false);
+    }
 
     if(type === "svg") {
         return <button className={"button " + type + " " + color + " "}> <Icon type={content}/></button>
@@ -31,9 +41,9 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
     }
     if(type === "page-select"){
         return  <div className={"button " + type + " " + color + " "}>
-                    <button className="less" onClick={callBack}><span className="span"><Icon type="left"/></span></button>
+                    <button className="less" onClick={prevPage}><span className="span"><Icon type="left"/></span></button>
                     {value}
-                    <button className="more" onClick={callBack}><span className="span"><Icon type="right"/></span></button>
+                    <button className="more" onClick={nextPage}><span className="span"><Icon type="right"/></span></button>
                 </div>
     }
 }
