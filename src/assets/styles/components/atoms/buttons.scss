@@ -6,20 +6,28 @@ button{
     background-color: transparent ;
     border: none;
     cursor: pointer;
-
-    &.quantity{
-
-    }
+    overflow: hidden;
     
     &.text{
+        font-size: 16px;
         line-height: 28px;
-        width: 280px;
-        padding: 12px 80px;
+        width: 100%;
+        padding: 12px 0;
         border-radius: 80px;
+        &:hover {
+            span{
+                animation: rollUp 500ms ease-out forwards;
+            }
+        }
+        span{
+            display: block;
+
+        }
     }
 
     &.green{
         background-color: map-get($brands-primary, "green");
+        color: map-get($brands-primary, "black");
     }
     &.black{
         background-color: map-get($brands-primary, "black");
@@ -33,8 +41,32 @@ button{
     border: solid 1px map-get($brands-primary , "black" );
     line-height: 28px;
     padding: 12px 0;
+    width: 100%;
+
     border-radius: 80px;
     button{
         margin: 0 20px;
+        width: 28px;
+        border-radius: 50%;
+        transition: background-color 300ms;
+        &:hover{
+            color: map-get($brands-primary, "white");
+            background-color: map-get($brands-primary, "black");
+            transition: background-color 300ms;
+        }
+    }
+}
+@keyframes rollUp{
+    0% {
+        transform: translateY(0px) rotate(0);
+    }
+    50% {
+        transform: translateY(-150%) rotate(9deg);
+    }
+    50.1%{
+        transform: translateY(150%) rotate(-9deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0);
     }
 }
