@@ -5,6 +5,7 @@ footer{
     position: relative;
     padding: 90px 120px;
     background-color: map-get($brands-primary, "secondary-white" );
+    overflow: hidden;
     color: map-get($brands-primary, "black" );
     @include mq("tablet-wide", max) {
         padding: 120px 0 120px 24px;
