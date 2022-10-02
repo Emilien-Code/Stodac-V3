@@ -26,7 +26,7 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
     }
 
     if(type === "svg") {
-        return <button className={"button " + type + " " + color + " "}> <Icon type={content}/></button>
+        return <div className={"button " + type + " " + color + " "}> <Icon type={content}/></div>
     }
     if(type === "text"){
         return <button className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>
@@ -34,16 +34,16 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
 
     if(type === "qty-select"){
         return  <div className={"button " + type + " " + color + " "}>
-                    <button className="less" onClick={less}><span className="span">-</span></button>
+                    <button className="less" onClick={less}>-</button>
                     {value}
-                    <button className="more" onClick={more}><span className="span">+</span></button>
+                    <button className="more" onClick={more}>+</button>
                 </div>
     }
     if(type === "page-select"){
         return  <div className={"button " + type + " " + color + " "}>
-                    <button className="less" onClick={prevPage}><span className="span"><Icon type="left"/></span></button>
+                    <div className="less" onClick={prevPage}><Icon type="left"/></div>
                     {value}
-                    <button className="more" onClick={nextPage}><span className="span"><Icon type="right"/></span></button>
+                    <div className="more" onClick={nextPage}><Icon type="right"/></div>
                 </div>
     }
 }

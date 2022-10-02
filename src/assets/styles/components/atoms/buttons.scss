@@ -1,14 +1,13 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 
-button{
+.button{
 
     background-color: transparent ;
     border: none;
     cursor: pointer;
     overflow: hidden;
     color: map-get($brands-primary, "black");
-    
     &.text{
         font-size: 16px;
         line-height: 28px;
@@ -36,6 +35,7 @@ button{
     }
 }
 .qty-select,.page-select{
+    cursor: auto;
     display: flex;
     justify-content: space-between;
     border: solid 1px map-get($brands-primary , "black" );
@@ -44,11 +44,15 @@ button{
     width: 100%;
 
     border-radius: 80px;
-    button{
+    button, div{
+        position: relative;
+        border: none;
+        background-color: transparent;
         margin: 0 20px;
         width: 28px;
         border-radius: 50%;
         transition: background-color 300ms;
+        cursor: pointer;
         &:hover{
             color: map-get($brands-primary, "white");
             background-color: map-get($brands-primary, "black");
@@ -57,6 +61,12 @@ button{
             svg path {
                 fill: map-get($brands-primary, "white");
             }
+        }
+        svg{
+            position: absolute;
+            top: 50%;
+            left: 38%;
+            transform: translate(-20%,-50%);
         }
     }
 }
