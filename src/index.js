@@ -1,29 +1,33 @@
 import React from 'react';
+import { createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import "./assets/styles/utils/root.scss"
-import reportWebVitals from './reportWebVitals';
+
+
 import Header from "./components/modules/Header"
+import Footer from "./components/modules/Footer"
 import Boutique from "./pages/boutique"
 import Assistance from "./pages/assistance"
 import MesCommandes from "./pages/mes-commandes"
-import { createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
 import ConditionsGeneralesVente from "./pages/conditions-generales-vente"
 import MentionsLegales from "./pages/mentions-legales"
+
+import reportWebVitals from './reportWebVitals';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Boutique/>,
   },{
-    path: "/MesCommandes",
+    path: "/mes-commandes",
     element: <MesCommandes/>,
   },{
-    path: "/Assistance",
+    path: "/assistance",
     element: <Assistance/>,
   },{
-    path: "/Conditions-Generales-De-Vente",
+    path: "/conditions-generales-de-vente",
     element: <ConditionsGeneralesVente/>,
   },{
-    path: "/Mentions-Legales",
+    path: "/mentions-legales",
     element: <MentionsLegales/>,
   }
 
@@ -34,6 +38,7 @@ root.render(
   <React.StrictMode>
     <Header/>
     <RouterProvider router={router} />
+    <Footer/>
   </React.StrictMode>
 );
 

@@ -11,8 +11,8 @@ const Boutique = ()=>{
         .then( data => setArticles(data))
         .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
     }, [])
-      
 
+    
     return <main>
         <section className="store-wrapper">
         {
