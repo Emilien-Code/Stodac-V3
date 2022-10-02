@@ -3,8 +3,17 @@ import Icon from "../atoms/Icon"
 import Button from "../atoms/Button"
 import "../../assets/styles/utils/variables.scss"
 import "../../assets/styles/components/modules/header.scss"
+import { setCart } from "../../assets/scripts/store/redux-slices/modals";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = ()=>{
+
+    const dispatch = useDispatch();
+    
+    const openCart = ()=>{
+        dispatch(setCart(true))
+    }
+
     return (
         <header>
             <nav>
@@ -22,15 +31,15 @@ const Header = ()=>{
                 </ul>
                 <ul className="buttons">
                     <li className="nav-link">
-                        <Button  type="svg" content="basket"/>
+                        <Button  type="svg" callBack={openCart} content="cart"/>
                     </li>
                     <li>
-                        <a className="nav-link" href={`/se-conecter`}>
+                        {/* <a className="nav-link" href={`/se-conecter`}> */}
                             <Icon className="nav-link" type="login"/>
-                        </a>
+
                     </li>
                     <li>
-                        <Button type="svg" content="menu"/>
+                        <Button type="svg" callBack={openCart} content="menu"/>
                     </li>
                 </ul>
             </nav>

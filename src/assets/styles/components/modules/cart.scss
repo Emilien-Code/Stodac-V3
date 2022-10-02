@@ -1,0 +1,48 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.cart-wrapper{
+    position: absolute;
+    background-color: #232323E0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    aside{
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            svg{
+                cursor: pointer;
+            }
+        }
+        position: absolute;
+        right: 0;
+        opacity: 1;
+        height: 100%;
+        width: 45%;
+        background-color: map-get($brands-primary , "secondary-white" );
+        padding: 40px;
+        @include mq("tablet-wide", max){
+            width: 100%;
+        }
+        
+        
+        h1{
+            margin: 224px auto 80px 12%;
+            width:   460px;
+            @include mq("tablet", max){
+                margin: 120px auto 80px 12%;
+                
+                width: 216px
+            }
+            
+        }
+        hr{
+            height: 1px;
+            width: calc(100%);
+            background-color: map-get($brands-primary , "black" );
+        }
+    }
+}

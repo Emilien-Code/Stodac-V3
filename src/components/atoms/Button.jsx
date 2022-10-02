@@ -24,12 +24,16 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
         
         callBack(false);
     }
+    const exec = (e)=>{
+        e.preventDefault();
+        callBack()
+    }
 
     if(type === "svg") {
-        return <div className={"button " + type + " " + color + " "}> <Icon type={content}/></div>
+        return <div onClick={exec} className={"button " + type + " " + color + " "}> <Icon type={content}/></div>
     }
     if(type === "text"){
-        return <button className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>
+        return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>
     }
 
     if(type === "qty-select"){
