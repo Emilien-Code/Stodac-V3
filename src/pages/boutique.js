@@ -6,7 +6,8 @@ import "../assets/styles/components/pages/boutique.scss"
 import { useParams } from "react-router-dom";
 
 const Boutique = ()=>{
-    const [articles, setArticles] = React.useState([{}]);
+    const [articles, setArticles] = React.useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]);
+    console.log(articles.length)
     const [nbPages, setNbPages] = React.useState(1);
 
     const page = useParams()
@@ -36,11 +37,11 @@ const Boutique = ()=>{
 
 
 
-    React.useEffect(()=>{
-        setArticles([{}]);
-        load(20*(currentPage - 1));
-        window.scrollTo(0, 0);
-    },[currentPage])
+    // React.useEffect(()=>{
+    //     setArticles([6]);
+    //     load(20*(currentPage - 1));
+    //     window.scrollTo(0, 0);
+    // },[currentPage])
 
 
 

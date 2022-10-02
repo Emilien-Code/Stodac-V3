@@ -43,7 +43,6 @@ footer{
 
     .slider{
         font-size: map-get($fonts-sizes-desktop , "h1");
-        font-family:"Roboto Black", Arial, Arial, Helvetica, sans-serif;
         @include mq("tablet", max) {
             font-size: map-get($fonts-sizes-mobile , "h1");
         }

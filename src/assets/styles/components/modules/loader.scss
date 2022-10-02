@@ -1,0 +1,13 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.loader{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: map-get($brands-primary , "secondary-white" );
+    font-size: 40px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}

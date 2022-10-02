@@ -7,10 +7,6 @@ const Footer = ()=>{
                     <span>Stodac</span>
                     <span>Stodac</span>
                     <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
                 </section>
                 <section className="infos">
                     <article>

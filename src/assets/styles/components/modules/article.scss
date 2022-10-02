@@ -42,6 +42,7 @@
     }
     picture{
         width : 263px;
+        height: 356px;
         @include mq("tablet", max) {
             width: 100%;
         }

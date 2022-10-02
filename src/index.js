@@ -6,35 +6,52 @@ import "./assets/styles/utils/root.scss"
 
 import Header from "./components/modules/Header"
 import Footer from "./components/modules/Footer"
-import Boutique from "./pages/boutique"
-import Assistance from "./pages/assistance"
 import MesCommandes from "./pages/mes-commandes"
-import ConditionsGeneralesVente from "./pages/conditions-generales-vente"
-import MentionsLegales from "./pages/mentions-legales"
+
+import Loader from './components/modules/loader';
 
 import reportWebVitals from './reportWebVitals';
+import Boutique from './pages/boutique';
+import Assistance from './pages/assistance';
+import ConditionsGeneralesVente from './pages/conditions-generales-vente';
+import MentionsLegales from './pages/mentions-legales';
+
+
+//LazyLoaded components 
+// const LazyBoutique = React.lazy(() => import('./pages/boutique'));
+// const LazyAssistance = React.lazy(() => import('./pages/assistance'));
+// const LazyConditionsGeneralesVente = React.lazy(() => import('./pages/conditions-generales-vente'));
+// const LazyMentionsLegales = React.lazy(() => import('./pages/mentions-legales'));
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Boutique/>,
+    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
+    element: <Boutique/> ,
   },{
     path: "/boutique/:page",
-    element: <Boutique/>,
+    
+    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
+    element: <Boutique/> ,
   },{
     path: "/boutique",
-    element: <Boutique/>,
+    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
+    element: <Boutique/> ,
   },{
     path: "/mes-commandes",
     element: <MesCommandes/>,
   },{
     path: "/assistance",
-    element: <Assistance/>,
+    // element:  <React.Suspense fallback={</>}> <LazyAssistance/> ,
+    element:  <Assistance/> ,
   },{
     path: "/conditions-generales-de-vente",
-    element: <ConditionsGeneralesVente/>,
+    // element: <React.Suspense fallback={</>}> <LazyConditionsGeneralesVente/> ,
+    element: <ConditionsGeneralesVente/> ,
   },{
     path: "/mentions-legales",
-    element: <MentionsLegales/>,
+    // element: <React.Suspense fallback={</>}> <LazyMentionsLegales/> ,
+    element:  <MentionsLegales/>,
   }
 
 ]);

@@ -19,7 +19,7 @@ const Article = ({data})=>{
                     <img src={data.img} alt={"illustration de " + data.name} />
                 </picture>
                 <figcaption>
-                    <h2>{data.name}</h2>
+                    <h2>{data.name ? data.name : "chargement..."}</h2>
                     <div className="bottom">
                         <span>{data.price}€</span>
                         <Button color="" type="qty-select" value={quantity} callBack={setQuantity} maxValue={data.qty}  content=""/>
