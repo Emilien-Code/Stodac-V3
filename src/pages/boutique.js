@@ -13,16 +13,10 @@ const Boutique = ()=>{
     const page = useParams()
     let currentPage = page.page ? page.page : 1
 
-    const nextPage = (e)=>{
-        e.preventDefault();
-        currentPage++
+    const nextPage = (isMore)=>{
+        isMore ? currentPage++ : currentPage--
         window.location.href = `/boutique/${currentPage}`;
     }
-
-
-
-
-
     
 
     const load = (start)=>{
@@ -33,22 +27,9 @@ const Boutique = ()=>{
     }
 
 
-
-
-
-
-    // React.useEffect(()=>{
-    //     setArticles([6]);
-    //     load(20*(currentPage - 1));
-    //     window.scrollTo(0, 0);
-    // },[currentPage])
-
-
-
     
     React.useEffect(()=>{
         load((currentPage-1) * 20);
-
 
         fetch('https://stodac.fr/api/stuff/count/')
         .then(response => response.json())
