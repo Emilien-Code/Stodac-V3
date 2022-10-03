@@ -56,5 +56,41 @@
             }
         }
     }
-
 }
+
+
+    .onCart{
+        figure{
+            display: flex;
+        }
+        picture{
+            width : 112px;
+            height: 120px;
+
+            img{
+                width: 112px;
+                height: 120px;
+                object-fit: cover;
+            }
+        }
+        .top    {
+            display: flex;
+            justify-content: space-between;
+        }
+        .bottom {
+            width: 200px;
+        }
+        p{
+            font-size: 20px;
+            @include mq("tablet", max) {
+                font-size: 24px;
+                margin: 16px 0 40px 0;
+            }
+        }
+
+        figcaption{
+            margin-left: 40px;
+            padding: 0;
+
+        }
+    }

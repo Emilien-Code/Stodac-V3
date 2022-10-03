@@ -3,11 +3,13 @@ import "../../assets/styles/components/modules/cart.scss"
 import Button from "../atoms/Button"
 import { useSelector, useDispatch } from "react-redux";
 import { setCart } from "../../assets/scripts/store/redux-slices/modals";
+import Article from "./article";
 
 const Cart = ()=>{
     const cartIsOpen = useSelector((state) => state.modals.cart);
+    const cart = useSelector((state) => state.cart.cart)
     const dispatch = useDispatch();
-    const isEmpty = true
+    const isEmpty = cart.length <= 0 ? true : false
     const close = ()=>{
         dispatch(setCart(false))
     }
@@ -23,7 +25,7 @@ const Cart = ()=>{
                     {
                         isEmpty ? 
                         <h1>Votre pannier est vide</h1>: <div>
-                            
+                            <Article data={cart[0]} display="onCart"/>
                         </div>
                     }
                     <Button type="text" callBack={close} content="Retourner à la boutique" color="green"/>

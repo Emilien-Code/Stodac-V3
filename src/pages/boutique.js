@@ -48,7 +48,7 @@ const Boutique = ()=>{
         <section className="store-wrapper">
         {
             articles.map((article, index)=>{
-                return <Article key={index} data={article}/>
+                return <Article display="boutique" key={index} data={article}/>
             })
         }
         </section>
