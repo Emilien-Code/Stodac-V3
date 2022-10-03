@@ -8,7 +8,7 @@ const Cart = ()=>{
     const cartIsOpen = useSelector((state) => state.modals.cart);
     const dispatch = useDispatch();
     const isEmpty = true
-    const test = ()=>{
+    const close = ()=>{
         dispatch(setCart(false))
     }
     if(cartIsOpen){
@@ -16,7 +16,7 @@ const Cart = ()=>{
             <aside className="cart">
                 <div className="cart-header">
                     <h2>Pannier</h2>
-                    <Button type="svg" content="cross" callBack={test}/>
+                    <Button type="svg" content="cross" callBack={close}/>
                 </div>
                     <hr/>
                 <section>
@@ -26,7 +26,7 @@ const Cart = ()=>{
                             
                         </div>
                     }
-                    <Button type="text" callBack={test} content="Retourner à la boutique" color="green"/>
+                    <Button type="text" callBack={close} content="Retourner à la boutique" color="green"/>
                 </section>
 
             </aside>
