@@ -1,0 +1,74 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.login{
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0px 100px;
+    border-radius: 74px;
+    margin-bottom: 64px;
+    height: 537px;
+    @include mq("tablet", max){
+        background-color: transparent;
+        width: calc(100% - 40px);
+        padding: 0;
+    }
+    h1{
+        line-height: 40px;
+        font-size: 40px;
+        margin-bottom: 32px;
+        @include mq("tablet", max){
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+    }
+    button, input{
+        margin: 8px 0;
+        @include mq("tablet", max){
+            margin: 6px 0;
+        }
+    }
+    button.black, button.green{
+        @include mq("tablet", min){
+            width: 380px
+        }
+    }
+    a{
+        display: block;
+        margin-top: 16px;
+        margin-bottom: 64px;
+        text-decoration: underline;
+        @include mq("tablet", max){
+            margin-top: 10px ;
+            margin-bottom: 32px;
+        }
+    }
+    &.create{
+        button, input{
+            margin: 8px 0;
+            @include mq("tablet", max){
+                margin: 6px 0;
+            }
+        }
+
+
+        
+        .nom-prenom{
+            input{
+                width: 47.5%;
+            }
+            input:first-of-type{
+                margin-right: 2.5%;
+            }
+            input:last-of-type{
+                margin-left: 2.5%;
+            }
+            
+        }
+        button:first-of-type{
+            margin-top: 32px;
+        }
+    }
+}

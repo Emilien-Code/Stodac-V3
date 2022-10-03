@@ -30,7 +30,7 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
     }
 
     if(type === "svg") {
-        return <div onClick={exec} className={"button " + type + " " + color + " "}> <Icon type={content}/></div>
+        return <div onClick={exec} className={"button " + type + " " + " "}> <Icon type={content}/></div>
     }
     if(type === "text"){
         return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>

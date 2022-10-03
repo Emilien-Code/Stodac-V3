@@ -7,14 +7,19 @@ import { useParams } from "react-router-dom";
 
 const Boutique = ()=>{
     const [articles, setArticles] = React.useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]);
-    console.log(articles.length)
     const [nbPages, setNbPages] = React.useState(1);
 
     const page = useParams()
     let currentPage = page.page ? page.page : 1
 
     const nextPage = (isMore)=>{
-        isMore ? currentPage++ : currentPage--
+        if(isMore){
+            if(nbPages>currentPage)
+                currentPage++
+        } else{
+            if(currentPage>1)
+                currentPage--
+        }
         window.location.href = `/boutique/${currentPage}`;
     }
     
@@ -33,8 +38,9 @@ const Boutique = ()=>{
 
         fetch('https://stodac.fr/api/stuff/count/')
         .then(response => response.json())
-        .then( data => setNbPages(data.nb % 20))
+        .then( data => setNbPages(data.nb / 20))
         .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+
     }, [])
 
     

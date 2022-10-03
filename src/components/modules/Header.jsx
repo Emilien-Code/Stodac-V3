@@ -3,7 +3,7 @@ import Icon from "../atoms/Icon"
 import Button from "../atoms/Button"
 import "../../assets/styles/utils/variables.scss"
 import "../../assets/styles/components/modules/header.scss"
-import { setCart } from "../../assets/scripts/store/redux-slices/modals";
+import { setCart, setMenu } from "../../assets/scripts/store/redux-slices/modals";
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = ()=>{
@@ -12,6 +12,13 @@ const Header = ()=>{
     
     const openCart = ()=>{
         dispatch(setCart(true))
+    }
+    const openMenue = ()=>{
+        dispatch(setMenu(true))
+    }
+    const pushToLogin = ()=>{
+        window.location.href = `/se-connecter`;
+
     }
 
     return (
@@ -33,13 +40,13 @@ const Header = ()=>{
                     <li className="nav-link">
                         <Button  type="svg" callBack={openCart} content="cart"/>
                     </li>
-                    <li>
+                    <li className="nav-link"  >
                         {/* <a className="nav-link" href={`/se-conecter`}> */}
-                            <Icon className="nav-link" type="login"/>
+                            <Button callBack={pushToLogin} type="svg" content="login"/>
 
                     </li>
                     <li>
-                        <Button type="svg" callBack={openCart} content="menu"/>
+                        <Button type="svg" callBack={openMenue} content="menu"/>
                     </li>
                 </ul>
             </nav>

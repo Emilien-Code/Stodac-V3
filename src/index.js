@@ -20,7 +20,7 @@ import Assistance from './pages/assistance';
 import ConditionsGeneralesVente from './pages/conditions-generales-vente';
 import MentionsLegales from './pages/mentions-legales';
 import Cart from "./components/modules/cart"
-
+import Connexion from "./pages/conexion"
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
 // const LazyAssistance = React.lazy(() => import('./pages/assistance'));
@@ -56,6 +56,9 @@ const router = createBrowserRouter([
     path: "/mentions-legales",
     // element: <React.Suspense fallback={</>}> <LazyMentionsLegales/> ,
     element:  <MentionsLegales/>,
+  },{
+    path: "/se-connecter",
+    element:<Connexion/>
   }
 
 ]);
