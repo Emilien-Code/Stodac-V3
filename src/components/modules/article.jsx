@@ -25,13 +25,10 @@ const Article = ({data, display})=>{
 
     const changeQty = (isMore)=>{
         if(isMore){
-            if(data.qty>quantity){
-                setQuantity(quantity + 1)
-                if(display==="onCart"){
-                    dispatch(increaseQuantity({_id:data._id}))
-                }
+            setQuantity(quantity + 1)
+            if(display==="onCart"){
+                dispatch(increaseQuantity({_id:data._id}))
             }
-
         } else{
             if(quantity>1){
                 setQuantity(quantity - 1)
