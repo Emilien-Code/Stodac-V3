@@ -11,7 +11,9 @@ const Cart = ()=>{
     const cart = useSelector((state) => state.cart)
     const isEmpty = cart.cart.length <= 0 ? true : false
     
-    console.log(isEmpty)
+    const pushToCommande = ()=>{
+        console.log("push")
+    }
     
     const close = ()=>{ 
         dispatch(setCart(false))
@@ -45,7 +47,7 @@ const Cart = ()=>{
                             <span>Total</span> <span>{cart.total ? cart.total + "€": " "}</span>
                         </div> : <></>
                     }
-                    <Button type="text" callBack={close} content="Retourner à la boutique" color="green"/>
+                    <Button type="text" callBack={pushToCommande} content={isEmpty ? "Retourner à la boutique" : "Passer commande"} color="green"/>
                 </div>
             </aside>
     </div>
