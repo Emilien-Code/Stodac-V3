@@ -61,36 +61,73 @@
 
     .onCart{
         figure{
+            padding: 40px 0;
             display: flex;
+            @include mq("tablet", max) {
+
+                margin: 0;
+            }
         }
         picture{
             width : 112px;
             height: 120px;
-
+            @include mq("tablet", max) {
+                width : 73px;
+                height: 78px;
+            }
             img{
-                width: 112px;
+                width : 112px;
                 height: 120px;
+                @include mq("tablet", max) {
+                    width : 73px;
+                    height: 78px;
+                }
                 object-fit: cover;
             }
         }
         .top    {
             display: flex;
             justify-content: space-between;
+            margin-bottom: 24px;
         }
         .bottom {
-            width: 200px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
         }
-        p{
+        span,p{
             font-size: 20px;
             @include mq("tablet", max) {
-                font-size: 24px;
-                margin: 16px 0 40px 0;
+                font-size: 16px;
+                
             }
+            
         }
 
         figcaption{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
             margin-left: 40px;
             padding: 0;
-
+            @include mq("tablet", max) {
+                margin-left: 24px;
+            }
+        }
+        hr{
+            border: none;
+        }
+        .qty-select{
+            width: 124px;
+            @include mq("tablet", max) {
+                width: 100px;
+            }
+            .more,.less {
+                margin: 0 14px;
+                @include mq("tablet", max) {
+                    margin: 0 8px;
+                }
+            }
         }
     }

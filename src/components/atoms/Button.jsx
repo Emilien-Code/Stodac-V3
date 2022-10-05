@@ -4,16 +4,7 @@ import "../../assets/styles/components/atoms/buttons.scss"
 
 const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
 
-    const more = (e)=>{
-        e.preventDefault();
-        if( value < maxValue)
-            callBack(value + 1);
-    }
-    const less = (e)=>{
-        e.preventDefault();
-        if(value > 1)
-            callBack(value - 1);
-    }
+
     const nextPage = (e)=>{
         e.preventDefault();
         
@@ -38,9 +29,9 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
 
     if(type === "qty-select"){
         return  <div className={"button " + type + " " + color + " "}>
-                    <button className="less" onClick={less}>-</button>
+                    <button className="less" onClick={prevPage}>-</button>
                     {value}
-                    <button className="more" onClick={more}>+</button>
+                    <button className="more" onClick={nextPage}>+</button>
                 </div>
     }
     if(type === "page-select"){
