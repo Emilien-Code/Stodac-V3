@@ -41,14 +41,14 @@ const Cart = ()=>{
         return <div className="cart-wrapper">
             <aside className="cart">
                 <div className="cart-header">
-                    <h2>Pannier</h2>
+                    <h2>panier</h2>
                     <Button type="svg" content="cross" callBack={close}/>
                 </div>
                     <hr/>
                 <section className={`${isEmpty ? "isEmpty" : "" }`}>
                     {
                         isEmpty ? 
-                        <h1>Votre pannier est vide</h1>: <ul>
+                        <h1>Votre panier est vide</h1>: <ul>
                             {
                                 cart.cart.map((article, index)=>{
                                     return <li key={index}><Article data={article} display="onCart"/></li>
