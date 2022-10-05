@@ -47,7 +47,7 @@ const Cart = ()=>{
                             <span>Total</span> <span>{cart.total ? cart.total + "€": " "}</span>
                         </div> : <></>
                     }
-                    <Button type="text" callBack={pushToCommande} content={isEmpty ? "Retourner à la boutique" : "Passer commande"} color="green"/>
+                    <Button type="text" callBack={isEmpty ? close : pushToCommande} content={isEmpty ? "Retourner à la boutique" : "Passer commande"} color="green"/>
                 </div>
             </aside>
     </div>
