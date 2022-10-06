@@ -2,6 +2,8 @@ import React from "react";
 import Article from "../components/modules/article.jsx"
 import Button from "../components/atoms/Button.jsx";
 import "../assets/styles/components/pages/boutique.scss"
+import { useSelector, useDispatch } from "react-redux";
+import { setPage } from "../assets/scripts/store/redux-slices/articles";
 
 import { useParams } from "react-router-dom";
 
@@ -11,7 +13,7 @@ const Boutique = ()=>{
 
     const page = useParams()
     let currentPage = page.page ? page.page : 1
-
+    const dispatch = useDispatch()
     const nextPage = (isMore)=>{
         if(isMore){
             if(nbPages>currentPage)
@@ -23,11 +25,12 @@ const Boutique = ()=>{
         window.location.href = `/boutique/${currentPage}`;
     }
     
-
+    
     const load = (start)=>{
         fetch(`https://stodac.fr/api/stuff/all/20/${start}`)
         .then(response => response.json())
         .then( data => setArticles(data))
+        // .then(()=>dispatch(setPage({articles: articles, page: currentPage})))
         .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
     }
 

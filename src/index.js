@@ -21,6 +21,7 @@ import ConditionsGeneralesVente from './pages/conditions-generales-vente';
 import MentionsLegales from './pages/mentions-legales';
 import Cart from "./components/modules/cart"
 import Connexion from "./pages/conexion"
+import ArticlePage from './pages/article';
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
 // const LazyAssistance = React.lazy(() => import('./pages/assistance'));
@@ -59,6 +60,9 @@ const router = createBrowserRouter([
   },{
     path: "/se-connecter",
     element:<Connexion/>
+  },{
+    path:"/article/:_id",
+    element: <ArticlePage/>
   }
 
 ]);
