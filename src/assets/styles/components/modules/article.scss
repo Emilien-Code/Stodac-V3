@@ -60,7 +60,7 @@
 }
 
 
-    .onCart{
+.onCart{
         figure{
             padding: 40px 0;
             display: flex;
@@ -116,8 +116,56 @@
                 margin-left: 24px;
             }
         }
-        hr{
-            border: none;
+        .qty-select{
+            width: 124px;
+            @include mq("tablet", max) {
+                width: 100px;
+            }
+            .more,.less {
+                margin: 0 14px;
+                @include mq("tablet", max) {
+                    margin: 0 8px;
+                }
+            }
+        }
+    }
+
+.fullPage{
+    margin: 0;
+    display: flex;
+    // height: calc(100vh - 125px);
+    h1{
+        font-size: 36px;
+        line-height: 36px;
+    }
+    .top{
+        // margin-top: 10vh;
+        section{
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 30%;
+            &:nth-child(3){
+                padding-right: 0;
+            }
+
+
+            p{
+                margin: 0;
+                line-height: 32px;
+                font-size: 16px;
+            }
+        }
+        p{
+            font-size: 20px;
+            margin: 40px 0;
+            line-height: 48px;
+        }
+        .qty-select{
+            width: 122px;
+        }
+        .green{
+            flex-basis: calc(100% - 134px);
         }
         .qty-select{
             width: 124px;
@@ -132,3 +180,33 @@
             }
         }
     }
+    picture {
+        flex-basis: 47.5%;
+        height: 100vh;
+        // background-color: map-get($brands-primary, "secondary-white" );
+        position: sticky;
+        top: 0;
+        img{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    figcaption{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-basis: 52.5%;
+        margin: 120px 64px;
+        padding: 0;
+        @include mq("tablet", max) {
+            margin-left: 24px;
+        }
+    }
+    hr:last-of-type{
+        margin: 0;
+    }
+}

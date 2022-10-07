@@ -4,10 +4,13 @@ import "../../assets/styles/components/modules/article.scss"
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, setTotalPrice } from "../../assets/scripts/store/redux-slices/cart";
 import { removeProductFromCart, increaseQuantity, decreaseQuantity } from "../../assets/scripts/store/redux-slices/cart";
+import Accordeon from "../atoms/accordeon"
+
 
 const Article = ({data, display})=>{
     const [quantity, setQuantity] = React.useState(display==='onCart' ? data.quantity : 1);
     const dispatch = useDispatch();
+    console.log(data)
 
     const addToCart = ()=>{
         const datas = {...data};
@@ -86,6 +89,42 @@ const Article = ({data, display})=>{
                     </figure>
                     <hr />
                 </a>
+            )
+        case "fullPage":
+            return (
+                <figure className="fullPage">
+                <picture>
+                    <img src={data.img} alt={"illustration de " + data.name} />
+                </picture>
+                <figcaption>
+                    <div className="top">
+                        <h1>{data.name ? data.name : "chargement..."}</h1>
+                        <section>
+                            <article>
+                                <p>Marque</p>
+                                <p>{data.manufacturer}</p>
+                            </article>
+                            <article>
+                                <p>Reference</p>
+                                <p>{data.reference}</p>
+                            </article>
+                            <article>
+                                <p>Prix</p>
+                                <p>{data.price}€</p>
+                            </article>
+                        </section>
+                        <section>
+                            <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
+                            <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
+                        </section>
+                        <p>{data.description}</p>
+                        {/* A mettre dans un component */}
+                        <Accordeon type="compatibilities" title="Modèles compatibles" content={data.compatibility}/>
+                        <Accordeon type="technique" title="Fiche technique" content={[data.name, data.manufacturer, data.reference, data.state]}/>
+                        <hr />
+                    </div>
+                </figcaption>
+            </figure>
             )
     }
 

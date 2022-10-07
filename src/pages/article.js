@@ -27,7 +27,7 @@ const ArticlePage = () => {
     },[])
 
 
-    return <Article display="boutique" data={article}/>
+    return <Article display="fullPage" data={article}/>
 }
 
 export default ArticlePage
