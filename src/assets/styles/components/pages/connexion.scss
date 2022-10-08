@@ -3,11 +3,10 @@
 
 .login{
     width: 700px;
-    margin: 0 auto;
+    margin: 64px auto;
     text-align: center;
     padding: 0px 100px;
     border-radius: 74px;
-    margin-bottom: 64px;
     height: 537px;
     @include mq("tablet", max){
         background-color: transparent;
