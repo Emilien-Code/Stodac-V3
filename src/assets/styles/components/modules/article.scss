@@ -4,12 +4,11 @@
 .article{
     background-color: map-get($brands-primary ,"secondary-white" );
     cursor: auto;
-    max-width: 45%;
-    flex-basis: 591px;
     margin: 72px 0;
+    flex-basis: 591px;
     flex-grow: 1;
-    @include mq("tablet", max) {
-        width: calc(100% - 48px);
+    @include mq("desktop", min) {
+        max-width: 45%;
     }
 
 
