@@ -31,7 +31,7 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 24px;
-        flex-basis: 70%;
+        flex-basis: 65%;
 
         .button:first-child {
             margin-top: 24px;
@@ -41,7 +41,8 @@
         }
     }
     picture{
-        flex-basis : 30%;
+        flex-basis : 35%;
+        max-width: 350px;
         min-width: 263px;
         height: 356px;
         @include mq("tablet", max) {
@@ -132,12 +133,15 @@
 
 .fullPage{
     margin: 0;
-    display: flex;
-    // height: calc(100vh - 125px);
+    @include mq("tablet", min) {
+        display: flex;
+
+    }
     h1{
         font-size: 36px;
         line-height: 36px;
     }
+
     .top{
         // margin-top: 10vh;
         section{
@@ -148,7 +152,15 @@
             &:nth-child(3){
                 padding-right: 0;
             }
+            @include mq("tablet-wide", max) {
+                padding-right: 0;
+            }
 
+            &:nth-child(3){
+                @include mq("tablet", max) {
+                    display: block;
+                }
+            }
 
             p{
                 margin: 0;
@@ -161,16 +173,17 @@
             margin: 40px 0;
             line-height: 48px;
         }
-        .qty-select{
-            width: 122px;
-        }
         .green{
             flex-basis: calc(100% - 134px);
+            @include mq("tablet", max) {
+                width: 100%;
+            }
         }
         .qty-select{
             width: 124px;
             @include mq("tablet", max) {
-                width: 100px;
+                width: 100%;
+                margin-bottom: 16px;
             }
             .more,.less {
                 margin: 0 14px;
@@ -181,28 +194,32 @@
         }
     }
     picture {
-        flex-basis: 47.5%;
+        flex-basis: 50%;
         height: 100vh;
-        // background-color: map-get($brands-primary, "secondary-white" );
+        //  background-color: map-get($brands-primary, "secondary-white" );
+        background-color: #D9D9D9;
         position: sticky;
         top: 0;
         img{
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            @include mq("tablet", min) {
+                max-height: 100vh;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
             width: 100%;
             object-fit: cover;
         }
     }
     figcaption{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex-basis: 52.5%;
-        margin: 120px 64px;
-        padding: 0;
+        flex-basis: 50%;
+        padding: 120px 64px;
+        @include mq("tablet-wide", max) {
+            padding: 120px 32px;
+        }
         @include mq("tablet", max) {
-            margin-left: 24px;
+            padding: 24px 16px;
         }
     }
     hr:last-of-type{

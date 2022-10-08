@@ -39,7 +39,7 @@ const Accordeon = ({type, title, content})=>{
                                                 {el}
                                             </div>
                                         </article></li>
-                                } )}</ul>
+                                })}</ul>
                             )
                         }
                     </div>
