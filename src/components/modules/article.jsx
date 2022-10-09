@@ -12,6 +12,10 @@ import Accordeon from "../atoms/accordeon"
 const Article = ({data, display})=>{
     const [quantity, setQuantity] = React.useState(display==='onCart' ? data.quantity : 1);
     const dispatch = useDispatch();
+    //Actualize array when remove article
+    if(display==='onCart' && (data.quantity !== quantity)){
+        setQuantity(data.quantity);
+    }
     // const history = useHistory()
     const addToCart = ()=>{
         const datas = {...data};
