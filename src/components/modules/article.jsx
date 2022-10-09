@@ -63,7 +63,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
-                                <span>{data.price}€</span> <Bubble text={data.manufacturer} color="grey"/><Bubble text={data.category} color="grey"/>
+                                <span>{data.price ? `${data.price}€` : ""}</span> {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
                             </div>
