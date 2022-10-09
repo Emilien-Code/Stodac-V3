@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, setTotalPrice } from "../../assets/scripts/store/redux-slices/cart";
 import { removeProductFromCart, increaseQuantity, decreaseQuantity } from "../../assets/scripts/store/redux-slices/cart";
 import Accordeon from "../atoms/accordeon"
-
+import Bubble from "../atoms/Bubbles"
 
 const Article = ({data, display})=>{
     const [quantity, setQuantity] = React.useState(display==='onCart' ? data.quantity : 1);
@@ -63,7 +63,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
-                                <span>{data.price}€</span>
+                                <span>{data.price}€</span> <Bubble text={data.manufacturer} color="grey"/><Bubble text={data.category} color="grey"/>
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
                             </div>
