@@ -4,13 +4,15 @@ import "../../assets/styles/components/modules/article.scss"
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, setTotalPrice } from "../../assets/scripts/store/redux-slices/cart";
 import { removeProductFromCart, increaseQuantity, decreaseQuantity } from "../../assets/scripts/store/redux-slices/cart";
+import { Link } from "react-router-dom";
+
 import Accordeon from "../atoms/accordeon"
-import Bubble from "../atoms/Bubbles"
+//import Bubble from "../atoms/Bubbles"
 
 const Article = ({data, display})=>{
     const [quantity, setQuantity] = React.useState(display==='onCart' ? data.quantity : 1);
     const dispatch = useDispatch();
-
+    // const history = useHistory()
     const addToCart = ()=>{
         const datas = {...data};
         datas.quantity = parseInt(quantity)
@@ -44,17 +46,11 @@ const Article = ({data, display})=>{
         }
         dispatch(setTotalPrice())
     }
-
-    const pushToArticle = (e)=>{
-        e.preventDefault()
-        if(!(e.target.classList.contains("button") || e.target.classList.contains("less") || e.target.classList.contains("more") || e.target.classList.contains("span") || e.target.classList.contains("icon")))
-            window.location.href = `/article/${data._id}`;
-    }
-
+    
     switch (display){
         case "boutique": 
             return (
-                <a className={`article ${display}`} onClick={pushToArticle} href="/article">
+                <Link className={`article ${display}`} /*onClick={pushToArticle}*/ to={`/article/${data._id}`}>
                     <figure>
                         <picture>
                             <img src={data.img} alt={"illustration de " + data.name} />
@@ -68,11 +64,11 @@ const Article = ({data, display})=>{
                             </div>
                         </figcaption>
                     </figure>
-                </a>
+                </Link>
             )
         case "onCart":
             return(
-                <a className={`${display}`} onClick={pushToArticle} href="/article">
+                <div className={`${display}`}>
                     <figure>
                         <picture>
                             <img src={data.img} alt={"illustration de " + data.name} />
@@ -89,7 +85,7 @@ const Article = ({data, display})=>{
                         </figcaption>
                     </figure>
                     <hr />
-                </a>
+                </div>
             )
         case "fullPage":
             return (

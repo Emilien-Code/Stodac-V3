@@ -22,6 +22,7 @@ import MentionsLegales from './pages/mentions-legales';
 import Cart from "./components/modules/cart"
 import Connexion from "./pages/conexion"
 import ArticlePage from './pages/article';
+import NotFound from './pages/404';
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
 // const LazyAssistance = React.lazy(() => import('./pages/assistance'));
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
     path: "/",
     // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
     element: <Boutique/> ,
+    errorElement: <NotFound/>
   },{
     path: "/boutique/:page",
     

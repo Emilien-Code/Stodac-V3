@@ -1,0 +1,41 @@
+.not-found{
+    text-align: center;
+    margin: 180px 0;
+    h1{
+        font-size: 256px;
+        line-height: 256px;
+    }
+    p{
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .bubble{
+        position: absolute;
+        &:nth-of-type(1){
+            top: 236px; /* *100 / 1512px */ 
+            left: calc(217px * 100% / 1512px);
+        }
+        &:nth-of-type(2){
+            top:  516px;
+            left: calc(346px * 100% / 1512px);
+        }
+        &:nth-of-type(3){
+            top: 350px;
+            left: calc(563px * 100% / 1512px);
+        }
+        &:nth-of-type(4){
+            top: 476px;
+            left: calc(837px * 100% / 1512px);
+        }
+        &:nth-of-type(5){
+            top: 234px;
+            left: calc(1087px * 100% / 1512px);
+        }
+        &:nth-of-type(6){
+            top: 528px;
+            left: calc(1221px * 100% / 1512px);
+        }
+    }
+
+}
