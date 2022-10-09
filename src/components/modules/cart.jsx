@@ -41,7 +41,7 @@ const Cart = ()=>{
         return <div className="cart-wrapper">
             <aside className="cart">
                 <div className="cart-header">
-                    <h2>panier</h2>
+                    <h2>Panier</h2>
                     <Button type="svg" content="cross" callBack={close}/>
                 </div>
                     <hr/>

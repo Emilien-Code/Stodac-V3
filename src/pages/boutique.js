@@ -4,7 +4,7 @@ import Button from "../components/atoms/Button.jsx";
 import "../assets/styles/components/pages/boutique.scss"
 import { useSelector, useDispatch } from "react-redux";
 import { setPage } from "../assets/scripts/store/redux-slices/articles";
-
+import Filters from "../components/sections/filters.jsx";
 import { useParams } from "react-router-dom";
 
 const Boutique = ()=>{
@@ -48,6 +48,7 @@ const Boutique = ()=>{
 
     
     return <main>
+            <Filters/>
         <section className="store-wrapper">
         {
             articles.map((article, index)=>{

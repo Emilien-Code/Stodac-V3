@@ -1,0 +1,58 @@
+@import "../../../utils/variables.scss";
+@import "../../../utils/mixins.scss";
+
+.search {
+    position: absolute;
+    z-index: 2;
+    left: 5%;
+    width: 432px;
+    border: solid 1px map-get($brands-primary, "black");
+    background-color: map-get($brands-primary, "secondary-white");
+    border-radius: 24px;
+    svg {
+        position: absolute;
+        right: 24px;
+        top: 10px;
+    }
+    .articles{
+        margin-top: 8px ;
+        max-height: 160px;
+        overflow: auto;
+    }
+    li::after{
+        content: "";
+        height: 1px;
+        background-color: map-get($brands-primary, "black");
+        display: block;
+        margin: 24px 0;
+        
+    } 
+    li:first-of-type{
+        margin-top: 16px;
+    }
+    .footer::before{
+        content: "";
+        display: block;
+        background-color: map-get($brands-primary, "black");
+        height: 1px;
+    }
+
+
+    input{
+        border: none;
+        background-color: transparent;
+    }
+    button.text.green{
+        margin: 24px 77px;
+        width: 280px;
+    }
+}
+.close-search{
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 1;
+    background-color: transparent;
+}

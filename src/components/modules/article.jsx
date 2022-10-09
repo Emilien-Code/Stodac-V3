@@ -127,6 +127,21 @@ const Article = ({data, display})=>{
                 </figcaption>
             </figure>
             )
+            case "onSearch":
+                return(
+                    <Link to={`/article/${data._id}`} className={`${display}`}>
+                        <figure>
+                            <picture>
+                                <img src={data.img} alt={"illustration de " + data.name} />
+                            </picture>
+                            <figcaption>
+                                <p>{data.name ? data.name : "chargement..."}</p>
+                                <span>{data.price}€</span>
+                            </figcaption>
+                        </figure>
+                        {/* <hr /> */}
+                    </Link>
+                )
     }
 
 }
