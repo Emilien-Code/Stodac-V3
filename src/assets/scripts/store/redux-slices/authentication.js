@@ -10,32 +10,33 @@ if(!user){
     data:{}
   }
 }else{
-    try{
-      user = JSON.parse(user);
-      // instance.defaults.headers.common['Authorization'] = 'Bearer ' + user.token
-      }catch{
-        user={
-          connected: false,
-          token: null,
-          id:null,
-          data:{}
-        }
-      }  
+  try{
+    user = JSON.parse(user);
+    // instance.defaults.headers.common['Authorization'] = 'Bearer ' + user.token
+  }catch{
+    user={
+      connected: false,
+      token: null,
+      id:null,
+      data:{}
+    }
+  }  
 }
 
 export const authenticationSlice = createSlice({
   name: "authentication",
   initialState: {
-    connected: false,
-    token: null,
-    id: null,
-    data: {},
+    connected: user.connected,
+    token: user.token,
+    id: user.id,
+    data: user.data,
   },
   reducers: {
     setConnected: (state, action) => {
       state.connected = true;
       state.token = action.payload.token;
-      state.id = action.payload.userID
+      state.id = action.payload.userID;
+      console.log(action);
       localStorage.setItem('user', JSON.stringify({
         connected: state.connected,
         token: state.token,

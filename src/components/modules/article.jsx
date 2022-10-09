@@ -10,7 +10,6 @@ import Bubble from "../atoms/Bubbles"
 const Article = ({data, display})=>{
     const [quantity, setQuantity] = React.useState(display==='onCart' ? data.quantity : 1);
     const dispatch = useDispatch();
-    console.log(data)
 
     const addToCart = ()=>{
         const datas = {...data};
@@ -63,7 +62,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
-                                <span>{data.price ? `${data.price}€` : ""}</span> {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}
+                                <span>{data.price ? `${data.price}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
                             </div>
