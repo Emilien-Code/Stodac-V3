@@ -1,0 +1,21 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.information{
+    display: flex;
+    width: 504px;
+    height: 64px;
+    background: map-get($brands-primary, "grey");
+    svg{
+        margin-left: 16px;
+        margin-top: 8px;
+    }
+    p{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 24px;
+        width: 408px;
+        font-style: normal;
+        font-size: 16px;
+        color: map-get($brands-primary, "black");
+    }
+}

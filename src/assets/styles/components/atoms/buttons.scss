@@ -34,6 +34,29 @@
         
     }
 }
+.selecteur{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: map-get($brands-primary, "grey");
+    text-align: left;
+    span{
+        width: 70%;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 10%;
+        font-size: 220%;
+    }
+    svg{
+        height: 60%;
+        min-height: 42px;
+        width: 10%;
+        min-width: 15px;
+        margin-left: 15%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
 .qty-select,.page-select{
     cursor: auto;
     display: flex;

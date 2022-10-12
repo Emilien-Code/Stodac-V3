@@ -1,0 +1,57 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.modePayement{
+    width: 568px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    .selecteur{
+        margin-top: 16px;
+        height: 70px;
+    }
+    @include mq("tablet", max){
+        width: calc(100% - 64px);
+    }
+    // @include mq("tablet-small", max){
+    //     width: calc(100% - 40px);
+    // }
+}
+.modePaypal, .modeCheque, .modeVirement{
+    width: 632px;
+    p{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 48px;
+        color: map-get($brands-primary, "black");
+    }
+    .text{
+        width: 57px;
+        position: absolute;
+        margin-top: -110px;
+        margin-left: 560px;
+    }
+    .desc{
+        margin-top: 32px;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 16px;
+    }
+    @include mq("tablet", max){
+        width: calc(100% - 136px);
+        .text{
+            margin-left: calc(100% - 202px);
+        }
+    }
+    @include mq("tablet-small", max){
+        width: calc(100% - 40px);
+        .text{
+            margin-left: calc(100% - 112px);
+        }
+    }
+
+}
+.invisible{
+    display: none;
+}

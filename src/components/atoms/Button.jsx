@@ -35,7 +35,9 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
     if(type === "text"){
         return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>
     }
-
+    if(type === "selecteur"){
+        return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span><Icon type="right"/></button>
+    }
     if(type === "qty-select"){
         return  <div className={"button " + type + " " + color + " "}>
                     <button className="less" onClick={less}>-</button>
