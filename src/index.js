@@ -20,7 +20,9 @@ import Assistance from './pages/assistance';
 import ConditionsGeneralesVente from './pages/conditions-generales-vente';
 import MentionsLegales from './pages/mentions-legales';
 import Cart from "./components/modules/cart"
-import Connexion from "./pages/conexion";
+import Connexion from "./pages/conexion"
+import ArticlePage from './pages/article';
+import NotFound from './pages/404';
 import Payement from "./pages/paiement-commande";
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
@@ -33,6 +35,7 @@ const router = createBrowserRouter([
     path: "/",
     // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
     element: <Boutique/> ,
+    errorElement: <NotFound/>
   },{
     path: "/boutique/:page",
     
@@ -64,6 +67,9 @@ const router = createBrowserRouter([
     // a changer en sah ;)
     path: "/payement",
     element:<Payement/>
+  },{
+    path:"/article/:_id",
+    element: <ArticlePage/>
   }
 
 ]);

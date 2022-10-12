@@ -1,5 +1,6 @@
 import React from "react";
 import '../../assets/styles/components/modules/footer.scss'
+
 const Footer = ()=>{
     return  <footer>
                 <section className="slider">
