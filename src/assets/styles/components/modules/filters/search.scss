@@ -3,7 +3,7 @@
 
 .search {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     left: 5%;
     width: 432px;
     border: solid 1px map-get($brands-primary, "black");
