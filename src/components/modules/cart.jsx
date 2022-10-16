@@ -15,6 +15,22 @@ const Cart = ()=>{
         window.location.href = `/recapitulatif-commande`
     }
     
+
+    React.useEffect(()=>{
+        const $body = document.querySelector("body")
+        if(cartIsOpen){
+            $body.style.overflow = 'hidden';
+            $body.style.position = 'fixed';
+            // $body.style.top = `-${scrollPosition}px`;
+            $body.style.width = '100%';
+        }else{
+            $body.style.overflow = 'hidden auto';
+            $body.style.removeProperty('position');
+            $body.style.removeProperty('top');
+            $body.style.removeProperty('width');
+        }
+    }, [cartIsOpen])
+
     const close = ()=>{ 
         dispatch(setCart(false))
     }

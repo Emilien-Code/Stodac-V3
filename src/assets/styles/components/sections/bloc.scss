@@ -42,8 +42,9 @@
         }
     }
     .information{
+        position: sticky;
+        top: 0;
         display: flex;
-        margin-top: 16px;
         margin-left: 24px;
         @include mq("desktop", max){
             margin-left: 56px;
@@ -65,7 +66,7 @@
             }
             p{
                 width: calc(100% - 88px);
-                font-size: 14px;
+                font-size: 16px;
             }
         }
     }
