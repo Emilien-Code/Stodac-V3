@@ -36,25 +36,32 @@
 }
 .selecteur{
     display: flex;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 112px;
     width: 100%;
+    @include mq("tablet", max){
+        height: 80px;
+    }
     background: map-get($brands-primary, "grey");
-    text-align: left;
-    span{
-        width: 70%;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-left: 10%;
-        font-size: 220%;
+    span{   
+        margin-left: 24px;
+        font-size: 32px;
+        @include mq("tablet", max){
+            font-size: 24px;
+            margin-left: 16px;
+
+        }
     }
     svg{
-        height: 60%;
-        min-height: 42px;
-        width: 10%;
-        min-width: 15px;
-        margin-left: 15%;
-        margin-top: auto;
-        margin-bottom: auto;
+        width: 48px;
+        height: 48px;
+        margin-right: 32px;
+        @include mq("tablet", max){
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+        }
     }
 }
 .qty-select,.page-select{

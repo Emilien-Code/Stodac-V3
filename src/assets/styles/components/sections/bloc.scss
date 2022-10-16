@@ -2,60 +2,54 @@
 @import "../../utils/mixins.scss";
 .Bloc{
     display: flex;
+    justify-content: space-between;
     margin-top: 72px;
+    @include mq("matailledecranpourinfocarjefaischier",max){
+        flex-direction: column-reverse;
 
+    }
     .contenu{
-        width: 632px;// calc(50% - 200px);
-        margin-left: 128px;
+        width: 50%;// calc(50% - 200px);
         hr{
             width: 100%;
         }
+        @include mq("matailledecranpourinfocarjefaischier",max){
+            width: 100%;
+        }
         .title{
-            width: calc(100% - 80px);
-            font-style: normal;
-            font-weight: 400;
             font-size: 40px;
             line-height: 48px;
             color: map-get($brands-primary, "black");
-    
+
+            @include mq("tablet", max){
+                margin-top: 40px;
+                font-size: 24px;
+                line-height: 24px;
+            }
         }
-        @include mq("matailledecranpourinfocarjefaischier",max){
-            margin: auto;
-        }
-        @include mq("tablet", max){
-            width: calc(100% - 136px);
-        }
+
+
         @include mq("tablet-small", max){
-            width: calc(100% - 40px);
+            width: 100% ;
         }
     }
     .information{
         display: flex;
         margin-top: 16px;
-        margin-left: calc(50% - 760px + 104px);
+        margin-left: 24px;
         @include mq("desktop", max){
             margin-left: 56px;
         }
         @include mq("matailledecranpourinfocarjefaischier",max){
-            position: absolute;
-            margin-left:calc(50% - 316px);
-            margin-top: -84px;
-            width: 632px;
+            margin: 40px 0;
+            width: 100%;
             min-height: 64px;
             p{
                 width: 568px;
             }
         }
+
         @include mq("tablet", max){
-            margin-left:68px;
-            width: calc(100% - 136px);
-            p{
-                width: calc(100% - 200px);;
-            }
-        }
-        @include mq("tablet-small", max){
-            margin-left:20px;
-            width: calc(100% - 40px);
             svg{
                 margin-top: 16px;
                 width: 32px;

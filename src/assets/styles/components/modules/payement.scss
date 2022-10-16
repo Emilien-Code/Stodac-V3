@@ -1,21 +1,12 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 .modePayement{
-    width: 568px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 32px;
-    margin-bottom: 32px;
     .selecteur{
-        margin-top: 16px;
-        height: 70px;
+        margin-top: 40px;
+        @include mq("tablet", max){
+        
+        }
     }
-    @include mq("tablet", max){
-        width: calc(100% - 64px);
-    }
-    // @include mq("tablet-small", max){
-    //     width: calc(100% - 40px);
-    // }
 }
 .modePaypal, .modeCheque, .modeVirement{
     width: 632px;

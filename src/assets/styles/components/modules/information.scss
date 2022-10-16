@@ -15,7 +15,10 @@
         margin-left: 24px;
         width: 408px;
         font-style: normal;
-        font-size: 16px;
+        font-size: 24px;
+        @include mq("tablet", max){
+            font-size: 16px;
+        }
         color: map-get($brands-primary, "black");
     }
 }
