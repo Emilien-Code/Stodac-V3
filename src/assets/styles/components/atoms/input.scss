@@ -1,10 +1,22 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 
-input{
+input:not([type="checkbox"]){
     font-size: 16px;
     padding: 12px 24px;
     border-radius: 32px;
     width: 100%;
     border: 1px solid map-get($brands-primary,"black");
 }
+input[type="checkbox"]{
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+    border : none;
+    background-color: #D9D9D9;
+    &:checked{
+        background-color: map-get($brands-primary, "green");
+    }
+}
+

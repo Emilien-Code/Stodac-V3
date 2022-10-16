@@ -12,7 +12,7 @@ const Cart = ()=>{
     const isEmpty = cart.cart.length <= 0 ? true : false
     
     const pushToCommande = ()=>{
-        console.log("push")
+        window.location.href = `/recapitulatif-commande`
     }
     
     const close = ()=>{ 

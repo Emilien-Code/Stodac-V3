@@ -11,6 +11,8 @@ const Input = ({type, placeHolder, callBack, className="ClassInput"})=>{
             return <input className={className} type="text" onChange={addWord} placeholder={placeHolder}/>
         case 'password':
             return <input className={className} type="password" onChange={addWord} placeholder={placeHolder}/>
+        case "checkbox": 
+            return <input type="checkbox"/>
         default : 
             return <>aucuns type correspondant</>
     }

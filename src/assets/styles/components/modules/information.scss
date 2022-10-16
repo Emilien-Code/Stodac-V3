@@ -2,20 +2,22 @@
 @import "../../utils/mixins.scss";
 .information{
     display: flex;
+    align-items: center;
     width: 504px;
-    height: 64px;
+    height: fit-content;
     background: map-get($brands-primary, "grey");
     svg{
         margin-left: 16px;
-        margin-top: 8px;
+        // margin-top: 16px;
     }
     p{
-        margin-top: auto;
-        margin-bottom: auto;
+        margin-top: 16px;
+        margin-bottom: 16px;
         margin-left: 24px;
         width: 408px;
-        font-style: normal;
         font-size: 24px;
+        height: fit-content;
+
         @include mq("tablet", max){
             font-size: 16px;
         }

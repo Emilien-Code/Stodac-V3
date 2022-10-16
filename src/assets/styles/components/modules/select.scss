@@ -1,33 +1,42 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
-.modePayement{
-    .selecteur{
-        margin-top: 40px;
-        @include mq("tablet", max){
+
+.select{
+    position: relative;
+
+    .modifier{
+        cursor: pointer;
+        position: absolute;
+        display: block;
+        text-decoration: underline;
+        transform: translateY(-52px);
+        right: 0;
+        @include mq("tablet", min){
+            transform: translateY(-57px);
         
         }
     }
 }
-.modePaypal, .modeCheque, .modeVirement{
-    width: 632px;
+
+
+.modePayement{
+    .selecteur{
+        margin-top: 40px;
+
+    }
+}
+.visible{
+    width: 100%;
     p{
-        font-style: normal;
-        font-weight: 400;
+        margin-top: 24px;
         font-size: 24px;
-        line-height: 48px;
         color: map-get($brands-primary, "black");
     }
-    .text{
-        width: 57px;
-        position: absolute;
-        margin-top: -110px;
-        margin-left: 560px;
-    }
+
     .desc{
-        margin-top: 32px;
-        font-size: 16px;
+        margin: 40px 0;
+        font-size: 20px;
         line-height: 24px;
-        margin-bottom: 16px;
     }
     @include mq("tablet", max){
         width: calc(100% - 136px);

@@ -24,6 +24,7 @@ import Connexion from "./pages/conexion"
 import ArticlePage from './pages/article';
 import NotFound from './pages/404';
 import Payement from "./pages/paiement-commande";
+import Recap from "./pages/recap-commande";
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
 // const LazyAssistance = React.lazy(() => import('./pages/assistance'));
@@ -65,11 +66,14 @@ const router = createBrowserRouter([
     element:<Connexion/>
   },{
     // a changer en sah ;)
-    path: "/payement",
+    path: "/paiement-commande",
     element:<Payement/>
   },{
     path:"/article/:_id",
     element: <ArticlePage/>
+  },{
+    path:"/recapitulatif-commande",
+    element: <Recap/>
   }
 
 ]);

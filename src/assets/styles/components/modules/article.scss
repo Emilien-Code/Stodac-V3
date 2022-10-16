@@ -64,6 +64,7 @@
 .onCart{
         figure{
             padding: 40px 0;
+            margin: 0;
             display: flex;
             @include mq("tablet", max) {
 
