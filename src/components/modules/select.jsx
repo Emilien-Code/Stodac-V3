@@ -57,7 +57,7 @@ const Payement = ({type}) => {
             }
             <div className={nomdiv==="modePaypal"? "visible" : "invisible"}>
                 <p>Paypal ou carte bleue</p>
-                <Paypal/>
+                <Paypal commandeInfo=""/>
             </div>
             <div className={nomdiv==="modeCheque" ? "visible" : "invisible"}>
                 <p>Cheque</p>
