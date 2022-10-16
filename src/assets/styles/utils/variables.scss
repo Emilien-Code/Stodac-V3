@@ -4,6 +4,7 @@ $brands-primary:(
     "green": #DCF2B0,
     "white": #FFFFFF,
     "secondary-white": #F9F9F9,
+    "grey":#F1F1F1,
     "bubble-grey": #EFEFEF
 );
 
@@ -12,10 +13,13 @@ $brands-primary:(
 // Create breakpoints variables
 $breakpoints:(
   "phone-small": 320px,
+  "phone-grand": 440px,
+  "tablet-small":640px,
   "tablet": 768px,
   "tablet-wide": 1024px,
   "desktop": 1440px,
   "desktop-wide": 1920px,
+  "matailledecranpourinfocarjefaischier": 1360px
 );
 
 // Create fonts sizes variables

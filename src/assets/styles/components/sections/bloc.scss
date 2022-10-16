@@ -1,0 +1,74 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.Bloc{
+    display: flex;
+    margin-top: 72px;
+
+    .contenu{
+        width: 632px;// calc(50% - 200px);
+        margin-left: 128px;
+        hr{
+            width: 100%;
+        }
+        .title{
+            width: calc(100% - 80px);
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 48px;
+            color: map-get($brands-primary, "black");
+    
+        }
+        @include mq("matailledecranpourinfocarjefaischier",max){
+            margin: auto;
+        }
+        @include mq("tablet", max){
+            width: calc(100% - 136px);
+        }
+        @include mq("tablet-small", max){
+            width: calc(100% - 40px);
+        }
+    }
+    .information{
+        display: flex;
+        margin-top: 16px;
+        margin-left: calc(50% - 760px + 104px);
+        @include mq("desktop", max){
+            margin-left: 56px;
+        }
+        @include mq("matailledecranpourinfocarjefaischier",max){
+            position: absolute;
+            margin-left:calc(50% - 316px);
+            margin-top: -84px;
+            width: 632px;
+            min-height: 64px;
+            p{
+                width: 568px;
+            }
+        }
+        @include mq("tablet", max){
+            margin-left:68px;
+            width: calc(100% - 136px);
+            p{
+                width: calc(100% - 200px);;
+            }
+        }
+        @include mq("tablet-small", max){
+            margin-left:20px;
+            width: calc(100% - 40px);
+            svg{
+                margin-top: 16px;
+                width: 32px;
+                height: 32px;
+            }
+            p{
+                width: calc(100% - 88px);
+                font-size: 14px;
+            }
+        }
+    }
+    @include mq("matailledecranpourinfocarjefaischier", max){
+        margin-top: 112px;
+    }
+    
+}

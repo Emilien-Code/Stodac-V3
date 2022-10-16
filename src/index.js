@@ -23,6 +23,7 @@ import Cart from "./components/modules/cart"
 import Connexion from "./pages/conexion"
 import ArticlePage from './pages/article';
 import NotFound from './pages/404';
+import Payement from "./pages/paiement-commande";
 //LazyLoaded components 
 // const LazyBoutique = React.lazy(() => import('./pages/boutique'));
 // const LazyAssistance = React.lazy(() => import('./pages/assistance'));
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
   },{
     path: "/se-connecter",
     element:<Connexion/>
+  },{
+    // a changer en sah ;)
+    path: "/payement",
+    element:<Payement/>
   },{
     path:"/article/:_id",
     element: <ArticlePage/>

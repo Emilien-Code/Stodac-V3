@@ -1,6 +1,6 @@
 import React from "react";
 import "../../assets/styles/components/atoms/input.scss";
-const Input = ({type, placeHolder, callBack})=>{
+const Input = ({type, placeHolder, callBack, className="ClassInput"})=>{
 
     const addWord = (e)=>{
         callBack(e.target.value)
@@ -8,9 +8,9 @@ const Input = ({type, placeHolder, callBack})=>{
 
     switch (type){
         case 'text':
-            return <input type="text" onChange={addWord} placeholder={placeHolder}/>
+            return <input className={className} type="text" onChange={addWord} placeholder={placeHolder}/>
         case 'password':
-            return <input type="password" onChange={addWord} placeholder={placeHolder}/>
+            return <input className={className} type="password" onChange={addWord} placeholder={placeHolder}/>
         default : 
             return <>aucuns type correspondant</>
     }
