@@ -86,7 +86,15 @@ const Cart = ()=>{
             </aside>
     </div>
     }else{
-        return <></>
+        console.log(cart.quantity)
+        return <>{
+                cart.quantity ?
+                
+                 <div className="count">
+                    {cart.quantity}
+                 </div> 
+                 : <></>
+                }</>
     }
 }
 

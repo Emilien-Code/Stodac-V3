@@ -3,7 +3,7 @@ import Button from "../atoms/Button"
 import "../../assets/styles/components/modules/article.scss"
 import { useSelector, useDispatch } from "react-redux";
 import { addProductToCart, setTotalPrice } from "../../assets/scripts/store/redux-slices/cart";
-import { removeProductFromCart, increaseQuantity, decreaseQuantity } from "../../assets/scripts/store/redux-slices/cart";
+import { removeProductFromCart, increaseQuantity, decreaseQuantity, checkQuantity } from "../../assets/scripts/store/redux-slices/cart";
 import { Link } from "react-router-dom";
 
 import Accordeon from "../atoms/accordeon"
@@ -22,12 +22,16 @@ const Article = ({data, display})=>{
         datas.quantity = parseInt(quantity)
         dispatch(addProductToCart(datas))
         dispatch(setTotalPrice())
+        dispatch(checkQuantity())
+
     }
     const removeFromCart = ()=>{
         const id = {}
         id._id = data._id
         dispatch(removeProductFromCart(id));
         dispatch(setTotalPrice())
+        dispatch(checkQuantity())
+
     }
 
     if(display==="fullPage") window.scrollTo(0, 125)
@@ -49,6 +53,7 @@ const Article = ({data, display})=>{
             }
         }
         dispatch(setTotalPrice())
+        dispatch(checkQuantity())
     }
     
     switch (display){
