@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 const Boutique = ()=>{
     const [articles, setArticles] = React.useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]);
     const [nbPages, setNbPages] = React.useState(1);
+    const searchedWord = useSelector((state) => state.filters.searched);
 
     const page = useParams()
     let currentPage = page.page ? page.page : 1
@@ -25,6 +26,13 @@ const Boutique = ()=>{
         window.location.href = `/boutique/${currentPage}`;
     }
     
+    React.useEffect(()=>{
+        if(searchedWord){
+            fetch(`https://stodac.fr/api/stuff/name/${searchedWord}/4`)
+            .then(response => response.json())
+            .then(data => setArticles(data))
+        }
+    },[searchedWord])
     
     const load = (start)=>{
         fetch(`https://stodac.fr/api/stuff/all/20/${start}`)
@@ -51,9 +59,15 @@ const Boutique = ()=>{
             <Filters/>
         <section className="store-wrapper">
         {
+            articles ? 
+
             articles.map((article, index)=>{
                 return <Article display="boutique" key={index} data={article}/>
             })
+            
+            :
+            
+            <h1>Aucun article trouvé</h1>
         }
         </section>
 
