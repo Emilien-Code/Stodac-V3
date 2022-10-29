@@ -1,6 +1,33 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 
+
+.row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input{
+        width: calc(100% - 32px);
+    }
+    .validator{
+        width: 16px;
+        height:  16px;
+        margin-left: 16px;
+        border-radius: 50%;
+        background-color: map-get($brands-primary , "bubble-grey" );
+        
+        &.green{
+            background-color: map-get($brands-primary , "green" );
+        }
+        
+    }
+}
+.nom-prenom{
+    width: calc(100% - 32px);
+}
+
+
 .login{
     width: 700px;
     margin: 64px auto;
@@ -50,12 +77,6 @@
             @include mq("tablet", max){
                 margin: 6px 0;
             }
-        }
-
-        p{
-            margin-top: 16px;
-            text-align: justify;
-            padding: 0 12px;
         }
         
         .nom-prenom{

@@ -4,8 +4,9 @@ import Button from "../components/atoms/Button"
 import Input from "../components/atoms/input";
 import { useSelector, useDispatch } from "react-redux";
 import { setConnected, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
+import Inforamtion from "../components/modules/information";
 import regex from "../assets/scripts/utils/regex";
-import { reject } from "bcrypt/promises";
+
 
 const Conexion = () => {
     const isLogedin = useSelector((state) => state.authentication.connected);
@@ -16,10 +17,8 @@ const Conexion = () => {
     const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [mobile, setMobile] = React.useState("");
-    
+    const [isCreated, setIsCreated] = React.useState(false);
     const dispatch = useDispatch();
-
-
 
     const validatedFields = () => {
         if (!isLogin) {
@@ -29,13 +28,7 @@ const Conexion = () => {
         }
     }
 
-
-
-
     const login = ()=>{
-        // console.log(email)
-        // console.log(password)
-
         fetch('https://stodac.fr/api-test/user/login/mail', {
             method: 'POST',
             headers: {
@@ -50,19 +43,13 @@ const Conexion = () => {
         .then(response => {
             if(response.ok)
                 return response.json();
-            reject("mot de passe ou email incorrecte")
+            console.log("mot de passe ou email incorrecte")
         })
         .then(data => dispatch(setConnected(data)))
         .catch(err => console.log("error when loging in", err))
     }
-    const createAccount = ()=>{
-        //console.log(email)        
-        //console.log(password)    
-        //console.log(confirmPassword)    
-        //console.log(firstName)    
-        //console.log(lastName)    
-        //console.log(mobile)     
-        //console.log(validatedFields())     
+
+    const createAccount = ()=>{   
         if(validatedFields()) {
             fetch('https://stodac.fr/api-test/user/signup', {
                 method: 'POST',
@@ -77,9 +64,9 @@ const Conexion = () => {
                 lastName: lastName,
                 mobile: 33 + mobile,
             })
-
             }).then(function () {
-                login();
+                console.log('ok')
+                setIsCreated(true)
             }).catch(function (error) {
               console.log(error);
             });
@@ -87,52 +74,88 @@ const Conexion = () => {
     
     
     }
+
     const logout = ()=>{
         dispatch(setDisconnect())
     }
+
     const toggle = ()=>{
         setIsLogin(!isLogin)
     }
-    if(!isLogedin){
 
-        return<section className={`login ${isLogin ? " " : "create"}`}>
-            <h1>{isLogin ? "Conexion" : "Créer un compte"}</h1>
-            <Input callBack={setEmail} type="text" placeHolder="Adresse Mail" />
-            {
-                !isLogin && (
-                    <div className="nom-prenom">
-                        <Input type="text" callBack={setLastName} placeHolder="Nom" />
-                        <Input type="text" callBack={setFirstName} placeHolder="Prénom" />
+    if(!isLogedin && !isCreated){
+
+        // return <section className="form">
+
+        
+            return <section className={`login ${isLogin ? " " : "create"}`}>
+                <h1>{isLogin ? "Conexion" : "Créer un compte"}</h1>
+                <div className="row">
+                    <Input callBack={setEmail} type="text" placeHolder="Adresse Mail" />
+                    <div className={`validator ${regex.mailValidation(email) ? "green" : "red"}`}></div>   
+
+                </div>
+                {
+                    !isLogin && (
+                        <div className="nom-prenom">
+                            <Input type="text" callBack={setLastName} placeHolder="Nom" />
+                            <Input type="text" callBack={setFirstName} placeHolder="Prénom" />
+                        </div>
+                    )
+                }
+                    <div className="row">
+                        <Input callBack={setPassword} type="password" placeHolder="Mot de passe" />
+                        <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
                     </div>
-                )
-            }
 
-                <Input callBack={setPassword} type="password" placeHolder="Mot de passe *" />
+                {
+                    !isLogin && (
+                        <>
+                            <div className="row">
+                                <Input type="password" callBack={setConfirmPassword} placeHolder="Confirmez le mot de passe" />
+                                <div className={`validator ${password===confirmPassword&&confirmPassword!=="" ? "green" : "red"}`}></div>   
+                            </div>
+                            <div className="row">
+                                <Input type="text" callBack={setMobile} placeHolder="Numéro de téléphone" />
+                                <div className={`validator ${regex.phoneValidation(mobile) ? "green" : "red"}`}></div>   
+                            </div>
+                        </>
+                    )
+                }
 
-            {
-                !isLogin && (
-                    <>
-                        <Input type="password" callBack={setConfirmPassword} placeHolder="Confirmez le mot de passe" />
-                        <Input type="text" callBack={setMobile} placeHolder="Numéro de téléphone" />
-                        <p>* Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre</p>
-                    </>
-                )
-            }
+                {
+                    isLogin && ( <a href="/mot-de-passe-oublie">Mot de passe oublié ? </a> )
+                }
 
-            {
-                isLogin && ( <a href="/mot-de-passe-oublie">Mot de passe oublié ? </a> )
-            }
+                <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
+                <Button callBack={toggle} color="black" type="text" content={isLogin ? "Créer un compte" : "Se connecter"}/>
+            </section>
 
-            <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
-            <Button callBack={toggle} color="black" type="text" content={isLogin ? "Créer un compte" : "Se connecter"}/>
-        </section>
+
+            {/* <section className="informations"> */}
+                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
+                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
+                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
+            {/* </section> */}
+
+        {/* </section> */}
+
+
     }else{
+        if(isCreated){
+            return <section className={`login ${isLogin ? " " : "create"}`}>
+            <h1>Votre inscription à bien étée prise en compte.</h1>
+            <p>Confirmez votre inscription dans vos mails pour continuer.</p>
 
-        return <section className={`login ${isLogin ? " " : "create"}`}>
+        </section>
+        }else{
+
+            return <section className={`login ${isLogin ? " " : "create"}`}>
             <h1>Vous êtes déjà connecté</h1>
 
             <Button callBack={logout} color="black" type="text" content="Se déconnecter"/>
         </section>
+        }
     }
 }
 
