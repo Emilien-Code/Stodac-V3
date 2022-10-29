@@ -36,7 +36,6 @@ export const authenticationSlice = createSlice({
       state.connected = true;
       state.token = action.payload.token;
       state.id = action.payload.userID;
-      console.log(action);
       localStorage.setItem('user', JSON.stringify({
         connected: state.connected,
         token: state.token,
@@ -47,10 +46,30 @@ export const authenticationSlice = createSlice({
     setData: (state, action) => {
       state.id = action.payload._id;
       state.data = action.payload;
+      localStorage.setItem('user', JSON.stringify({
+        connected: state.connected,
+        token: state.token,
+        id: state.id,
+        data: state.data,
+      }));
+    },
+    setDisconnect: (state) => {
+      state.connected = false
+      state.token = null
+      state.id = null
+      state.data = {}
+
+      localStorage.setItem('user', JSON.stringify({
+        connected: state.connected,
+        token: state.token,
+        id: state.id,
+        data: state.data,
+      }));
+
     },
   },
 });
 
-export const { setConnected, setData } = authenticationSlice.actions;
+export const { setConnected, setData, setDisconnect } = authenticationSlice.actions;
 
 export default authenticationSlice.reducer;

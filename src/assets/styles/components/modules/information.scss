@@ -23,4 +23,32 @@
         }
         color: map-get($brands-primary, "black");
     }
+
+    &.small{
+        background-color: transparent;
+        width: 32px;
+        display: block;
+        position: absolute;
+        right: calc(((100% - 700px) / 2) + 110px);
+        top: 328px;
+        svg{
+            width: 32px;
+            margin: 0;
+        }
+        p{
+            display: none;
+            padding: 16px;
+            position: absolute;
+            background: map-get($brands-primary, "grey");
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+        }
+        &:hover{
+            p{
+                display: block;
+            }
+        }
+    }
 }

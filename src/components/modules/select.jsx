@@ -75,15 +75,15 @@ const Payement = ({type}) => {
             {/* LIVRAISON */}
             <div className={nomdiv==="modeDimicile"? "visible" : "invisible"}>
                 <p>Livraison à domicile</p>
-                adresse
+
             </div>
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>
                 <p>Point relais</p>
-                <p className="desc">La commande vous sera envoyée aussi tôt le chèque reçu. Ce dernier sera envoyé au 11 Bis Rue de Lorraine, 54360 Damelevières et sera à l'ordre d'AMC EST.</p>
+                <p className="desc"></p>
             </div>
             <div className={nomdiv==="modeSurPlace" ? "visible" : "invisible"}>
                 <p>Sur place</p>
-                <p className="desc">sur place</p>
+                <p className="desc">Vous pouvez retirer votre commande dans nos locaux à Damelevières, 54360.</p>
             </div>
         </div>
     )
