@@ -4,7 +4,6 @@ import Button from "../components/atoms/Button"
 import Input from "../components/atoms/input";
 import { useSelector, useDispatch } from "react-redux";
 import { setConnected, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
-import Inforamtion from "../components/modules/information";
 import regex from "../assets/scripts/utils/regex";
 
 
@@ -85,8 +84,6 @@ const Conexion = () => {
 
     if(!isLogedin && !isCreated){
 
-        // return <section className="form">
-
         
             return <section className={`login ${isLogin ? " " : "create"}`}>
                 <h1>{isLogin ? "Conexion" : "Créer un compte"}</h1>
@@ -130,15 +127,6 @@ const Conexion = () => {
                 <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
                 <Button callBack={toggle} color="black" type="text" content={isLogin ? "Créer un compte" : "Se connecter"}/>
             </section>
-
-
-            {/* <section className="informations"> */}
-                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
-                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
-                {/* <Inforamtion type="small" message="Votre mot de passe doit être composé d'au moins 8 charactères dont une majuscule, une minuscule et un chiffre"/> */}
-            {/* </section> */}
-
-        {/* </section> */}
 
 
     }else{

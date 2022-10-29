@@ -2,8 +2,7 @@ import React from "react";
 import Article from "../components/modules/article.jsx"
 import Button from "../components/atoms/Button.jsx";
 import "../assets/styles/components/pages/boutique.scss"
-import { useSelector, useDispatch } from "react-redux";
-import { setPage } from "../assets/scripts/store/redux-slices/articles";
+import { useSelector } from "react-redux";
 import Filters from "../components/sections/filters.jsx";
 import { useParams } from "react-router-dom";
 
@@ -14,7 +13,6 @@ const Boutique = ()=>{
 
     const page = useParams()
     let currentPage = page.page ? page.page : 1
-    const dispatch = useDispatch()
     const nextPage = (isMore)=>{
         if(isMore){
             if(nbPages>currentPage)
@@ -45,7 +43,7 @@ const Boutique = ()=>{
 
     
     React.useEffect(()=>{
-        load((currentPage-1) * 20);
+        load(currentPage ? (currentPage-1) * 20 : 0);
 
         fetch('https://stodac.fr/api/stuff/count/')
         .then(response => response.json())
