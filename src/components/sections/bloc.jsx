@@ -16,11 +16,9 @@ const Bloc = ({type})=>{
 
 
     React.useEffect(()=>{
-        console.log('cart', cart.cart)
         let totalWeight = 0;
         let deliveryPrices = 0;
         if(cart.deliveryMode != "Sur Place"){
-            console.log("DLMODE", cart)
             cart.cart.forEach(product=>{
                 totalWeight += product.poids * product.quantity
             })
@@ -36,12 +34,10 @@ const Bloc = ({type})=>{
             if (totalWeight >= 3500 ) deliveryPrices = 24
 
             dispatch(setDeliveryPrice(formatNumber(deliveryPrices * 1.2 * 100)/100))
-          }else{
+        }else{
             dispatch(setDeliveryPrice(0))
-          }
+        }
 
-
-        console.log("ttlW", totalWeight)
     },[cart.deliveryMode, cart.deliveryPrice, cart.payementMode])
 
     return (   

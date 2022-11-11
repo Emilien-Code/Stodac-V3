@@ -38,7 +38,6 @@ const Paypal = ({commandeInfo}) => {
               },
               onError: err => {
                 console.log(err);
-                console.log("jghskjfjhzsekjfj")
               }
             })
             .render(paypal.current);

@@ -25,9 +25,6 @@ if(!cart){
   }
 }
 const getProductsById = (products, id) => {
-  if (products.find((p) => p._id === id)) {
-    console.log("produit trouvée");
-  }
   return products.find((p) => p._id === id);
 };
 
@@ -67,8 +64,6 @@ export const cartSlice = createSlice({
         quantity: state.quantity,
         total: state.total,
       }));
-      // console.log(state.cart, state.quantity);
-      // console.log(product);
     },
     removeProductFromCart: (state, action) => {
       // declare variables
@@ -104,7 +99,6 @@ export const cartSlice = createSlice({
       //
       const existingProduct = getProductsById(state.cart, product._id);
       let newState = [];
-      console.log(products, product);
       if (existingProduct) {
         newState = products.map((p) => {
           if (p._id === existingProduct._id) {
@@ -170,7 +164,6 @@ export const cartSlice = createSlice({
       });
 
       state.total = total;
-      console.log(state.total)
 
       localStorage.setItem('cart', JSON.stringify({
         cart: state.cart,
@@ -180,15 +173,12 @@ export const cartSlice = createSlice({
       
     },
     setDeliveryMode: (state, action) =>{
-      console.log('deliveryMode', action)
       state.deliveryMode = action.payload
     },
     setPayementMode: (state, action) =>{
-      console.log('payementMode', action)
       state.payementMode = action.payload
     },
     setDeliveryPrice: (state, action) =>{
-      console.log('deliveryPrice', action)
       state.deliveryPrice = action.payload
     },
   },

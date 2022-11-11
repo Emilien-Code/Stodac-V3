@@ -5,7 +5,6 @@ const Accordeon = ({type, title, content})=>{
     const [isOpen, setIsOpen] = React.useState(false)
     const toogleOpen = ()=>{
         setIsOpen(!isOpen);
-        console.log(isOpen)
     }
     let count = 0
 

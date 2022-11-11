@@ -9,14 +9,6 @@ const ArticlePage = () => {
     const articleID = useParams()._id;
     const [article, setArticle] = React.useState({});
 
-
-    // console.log(articles)
-    // articles.forEach(element => {
-    //     console.log(articles)
-    //     if(element._id===articleID){
-    //         setIsArticle(true);
-    //     }
-    // });
     React.useEffect(()=>{
 
         fetch(`https://stodac.fr/api/stuff/product/${articleID}`)

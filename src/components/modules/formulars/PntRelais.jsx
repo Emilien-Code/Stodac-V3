@@ -9,9 +9,6 @@ const PntRelais = () => {
     }, [])
     
     const callColissimo = ()=>{
-
-        const s = document.getElementsByTagName("script")
-        console.log(s)
         fetch('https://stodac.fr/api-test/utils/token')
         .then((response) => response.json())
         .then((response) => {

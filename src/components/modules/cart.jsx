@@ -69,7 +69,6 @@ const Cart = ()=>{
             </aside>
     </div>
     }else{
-        console.log(cart.quantity)
         return <>{
                 cart.quantity ?
                 
