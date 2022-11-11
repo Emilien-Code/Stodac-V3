@@ -3,12 +3,24 @@ import '../../assets/styles/components/modules/footer.scss'
 
 const Footer = ()=>{
     return  <footer>
+        <div className="marquee">
+            
                 <section className="slider">
                     <span>Stodac</span>
                     <span>Stodac</span>
                     <span>Stodac</span>
                     <span>Stodac</span>
+                    <span>Stodac</span>
                 </section>
+                <section className="slider">
+                    <span>Stodac</span>
+                    <span>Stodac</span>
+                    <span>Stodac</span>
+                    <span>Stodac</span>
+                    <span>Stodac</span>
+                </section>
+
+        </div>
                 <section className="infos">
                     <article>
                         <h3>Paiement</h3>

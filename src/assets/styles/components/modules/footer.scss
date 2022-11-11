@@ -8,7 +8,7 @@ footer{
     overflow: hidden;
     color: map-get($brands-primary, "black" );
     @include mq("tablet-wide", max) {
-        padding: 120px 0 120px 24px;
+        padding: 60px 0 120px 24px;
     }
 
     h3{
@@ -40,14 +40,23 @@ footer{
             margin-top: 80px;
         }
     }
+    .marquee {
+        position: relative;
+        left: -160px;
+        display: flex;
+    }
 
     .slider{
+        animation: marquee 60s infinite linear  ;
         font-size: map-get($fonts-sizes-desktop , "h1");
         @include mq("tablet", max) {
             font-size: map-get($fonts-sizes-mobile , "h1");
         }
         span{
-            margin-left: 40px;
+            margin-left: 40px;  
+        @include mq("tablet", max) {
+            margin-left: 16px;
+        }
         }
     }
     .copy-rights{
@@ -59,4 +68,19 @@ footer{
             left: 24px;
         }
     }
+}
+
+
+
+@keyframes marquee {
+    0%{
+        transform: translateX(0);
+    }
+    99.99%{
+        transform: translate(-100%)
+    }
+    100%{
+        transform: translateX(0);
+    }
+
 }
