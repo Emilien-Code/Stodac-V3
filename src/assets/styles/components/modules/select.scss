@@ -4,6 +4,17 @@
 .select{
     position: relative;
 
+
+
+    .pnt-relais-container{
+        height: 550px;
+        @include mq("tablet", max){
+            height: 650px;
+        }
+
+    }
+
+
     .modifier{
         cursor: pointer;
         position: absolute;
@@ -39,13 +50,15 @@
         line-height: 24px;
     }
     @include mq("tablet", max){
-        width: calc(100% - 136px);
+        // width: calc(100% - 136px);
+        width: 100%;
         .text{
             margin-left: calc(100% - 202px);
         }
     }
     @include mq("tablet-small", max){
-        width: calc(100% - 40px);
+        // width: calc(100% - 40px);
+        width: 100%;
         .text{
             margin-left: calc(100% - 112px);
         }

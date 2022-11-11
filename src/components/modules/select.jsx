@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from 'react';
 import Paypal from "../atoms/paypal";
 import Button from "../atoms/Button";
+import PntRelais from "./formulars/PntRelais"
 import "../../assets/styles/components/modules/select.scss"
 const Payement = ({type}) => {
 
@@ -79,11 +80,15 @@ const Payement = ({type}) => {
             </div>
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>
                 <p>Point relais</p>
-                <p className="desc"></p>
+                <div className="pnt-relais-container">
+                    <PntRelais/>
+                </div>
+
             </div>
             <div className={nomdiv==="modeSurPlace" ? "visible" : "invisible"}>
                 <p>Sur place</p>
                 <p className="desc">Vous pouvez retirer votre commande dans nos locaux à Damelevières, 54360.</p>
+                <p className="desc">Un mail communiquant l'adresse vous sera envoyé.</p>
             </div>
         </div>
     )
