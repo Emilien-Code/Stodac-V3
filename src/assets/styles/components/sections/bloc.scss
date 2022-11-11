@@ -28,6 +28,10 @@
                 line-height: 24px;
             }
         }
+        #widget-container{
+            padding: 0!important;
+            width: 100%!important;
+        }
 
 
         @include mq("tablet-small", max){

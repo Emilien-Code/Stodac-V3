@@ -3,11 +3,14 @@ import {useState} from 'react';
 import Paypal from "../atoms/paypal";
 import Button from "../atoms/Button";
 import PntRelais from "./formulars/PntRelais"
+import { useSelector, useDispatch } from "react-redux";
+import { setDeliveryMode, setPayementMode } from "../../assets/scripts/store/redux-slices/cart.js"
+
 import "../../assets/styles/components/modules/select.scss"
 const Payement = ({type}) => {
-
+    const dispatch = useDispatch();
     const [nomdiv, setNomdiv] = useState("modePayement");
-
+    // Il faut storer le choix de l'utilisateur 
     const retourChoix = () => {
         setNomdiv("modePayement")
     }
@@ -15,21 +18,27 @@ const Payement = ({type}) => {
 
     const selectionnerP = () => {
         setNomdiv("modePaypal")
+        dispatch(setPayementMode("paypal"))
     }
     const selectionnerC = () => {
         setNomdiv("modeCheque")
+        dispatch(setPayementMode("cheque"))
     }
     const selectionnerV = () => {
         setNomdiv("modeVirement")
+        dispatch(setPayementMode("virement"))
     }
     const selectionnerDomicile = () => {
         setNomdiv("modeDimicile")
+        dispatch(setDeliveryMode("Domicile"))
     }
     const selectionnerPointRelais = () => {
         setNomdiv("modePointRelais")
+        dispatch(setDeliveryMode("Point Relais"))
     }
     const selectionnerSurPlace = () => {
         setNomdiv("modeSurPlace")
+        dispatch(setDeliveryMode("Sur Place"))
     }
 
     return (

@@ -4,6 +4,9 @@ let cart = localStorage.getItem("cart");
 if(!cart){
   cart={
     cart: [],
+    deliveryMode: null,
+    payementMode: null,
+    deliveryPrice: null,
     quantity: 0,
     total: null
   }
@@ -13,6 +16,9 @@ if(!cart){
   }catch{
     cart={
       cart: [],
+      deliveryMode: null,
+      payementMode: null,
+      deliveryPrice: null,
       quantity: 0,
       total: null
     }
@@ -29,6 +35,9 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cart: cart.cart,
+    deliveryMode: cart.deliveryMode,
+    payementMode: cart.payementMode,
+    deliveryPrice: cart.deliveryPrice,
     quantity: cart.quantity,
     total: cart.total
   },
@@ -170,6 +179,18 @@ export const cartSlice = createSlice({
       }));
       
     },
+    setDeliveryMode: (state, action) =>{
+      console.log('deliveryMode', action)
+      state.deliveryMode = action.payload
+    },
+    setPayementMode: (state, action) =>{
+      console.log('payementMode', action)
+      state.payementMode = action.payload
+    },
+    setDeliveryPrice: (state, action) =>{
+      console.log('deliveryPrice', action)
+      state.deliveryPrice = action.payload
+    },
   },
 });
 
@@ -182,7 +203,10 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   setQuantity,
-  setTotalPrice
+  setTotalPrice,
+  setDeliveryMode,
+  setPayementMode,
+  setDeliveryPrice
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

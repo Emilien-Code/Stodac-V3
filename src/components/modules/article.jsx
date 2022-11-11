@@ -1,10 +1,12 @@
 import React from "react";
 import Button from "../atoms/Button"
 import "../../assets/styles/components/modules/article.scss"
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addProductToCart, setTotalPrice } from "../../assets/scripts/store/redux-slices/cart";
 import { removeProductFromCart, increaseQuantity, decreaseQuantity, checkQuantity } from "../../assets/scripts/store/redux-slices/cart";
 import { Link } from "react-router-dom";
+import formatNumber from "../../assets/scripts/utils/priceNormalisation"
+
 
 import Accordeon from "../atoms/accordeon"
 //import Bubble from "../atoms/Bubbles"
@@ -67,7 +69,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
-                                <span>{data.price ? `${data.price}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
+                                <span>{data.price ? `${formatNumber(data.price)}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
                             </div>
@@ -85,7 +87,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <div className="top">
                                 <p>{data.name ? data.name : "chargement..."}</p>
-                                <span>{data.price}€</span>
+                                <span>{formatNumber(data.price)}€</span>
                             </div>
                             <div className="bottom">
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
@@ -116,7 +118,7 @@ const Article = ({data, display})=>{
                             </article>
                             <article>
                                 <p>Prix</p>
-                                <p>{data.price}€</p>
+                                <p>{formatNumber(data.price)}€</p>
                             </article>
                         </section>
                         <section>
@@ -141,13 +143,15 @@ const Article = ({data, display})=>{
                             </picture>
                             <figcaption>
                                 <p>{data.name ? data.name : "chargement..."}</p>
-                                <span>{data.price}€</span>
+                                <span>{formatNumber(data.price)}€</span>
                             </figcaption>
                         </figure>
                         {/* <hr /> */}
                     </Link>
                 )
-    }
+            default:
+                return ""
+            }
 
 }
 

@@ -6,13 +6,43 @@ import { useSelector, useDispatch } from "react-redux";
 import Information from "../modules/information";
 import Article from "../modules/article";
 import Select from "../modules/select";
+import formatNumber from "../../assets/scripts/utils/priceNormalisation"
+import { setDeliveryPrice } from "../../assets/scripts/store/redux-slices/cart.js"
+
 const Bloc = ({type})=>{
-    const cart = useSelector((state) => state.cart)
+    let cart = useSelector((state) => state.cart)
+    const dispatch = useDispatch()
 
 
-    // React.useEffect(({})=>{
 
-    // },[])
+    React.useEffect(()=>{
+        console.log('cart', cart.cart)
+        let totalWeight = 0;
+        let deliveryPrices = 0;
+        if(cart.deliveryMode != "Sur Place"){
+            console.log("DLMODE", cart)
+            cart.cart.forEach(product=>{
+                totalWeight += product.poids * product.quantity
+            })
+
+            if (totalWeight < 100 ) deliveryPrices = 8
+            if (totalWeight >= 100 && totalWeight < 500) deliveryPrices = 10
+            if (totalWeight >= 500 && totalWeight < 1000) deliveryPrices = 12
+            if (totalWeight >= 1000 && totalWeight < 1500) deliveryPrices = 14
+            if (totalWeight >= 1500 && totalWeight < 2000) deliveryPrices = 16
+            if (totalWeight >= 2000 && totalWeight < 2500 ) deliveryPrices = 18
+            if (totalWeight >= 2500 && totalWeight < 3000) deliveryPrices = 20
+            if (totalWeight >= 3000 && totalWeight < 3500) deliveryPrices = 22
+            if (totalWeight >= 3500 ) deliveryPrices = 24
+
+            dispatch(setDeliveryPrice(formatNumber(deliveryPrices * 1.2 * 100)/100))
+          }else{
+            dispatch(setDeliveryPrice(0))
+          }
+
+
+        console.log("ttlW", totalWeight)
+    },[cart.deliveryMode, cart.deliveryPrice, cart.payementMode])
 
     return (   
         <section className="Bloc">
@@ -34,7 +64,7 @@ const Bloc = ({type})=>{
                             })
                         }
                         <div className="bottom">
-                            <p>Total</p><p>{cart.total}€</p>
+                            <p>Total</p><p>{formatNumber(cart.total)}€</p>
                         </div>
                         </>
                     )
@@ -47,7 +77,7 @@ const Bloc = ({type})=>{
                         }
                         <hr />
                         <div className="bottom">
-                            <p>Frais de ports</p><p>{cart.total}€</p>
+                            <p>Frais de ports</p><p>{cart.deliveryMode ? cart.deliveryPrice + "€" : ""}</p>
                         </div>
                         </>
                     )
