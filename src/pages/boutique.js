@@ -43,7 +43,7 @@ const Boutique = ()=>{
 
     
     React.useEffect(()=>{
-        load(currentPage ? (currentPage-1) * 20 : 0);
+        load((currentPage-1) * 20);
 
         fetch('https://stodac.fr/api/stuff/count/')
         .then(response => response.json())
