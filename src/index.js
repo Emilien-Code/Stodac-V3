@@ -25,12 +25,7 @@ import ArticlePage from './pages/article';
 import NotFound from './pages/404';
 import Payement from "./pages/paiement-commande";
 import Recap from "./pages/recap-commande";
-//LazyLoaded components 
-// const LazyBoutique = React.lazy(() => import('./pages/boutique'));
-// const LazyAssistance = React.lazy(() => import('./pages/assistance'));
-// const LazyConditionsGeneralesVente = React.lazy(() => import('./pages/conditions-generales-vente'));
-// const LazyMentionsLegales = React.lazy(() => import('./pages/mentions-legales'));
-
+import ConfirmationCommande from './pages/confirmation-commande';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -74,6 +69,9 @@ const router = createBrowserRouter([
   },{
     path:"/recapitulatif-commande",
     element: <Recap/>
+  },{
+    path:"/confirmatopn-commande/:isSucces",
+    element: <ConfirmationCommande/>
   }
 
 ]);

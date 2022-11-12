@@ -1,7 +1,13 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
 .not-found{
     text-align: center;
     margin: 180px 0;
     h1{
+        &.small{
+            font-size:96px
+//40 pour les petits
+        }
         font-size: 256px;
         line-height: 256px;
     }
@@ -37,5 +43,32 @@
             left: calc(1221px * 100% / 1512px);
         }
     }
+    .recap-commande{
+        text-align: left;
+        padding: 100px 120px;
+        margin-top: 180px;
+        margin-bottom: -180px;
 
+        background-color: map-get($brands-primary , "secondary-white");
+        h2{
+            margin-bottom: 24px;
+            font-size:40px
+        }
+
+        .line  {
+            &:first-of-type, &.fdp{
+                margin-top: 32px;
+            }
+            margin: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            p:first-child{
+                font-family: "Roboto bold";
+            }
+            p{
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+    }
 }

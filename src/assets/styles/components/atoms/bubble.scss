@@ -14,4 +14,7 @@
     &.green{
         background-color: map-get($brands-primary, "green");
     }
+    &.red{
+        background-color: map-get($brands-primary, "red");
+    }
 }

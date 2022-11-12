@@ -134,12 +134,13 @@ const Payement = ({type, saveFacture}) => {
             {/* LIVRAISON */}
             <div className={nomdiv==="modeDimicile"? "visible" : "invisible"}>
                 <p>Livraison à domicile</p>
-                <Input placeHolder="Numéro" type="text" callBack={getNumber} className="num"/>
-                <Input placeHolder="Rue" type="text" callBack={getStreet} className="rue"/>
-                <Input placeHolder="Ville" type="text" callBack={getCity} className="ville"/>
-                <Input placeHolder="Code Postal" type="text" callBack={getCP} className="cp"/>
-                <Input placeHolder="Complément" type="text" callBack={getComplement} className="complement"/>
-
+                <div className="delivery-adress">
+                    <Input placeHolder="Numéro" type="text" callBack={getNumber} className="num"/>
+                    <Input placeHolder="Rue" type="text" callBack={getStreet} className="rue"/>
+                    <Input placeHolder="Ville" type="text" callBack={getCity} className="ville"/>
+                    <Input placeHolder="Code Postal" type="text" callBack={getCP} className="cp"/>
+                    <Input placeHolder="Complément" type="text" callBack={getComplement} className="complement"/>
+                </div>
             </div>
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>
                 <p>Point relais</p>
