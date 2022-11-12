@@ -1,30 +1,43 @@
 import React from "react";
 import "../assets/styles/components/pages/payement-commande.scss"
 import Bloc from "../components/sections/bloc"
+import { useSelector, useDispatch } from "react-redux";
+
 const Payement = ()=>{
 
-
+  const cart = useSelector((state) => state.cart)
+  const auth = useSelector((state) => state.authentication)
 
 
 
     const saveFacture = (Factureid) => {
         let option = {
-          lastname:this.userInfos.lastName,                             // USER INFOS
-          firstname:this.userInfos.firstName,                           // USER INFOS
-          mobile:this.userInfos.mobile,                                 // USER INFOS
-          email:this.userInfos.email,                                   // USER INFOS
-          mdp: this.MDP,                                                // Mode de paiement
-          street:document.getElementById("rue").value,                  // Facturation
-          city:document.getElementById("ville").value,                  // Facturation
-          streetNumber:document.getElementById("num").value,            // Facturation
-          postCode:document.getElementById("cp").value,                 // Facturation
-          nom:document.getElementById("nom").value,                     // Facturation
-          prenom:document.getElementById("prenom").value,               // Facturation
-          entreprise: document.getElementById("entreprise").value,      // Facturation
+          lastname: auth.data.lastName,                             // USER INFOS
+          firstname: auth.data.firstName,                           // USER INFOS
+          mobile:auth.data.mobile,                                 // USER INFOS
+          email:auth.data.email,                                   // USER INFOS
+
+          mdp: cart.payementMode,                                                // Mode de paiement
+
+          street: cart.commandInfo.facturation.street,                  // Facturation
+          city: cart.commandInfo.facturation.city,                  // Facturation
+          streetNumber: cart.commandInfo.facturation.streetNumber,            // Facturation
+          postCode: cart.commandInfo.facturation.postCode,                 // Facturation
+          nom: cart.commandInfo.facturation.lastName,                     // Facturation
+          prenom: cart.commandInfo.facturation.firstName,               // Facturation
+          entreprise:  cart.commandInfo.facturation.corporation,      // Facturation
           idp:Factureid
         }
 
-        // this.$store.dispatch('saveFacture', option)
+        fetch(`https://stodac.fr/api/user/addCommande/${auth.id}`, {
+          method: 'POST', 
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + auth.token, 
+          }, 
+          body: JSON.stringify(option)
+      })
         .then(()=>{
             // this.$router.push('/finiCommande/');
         }).catch(err=>{

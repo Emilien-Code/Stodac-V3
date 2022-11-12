@@ -11,6 +11,7 @@ import Input from "../components/atoms/input";
 //Store
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "../assets/scripts/store/redux-slices/authentication";
+import { json } from "react-router-dom";
 
 
 const Recap = ()=>{
@@ -24,7 +25,7 @@ const Recap = ()=>{
     const [isPushed, setIsPushed] = React.useState(false)
 
     React.useEffect(()=>{
-        fetch(`https://stodac.fr/api-test/user/getinfos/${authentication.id}`,{
+        fetch(`https://stodac.fr/api/user/getinfos/${authentication.id}`,{
             method: 'get', 
             headers: new Headers({
                 'Authorization': 'Bearer ' + authentication.token, 
@@ -33,7 +34,7 @@ const Recap = ()=>{
         .then(response => response.json())
         .then(json => dispatch(setData(json[0])))
         .catch(err => console.log(err))
-    })
+    }, [])
 
     const push = ()=>{
         setIsPushed(true)
@@ -59,7 +60,8 @@ const Recap = ()=>{
                 return {
                     adresse: "11 Bis Rue de Lorraine",
                     city: "Damelevières",
-                    postCode: "54360"
+                    postCode: "54360",
+                    complement: ""
                 }
             }
 
@@ -98,21 +100,18 @@ const Recap = ()=>{
                 })
             });
 
-
-            const infosToSend = {
-                panier: formatedCart,
-                adresseLivraison: adress,
-                modeDeLivraison: cart.deliveryMode
-            }
-
-
-            // console.log(infosToSend)
-
-            fetch(`www.stodac.fr/api-test/user/addpanier/${authentication.id}`, {
-                method: 'post', 
-                headers: new Headers({
+            fetch(`https://stodac.fr/api/user/addpanier/${authentication.id}`, {
+                method: 'POST', 
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + authentication.token, 
-                }), 
+                }, 
+                body: JSON.stringify({
+                    panier: formatedCart,
+                    adresseLivraison: adress,
+                    modeDeLivraison: cart.deliveryMode
+                })
             })
             .then(() => window.location.href = `/paiement-commande`)
             .catch(err => console.log(err))

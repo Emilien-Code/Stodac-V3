@@ -28,7 +28,7 @@ const Conexion = () => {
     }
 
     const login = ()=>{
-        fetch('https://stodac.fr/api-test/user/login/mail', {
+        fetch('https://stodac.fr/api/user/login/mail', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -50,7 +50,7 @@ const Conexion = () => {
 
     const createAccount = ()=>{   
         if(validatedFields()) {
-            fetch('https://stodac.fr/api-test/user/signup', {
+            fetch('https://stodac.fr/api/user/signup', {
                 method: 'POST',
                 headers: {
                   'Accept': 'application/json',

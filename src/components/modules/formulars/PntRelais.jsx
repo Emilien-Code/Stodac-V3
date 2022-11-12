@@ -9,7 +9,7 @@ const PntRelais = () => {
     }, [])
     
     const callColissimo = ()=>{
-        fetch('https://stodac.fr/api-test/utils/token')
+        fetch('https://stodac.fr/api/utils/token')
         .then((response) => response.json())
         .then((response) => {
             window.$('#widget-container').frameColissimoOpen({
