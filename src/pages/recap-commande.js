@@ -68,7 +68,55 @@ const Recap = ()=>{
 
     React.useEffect(()=>{
 
-        if(isPushed) window.location.href = `/paiement-commande`;
+
+        if(isPushed){
+            // Save infos to the back.
+
+
+            const formatedCart = [];
+
+
+            cart.cart.forEach(article => {
+                formatedCart.push({
+                    article: {
+                        category: article.category,
+                        commentaires: article.commentaires,
+                        compatibility: article.compatibility,
+                        description: article.description,
+                        img: article.img,
+                        manufacturer: article.manufacturer,
+                        name: article.name,
+                        poids: article.poids,
+                        price: article.price,
+                        qty: article.qty,
+                        reference: article.reference,
+                        state: article.state,
+                        __v: article.__v,
+                        _id: article._id,
+                    },
+                    qty: article.quantity
+                })
+            });
+
+
+            const infosToSend = {
+                panier: formatedCart,
+                adresseLivraison: adress,
+                modeDeLivraison: cart.deliveryMode
+            }
+
+
+            // console.log(infosToSend)
+
+            fetch(`www.stodac.fr/api-test/user/addpanier/${authentication.id}`, {
+                method: 'post', 
+                headers: new Headers({
+                    'Authorization': 'Bearer ' + authentication.token, 
+                }), 
+            })
+            .then(() => window.location.href = `/paiement-commande`)
+            .catch(err => console.log(err))
+        } 
 
     }, [adress])
 

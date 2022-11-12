@@ -21,11 +21,12 @@ const Payement = ({type, saveFacture}) => {
     const dispatch = useDispatch();
     const [nomdiv, setNomdiv] = useState("modePayement");
 
+    const payeWithoutPaypal = () => {
+        saveFacture(-1)
+    }
     const retourChoix = () => {
         setNomdiv("modePayement")
     }
-
-
     const selectionnerP = () => {
         setNomdiv("modePaypal")
         dispatch(setPayementMode("paypal"))
@@ -113,7 +114,7 @@ const Payement = ({type, saveFacture}) => {
                 <p className="desc">La commande vous sera envoyée aussi tôt le chèque reçu. Ce dernier sera envoyé au 11 Bis Rue de Lorraine, 54360 Damelevières et sera à l'ordre d'AMC EST.</p>
                 
 
-                <Button content="Passer la commande" type="text" color="green" callBack={selectionnerSurPlace}/>
+                <Button content="Passer la commande" type="text" color="green" callBack={payeWithoutPaypal}/>
             </div>
 
 
@@ -123,7 +124,7 @@ const Payement = ({type, saveFacture}) => {
                 <p className="desc">La commande vous sera envoyée aussitôt le virement effectué.<br/>IBAN : FR7614707090263112192565018 <br/>BIC : CCBPFRPPMTZ</p>
                 
 
-                <Button content="Passer la commande" type="text" color="green" callBack={selectionnerSurPlace}/>
+                <Button content="Passer la commande" type="text" color="green" callBack={payeWithoutPaypal}/>
             </div>
 
 
