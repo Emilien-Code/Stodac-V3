@@ -1,16 +1,25 @@
 import React from "react";
+
+// SCSS
 import "../../assets/styles/components/sections/bloc.scss"
-// import Icon from "../atoms/Icon";
-import Facturation from "../modules/facturation";
+
+// Store
 import { useSelector, useDispatch } from "react-redux";
+import { setDeliveryPrice } from "../../assets/scripts/store/redux-slices/cart.js"
+
+// Modules 
+import Facturation from "../modules/facturation";
 import Information from "../modules/information";
 import Article from "../modules/article";
 import Select from "../modules/select";
-import formatNumber from "../../assets/scripts/utils/priceNormalisation"
-import { setDeliveryPrice } from "../../assets/scripts/store/redux-slices/cart.js"
 
-const Bloc = ({type})=>{
-    let cart = useSelector((state) => state.cart)
+// Scripts
+import formatNumber from "../../assets/scripts/utils/priceNormalisation"
+
+
+
+const Bloc = ({type, saveFacture,})=>{
+    const cart = useSelector((state) => state.cart)
     const dispatch = useDispatch()
 
 
@@ -49,7 +58,7 @@ const Bloc = ({type})=>{
                     type==="Facturation" && (<Facturation/>)
                 }
                 {
-                    type==="Mode de payement" && (<Select type="payement"/>)
+                    type==="Mode de payement" && (<Select type="payement" saveFacture={saveFacture}/>)
                 }
                 {
                     type === "Panier" && (
@@ -79,20 +88,9 @@ const Bloc = ({type})=>{
                     )
                 }
 
-
-
-
-
-
-
-
-
                 {
                     (type==="Facturation" || type==="Mode de payement") && ( <hr/> )
                 }
-
-
-
                 
             </div>
             {

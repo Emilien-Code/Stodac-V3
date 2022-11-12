@@ -1,17 +1,20 @@
 import React from "react";
 import "../../assets/styles/components/atoms/paypal.scss";
 
-const Paypal = ({commandeInfo}) => {
+import { useSelector, useDispatch } from "react-redux";
+import formatNumber from "../../assets/scripts/utils/priceNormalisation";
 
-        const paypal = React.useRef(null)
+const Paypal = ({commandeInfo, saveFacture}) => {
+  const cart = useSelector(state => state.cart )
+  const paypal = React.useRef(null)
 
-    React.useEffect(() => {
-        const script = document.createElement("script");
-        // script.src = "https://www.paypal.com/sdk/js?client-id=ASOWp-_1zxWf4EXEzuc47swzhquPSB2XchEHOTMB8Ymv_KwnbQvBXRK9M6BFKqhSMTl90dMSp_qxVQxJ&currency=EUR";
-        script.src = "https://www.paypal.com/sdk/js?client-id=ARd5W6m_IfEwriqF5ctXip2H-roEqrJj-VXiTonPVtZQQMQi8H8Lwwp4HeOOMXArfP5C5gh70u1j2ckW&currency=EUR";
-        script.addEventListener("load", setLoaded);
-        document.body.appendChild(script)
-    }, [])
+  React.useEffect(() => {
+      const script = document.createElement("script");
+      //script.src = "https://www.paypal.com/sdk/js?client-id=ASOWp-_1zxWf4EXEzuc47swzhquPSB2XchEHOTMB8Ymv_KwnbQvBXRK9M6BFKqhSMTl90dMSp_qxVQxJ&currency=EUR";
+      script.src = "https://www.paypal.com/sdk/js?client-id=ARd5W6m_IfEwriqF5ctXip2H-roEqrJj-VXiTonPVtZQQMQi8H8Lwwp4HeOOMXArfP5C5gh70u1j2ckW&currency=EUR";
+      script.addEventListener("load", setLoaded);
+      document.body.appendChild(script)
+  }, [])
 
     const setLoaded = ()=> {
         window.paypal
@@ -22,7 +25,7 @@ const Paypal = ({commandeInfo}) => {
                     {
                       description: "this.description",
                       amount: {
-                        value: 12.56
+                        value: formatNumber(cart.total + cart.deliveryPrice)
                       }
                     }
                   ]
@@ -34,7 +37,7 @@ const Paypal = ({commandeInfo}) => {
                 // this.data;
                 // this.paidFor = true;
                 // this.sc()
-                // this.saveFacture(order.id)
+                saveFacture(order.id)
               },
               onError: err => {
                 console.log(err);

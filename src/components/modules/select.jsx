@@ -1,16 +1,26 @@
 import React from "react";
 import {useState} from 'react';
+import { setCommandeInfo } from "../../assets/scripts/store/redux-slices/cart.js";
+// Store
+import { useSelector, useDispatch } from "react-redux";
+import cart, { setDeliveryMode, setPayementMode } from "../../assets/scripts/store/redux-slices/cart.js"
+
+// Module
 import Paypal from "../atoms/paypal";
 import Button from "../atoms/Button";
 import PntRelais from "./formulars/PntRelais"
-import { useSelector, useDispatch } from "react-redux";
-import { setDeliveryMode, setPayementMode } from "../../assets/scripts/store/redux-slices/cart.js"
+import Input from "../atoms/input";
 
+// SCSS
 import "../../assets/styles/components/modules/select.scss"
-const Payement = ({type}) => {
+
+
+const Payement = ({type, saveFacture}) => {
+    const cart = useSelector((state) => state.cart)
+
     const dispatch = useDispatch();
     const [nomdiv, setNomdiv] = useState("modePayement");
-    // Il faut storer le choix de l'utilisateur 
+
     const retourChoix = () => {
         setNomdiv("modePayement")
     }
@@ -40,6 +50,32 @@ const Payement = ({type}) => {
         setNomdiv("modeSurPlace")
         dispatch(setDeliveryMode("Sur Place"))
     }
+    const getNumber = (number)=>{
+        const infoCommande = JSON.parse(JSON.stringify(cart.commandInfo));
+        infoCommande.deliveryInfo.streetNumber = number
+        dispatch(setCommandeInfo(infoCommande))
+    }
+    const getStreet = (street)=>{
+        const infoCommande = JSON.parse(JSON.stringify(cart.commandInfo));
+        infoCommande.deliveryInfo.street = street
+        dispatch(setCommandeInfo(infoCommande))
+    }
+    const getCity = (city)=>{
+        const infoCommande = JSON.parse(JSON.stringify(cart.commandInfo));
+        infoCommande.deliveryInfo.city = city
+        dispatch(setCommandeInfo(infoCommande))
+    }
+    const getCP = (postCode)=>{
+        const infoCommande = JSON.parse(JSON.stringify(cart.commandInfo));
+        infoCommande.deliveryInfo.postCode = postCode
+        dispatch(setCommandeInfo(infoCommande))
+    }
+    const getComplement = (complement)=>{
+        const infoCommande = JSON.parse(JSON.stringify(cart.commandInfo));
+        infoCommande.deliveryInfo.complement = complement
+        dispatch(setCommandeInfo(infoCommande))
+    }
+
 
     return (
         <div className="select">  
@@ -67,15 +103,27 @@ const Payement = ({type}) => {
             }
             <div className={nomdiv==="modePaypal"? "visible" : "invisible"}>
                 <p>Paypal ou carte bleue</p>
-                <Paypal commandeInfo=""/>
+                <Paypal saveFacture={saveFacture} commandeInfo=""/>
             </div>
+
+
             <div className={nomdiv==="modeCheque" ? "visible" : "invisible"}>
                 <p>Cheque</p>
+
                 <p className="desc">La commande vous sera envoyée aussi tôt le chèque reçu. Ce dernier sera envoyé au 11 Bis Rue de Lorraine, 54360 Damelevières et sera à l'ordre d'AMC EST.</p>
+                
+
+                <Button content="Passer la commande" type="text" color="green" callBack={selectionnerSurPlace}/>
             </div>
+
+
             <div className={nomdiv==="modeVirement" ? "visible" : "invisible"}>
                 <p>Virement</p>
+
                 <p className="desc">La commande vous sera envoyée aussitôt le virement effectué.<br/>IBAN : FR7614707090263112192565018 <br/>BIC : CCBPFRPPMTZ</p>
+                
+
+                <Button content="Passer la commande" type="text" color="green" callBack={selectionnerSurPlace}/>
             </div>
 
 
@@ -85,6 +133,11 @@ const Payement = ({type}) => {
             {/* LIVRAISON */}
             <div className={nomdiv==="modeDimicile"? "visible" : "invisible"}>
                 <p>Livraison à domicile</p>
+                <Input placeHolder="Numéro" type="text" callBack={getNumber} className="num"/>
+                <Input placeHolder="Rue" type="text" callBack={getStreet} className="rue"/>
+                <Input placeHolder="Ville" type="text" callBack={getCity} className="ville"/>
+                <Input placeHolder="Code Postal" type="text" callBack={getCP} className="cp"/>
+                <Input placeHolder="Complément" type="text" callBack={getComplement} className="complement"/>
 
             </div>
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>

@@ -8,7 +8,27 @@ if(!cart){
     payementMode: null,
     deliveryPrice: null,
     quantity: 0,
-    total: null
+    total: null,
+    commandInfo: {
+      facturation: {
+        lastName: "",
+        firstName: "",
+        corporation:'',
+        streetNumber:"",
+        street:"",
+        city: "",
+        postCode: "",
+        complement: ""
+      },
+
+      deliveryInfo: {
+        streetNumber:"",
+        street:"",
+        city: "",
+        postCode: "",
+        complement: ""
+      }
+    }
   }
 }else{
   try{
@@ -20,7 +40,27 @@ if(!cart){
       payementMode: null,
       deliveryPrice: null,
       quantity: 0,
-      total: null
+      total: null,
+      commandInfo: {
+        facturation: {
+          lastName: "",
+          firstName: "",
+          corporation:'',
+          streetNumber:"",
+          street:"",
+          city: "",
+          postCode: "",
+          complement: ""
+        },
+  
+        deliveryInfo: {
+          streetNumber:"",
+          street:"",
+          city: "",
+          postCode: "",
+          complement: ""
+        }
+      }
     }
   }
 }
@@ -36,7 +76,8 @@ export const cartSlice = createSlice({
     payementMode: cart.payementMode,
     deliveryPrice: cart.deliveryPrice,
     quantity: cart.quantity,
-    total: cart.total
+    total: cart.total,
+    commandInfo: cart.commandInfo
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -63,6 +104,11 @@ export const cartSlice = createSlice({
         cart: state.cart,
         quantity: state.quantity,
         total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
       }));
     },
     removeProductFromCart: (state, action) => {
@@ -73,9 +119,30 @@ export const cartSlice = createSlice({
       const newProducts = products.filter((p) => p._id !== product._id);
 
       state.cart = newProducts;
+
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
+      }));
     },
     removeAllProductsFromCart: (state) => {
       state.cart = [];
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
+      }));
     },
     checkQuantity: (state, action) => {
       // declare variables
@@ -91,6 +158,16 @@ export const cartSlice = createSlice({
       } else {
         state.quantity = 0;
       }
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
+      }));
     },
     increaseQuantity: (state, action) => {
       // declare variables
@@ -111,6 +188,11 @@ export const cartSlice = createSlice({
           cart: state.cart,
           quantity: state.quantity,
           total: state.total,
+          deliveryPrice: state.deliveryPrice,
+          payementMode: state.payementMode,
+          deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
         }));
       }
     },
@@ -133,6 +215,11 @@ export const cartSlice = createSlice({
           cart: state.cart,
           quantity: state.quantity,
           total: state.total,
+          deliveryPrice: state.deliveryPrice,
+          payementMode: state.payementMode,
+          deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
         }));
       }
     },
@@ -169,18 +256,64 @@ export const cartSlice = createSlice({
         cart: state.cart,
         quantity: state.quantity,
         total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
       }));
       
     },
     setDeliveryMode: (state, action) =>{
       state.deliveryMode = action.payload
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
+      }));
     },
     setPayementMode: (state, action) =>{
       state.payementMode = action.payload
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+
+      }));
     },
     setDeliveryPrice: (state, action) =>{
       state.deliveryPrice = action.payload
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+      }));
     },
+    setCommandeInfo: (state, action) => {
+      state.commandInfo = action.payload
+      localStorage.setItem('cart', JSON.stringify({
+        cart: state.cart,
+        quantity: state.quantity,
+        total: state.total,
+        deliveryPrice: state.deliveryPrice,
+        payementMode: state.payementMode,
+        deliveryMode: state.deliveryMode,
+        commandInfo: state.commandInfo
+      }));
+    }
   },
 });
 
@@ -196,7 +329,8 @@ export const {
   setTotalPrice,
   setDeliveryMode,
   setPayementMode,
-  setDeliveryPrice
+  setDeliveryPrice,
+  setCommandeInfo
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
