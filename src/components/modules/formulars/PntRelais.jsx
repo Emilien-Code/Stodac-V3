@@ -1,13 +1,12 @@
 import React from "react";
 const PntRelais = () => {
-    const widgetContainer = React.useRef(null)
 
     React.useEffect(()=>{
 
         callColissimo()
 
     }, [])
-    
+
     const callColissimo = ()=>{
         fetch('https://stodac.fr/api/utils/token')
         .then((response) => response.json())
@@ -29,11 +28,11 @@ const PntRelais = () => {
 
     return (
         <div id="ptnrelais">
-            <div id="widget-container" ref={widgetContainer}></div>
-            <input type="hidden" id="pudoWidgetErrorCode"/>
-            <input type="hidden" id="pudoWidgetAddress1"/>
-            <input type="hidden" id="pudoWidgetTown"/>
-            <input type="hidden" id="pudoWidgetZipCode"/>
+            <div id="widget-container"></div>
+                <input type="hidden" id="pudoWidgetErrorCode"/>
+                <input type="hidden" id="pudoWidgetAddress1"/>
+                <input type="hidden" id="pudoWidgetTown"/>
+                <input type="hidden" id="pudoWidgetZipCode"/>
         </div>
     )
 }
