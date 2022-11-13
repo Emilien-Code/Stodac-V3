@@ -41,7 +41,7 @@ header{
             height: 10px;
             z-index: 0;
             background-color: map-get($brands-primary , "green");
-            bottom: -5px;  
+            bottom: -10px;  
             transition: clip-path .3s cubic-bezier(0.77, 0, 0.175, 1);
             clip-path: inset(0% 100% 0% 0%);
           }
