@@ -36,7 +36,15 @@ const Recap = ()=>{
     }, [])
 
     const push = ()=>{
-        setIsPushed(true)
+        let arePointRelaisDatas =   document.getElementById("pudoWidgetAddress1").value !== "" && document.getElementById("pudoWidgetTown").value !== "" && document.getElementById("pudoWidgetZipCode").value !== ""
+        let areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== "" && document.querySelector(".complement").value !== ""
+        
+        
+        if(areCGVAccepted && (arePointRelaisDatas || areDomicileData || cart.deliveryMode === "Sur Place")){
+            setIsPushed(true)
+        }
+
+
         setAdress( ()=> {
 
             if (cart.deliveryMode==="Point Relais"){
@@ -65,6 +73,11 @@ const Recap = ()=>{
             }
 
         })
+    }
+
+    const [areCGVAccepted, setAreCGVAccepted] = React.useState(false)
+    const toggleCGV = ()=>{
+        setAreCGVAccepted(!areCGVAccepted)
     }
 
     React.useEffect(()=>{
@@ -127,7 +140,7 @@ const Recap = ()=>{
         </div>
         <div className="confirm">
             <div className="conditions-vente">
-                <Input type="checkbox"/> <a href="/conditions-generales-de-vente" target="_blank">J’accepte les conditions générales de vente</a>
+                <Input type="checkbox" callBack={toggleCGV}/> <a href="/conditions-generales-de-vente" target="_blank">J’accepte les conditions générales de vente</a>
             </div>
             <Button type="text" content="Commander" color="green" callBack={push}/>
         </div>
