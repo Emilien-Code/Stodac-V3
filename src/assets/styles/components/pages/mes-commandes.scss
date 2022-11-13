@@ -20,7 +20,10 @@
         }
     }
     article{
-        width: 100%;
+        width: calc(100% + 16px) ;
+        @include mq("tablet", max){
+            width: 100%;
+        }
         margin: 0;
         .title  {
 
