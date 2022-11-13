@@ -54,6 +54,7 @@
         input:last-child{
             margin-bottom: 32px;
         }
+
         @include mq("tablet", min){
             display: grid;
             grid-template-columns: 33% 33% 33%;
@@ -100,11 +101,17 @@
         .text{
             margin-left: calc(100% - 202px);
         }
+        button.button.green{
+            margin: 0;
+        }
     }
     @include mq("tablet-small", max){
         width: 100%;
         .text{
             margin-left: calc(100% - 112px);
+        }
+        button.button.green{
+            margin: 0;
         }
     }
 

@@ -39,9 +39,9 @@ const Payement = ()=>{
           body: JSON.stringify(option)
       })
         .then(()=>{
-          window.location.href = '/confirmatopn-commande/succes'
+          window.location.href = '/confirmation-commande/succes'
         }).catch(err=>{
-          window.location.href = '/confirmatopn-commande/erreur'
+          window.location.href = '/confirmation-commande/erreur'
           console.log(err)
         })
       }

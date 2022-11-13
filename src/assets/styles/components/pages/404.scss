@@ -3,17 +3,31 @@
 .not-found{
     text-align: center;
     margin: 180px 0;
+    @include mq("tablet", max){
+        margin: 64px 0;
+    }
+
     h1{
         &.small{
-            font-size:96px
-//40 pour les petits
+            font-size:96px;
+            @include mq("tablet", max){
+                font-size:40px;
+                line-height: 80px;
+            }
+        }
+        @include mq("tablet", max){
+            font-size: 132px;
         }
         font-size: 256px;
-        line-height: 256px;
+        line-height: 150px;
     }
     p{
         font-size: 32px;
         line-height: 32px;
+        margin-top: 64px;
+        @include mq("tablet", max){
+            font-size: 16px;
+        }
     }
 
     .bubble{
@@ -21,40 +35,74 @@
         &:nth-of-type(1){
             top: 236px; /* *100 / 1512px */ 
             left: calc(217px * 100% / 1512px);
+            @include mq("tablet", max){
+                top: 150px; /* *100 / 1512px */ 
+            }
         }
         &:nth-of-type(2){
             top:  516px;
             left: calc(346px * 100% / 1512px);
+            @include mq("tablet", max){
+                top: 360px; /* *100 / 1512px */ 
+            }
+            
         }
         &:nth-of-type(3){
             top: 350px;
             left: calc(563px * 100% / 1512px);
+            @include mq("tablet", max){
+                display: none;
+            }
         }
         &:nth-of-type(4){
             top: 476px;
             left: calc(837px * 100% / 1512px);
+            @include mq("tablet", max){
+                top: 350px; /* *100 / 1512px */ 
+            }
+
         }
         &:nth-of-type(5){
             top: 234px;
             left: calc(1087px * 100% / 1512px);
+            @include mq("tablet", max){
+                top: 160px; /* *100 / 1512px */ 
+                left: calc(900px * 100% / 1512px);
+            }
         }
         &:nth-of-type(6){
             top: 528px;
             left: calc(1221px * 100% / 1512px);
+            @include mq("tablet", max){
+                display: none;
+            }
         }
     }
     .recap-commande{
         text-align: left;
         padding: 100px 120px;
+        @include mq("tablet", max){
+            padding: 100px 5%;
+        }
+        width: 100%;
         margin-top: 180px;
         margin-bottom: -180px;
-
+        @include mq("tablet", max){
+            margin-top: 64px;
+        }
         background-color: map-get($brands-primary , "secondary-white");
         h2{
             margin-bottom: 24px;
-            font-size:40px
+            font-size:40px;
+            @include mq("tablet", max){
+                font-size:24px;
+            }
         }
-
+        p{
+            @include mq("tablet", max){
+                font-size:16px;
+            } 
+        }
         .line  {
             &:first-of-type, &.fdp{
                 margin-top: 32px;

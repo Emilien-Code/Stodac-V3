@@ -70,7 +70,7 @@ const router = createBrowserRouter([
     path:"/recapitulatif-commande",
     element: <Recap/>
   },{
-    path:"/confirmatopn-commande/:isSucces",
+    path:"/confirmation-commande/:isSucces",
     element: <ConfirmationCommande/>
   }
 

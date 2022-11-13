@@ -3,6 +3,7 @@ import Bubble from "../components/atoms/Bubbles"
 import "../assets/styles/components/pages/404.scss"
 import { useSelector, useDispatch } from "react-redux";
 import { removeAllProductsFromCart, checkQuantity } from "../assets/scripts/store/redux-slices/cart.js"
+import formatNumber from "../assets/scripts/utils/priceNormalisation";
 const ConfirmationCommande = ()=>{
     const cart = useSelector((state) => state.cart);
     const [isSucces, setIsSucces] = React.useState(true)
@@ -53,8 +54,8 @@ const ConfirmationCommande = ()=>{
                 </div>
 
                 <div className="line">
-                    <p>Total</p>
-                    <p>{total}€</p>
+                    <p>Total TTC</p>
+                    <p>{formatNumber(total)}€</p>
                 </div>
             </div>
         </div>
