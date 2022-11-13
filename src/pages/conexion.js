@@ -3,12 +3,13 @@ import "../assets/styles/components/pages/connexion.scss"
 import Button from "../components/atoms/Button"
 import Input from "../components/atoms/input";
 import { useSelector, useDispatch } from "react-redux";
-import { setConnected, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
+import { setConnected, setDisconnect, setData } from "../assets/scripts/store/redux-slices/authentication";
 import regex from "../assets/scripts/utils/regex";
 
 
 const Conexion = () => {
     const isLogedin = useSelector((state) => state.authentication.connected);
+    const authentication = useSelector((state) => state.authentication);
     const [isLogin, setIsLogin] = React.useState(true);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -44,7 +45,21 @@ const Conexion = () => {
                 return response.json();
             console.log("mot de passe ou email incorrecte")
         })
-        .then(data => dispatch(setConnected(data)))
+        .then(data => {
+            dispatch(setConnected(data))
+            return data
+        })
+        .then((data)=>{
+            fetch(`https://stodac.fr/api/user/getinfos/${data.userID}`,{
+                method: 'get', 
+                headers: new Headers({
+                'Authorization': 'Bearer ' + data.token, 
+                }), 
+            })
+            .then(response => response.json())
+            .then(json => dispatch(setData(json[0])))
+            .catch(err => console.log(err))
+        })
         .catch(err => console.log("error when loging in", err))
     }
 
