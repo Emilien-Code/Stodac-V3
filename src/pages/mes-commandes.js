@@ -7,9 +7,10 @@ const MesCommandes = ()=>{
 
     const dispatch = useDispatch()
     const authentication = useSelector((state) => state.authentication)
-
+    const [ordoredCommandes, setOrdoredCommandes] = React.useState([])
 
     React.useEffect(()=>{
+        console.log("test")
         fetch(`https://stodac.fr/api/user/getinfos/${authentication.id}`,{
             method: 'get', 
             headers: new Headers({
@@ -17,7 +18,16 @@ const MesCommandes = ()=>{
             }), 
         })
         .then(response => response.json())
-        .then(json => dispatch(setData(json[0])))
+        .then(json => {
+            dispatch(setData(json[0]))
+            let a = JSON.parse(JSON.stringify(json[0].comande))
+            a.sort((com, prev) =>{
+             console.log(parseInt(com.id.substring(25, 31)) < parseInt(prev.id.substring(25, 31)) ? prev : com)
+             return parseInt(com.id.substring(25, 31)) - parseInt(prev.id.substring(25, 31))
+            })
+
+            console.log(a)
+        })
         .catch(err => console.log(err))
     }, [])
 
@@ -72,4 +82,3 @@ const MesCommandes = ()=>{
     </div>
 }
 export default MesCommandes
-// 62d2d67d92c8a4782c3367d2000001

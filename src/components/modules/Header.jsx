@@ -1,5 +1,4 @@
 import React from "react";
-import Icon from "../atoms/Icon"
 import Button from "../atoms/Button"
 import "../../assets/styles/utils/variables.scss"
 import "../../assets/styles/components/modules/header.scss"

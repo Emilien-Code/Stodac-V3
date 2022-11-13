@@ -55,7 +55,7 @@ const Recap = ()=>{
                     complement: document.querySelector(".complement").value
                 }
             }
-            if(cart.deliveryMode=="Sur Place"){
+            if(cart.deliveryMode==="Sur Place"){
                 return {
                     adresse: "11 Bis Rue de Lorraine",
                     city: "Damelevières",

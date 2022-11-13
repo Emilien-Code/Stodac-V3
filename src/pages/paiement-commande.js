@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/components/pages/payement-commande.scss"
 import Bloc from "../components/sections/bloc"
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Payement = ()=>{
 

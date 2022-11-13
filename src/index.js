@@ -12,8 +12,6 @@ import Header from "./components/modules/Header"
 import Footer from "./components/modules/Footer"
 import MesCommandes from "./pages/mes-commandes"
 
-import Loader from './components/modules/loader';
-
 import reportWebVitals from './reportWebVitals';
 import Boutique from './pages/boutique';
 import Assistance from './pages/assistance';

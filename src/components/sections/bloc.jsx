@@ -27,7 +27,7 @@ const Bloc = ({type, saveFacture,})=>{
     React.useEffect(()=>{
         let totalWeight = 0;
         let deliveryPrices = 0;
-        if(cart.deliveryMode != "Sur Place"){
+        if(cart.deliveryMode !== "Sur Place"){
             cart.cart.forEach(product=>{
                 totalWeight += product.poids * product.quantity
             })

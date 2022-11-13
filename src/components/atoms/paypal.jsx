@@ -1,10 +1,10 @@
 import React from "react";
 import "../../assets/styles/components/atoms/paypal.scss";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import formatNumber from "../../assets/scripts/utils/priceNormalisation";
 
-const Paypal = ({commandeInfo, saveFacture}) => {
+const Paypal = ({saveFacture}) => {
   const cart = useSelector(state => state.cart )
   const paypal = React.useRef(null)
 
