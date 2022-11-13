@@ -1,0 +1,17 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.menu{
+    position: absolute;
+    background-color: map-get($brands-primary , "secondary-white");
+    z-index: 3;
+    width: 100vw;
+    height: calc(100vh - 125px);
+    padding: 32px;
+    .links{
+        font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        li{
+            margin-bottom: 40px
+        }
+    }
+}

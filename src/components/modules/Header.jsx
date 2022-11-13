@@ -7,6 +7,7 @@ import { setCart, setMenu } from "../../assets/scripts/store/redux-slices/modals
 import { useSelector, useDispatch } from "react-redux";
 
 const Header = ()=>{
+    const isMenuOpen = useSelector(state => state.modals.menu)
 
     const dispatch = useDispatch();
     
@@ -14,7 +15,7 @@ const Header = ()=>{
         dispatch(setCart(true))
     }
     const openMenue = ()=>{
-        dispatch(setMenu(true))
+        dispatch(setMenu(!isMenuOpen))
     }
     const pushToLogin = ()=>{
         window.location.href = `/se-connecter`;
@@ -46,7 +47,12 @@ const Header = ()=>{
 
                     </li>
                     <li>
-                        <Button type="svg" callBack={openMenue} content="menu"/>
+                        {
+                            !isMenuOpen ? 
+                            <Button type="svg" callBack={openMenue} content="menu"/>
+                            :
+                            <Button type="svg" callBack={openMenue} content="crossMenu"/>
+                        }
                     </li>
                 </ul>
             </nav>

@@ -26,6 +26,7 @@ import NotFound from './pages/404';
 import Payement from "./pages/paiement-commande";
 import Recap from "./pages/recap-commande";
 import ConfirmationCommande from './pages/confirmation-commande';
+import Menu from "./components/modules/Menu.jsx"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -81,6 +82,7 @@ root.render(
   <React.StrictMode>
     <Provider store={reduxStore}>
     <Header/>
+    <Menu/>
     <Cart/>
     <RouterProvider router={router} />
     <Footer/>
