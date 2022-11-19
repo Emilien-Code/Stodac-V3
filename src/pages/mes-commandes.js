@@ -10,7 +10,6 @@ const MesCommandes = ()=>{
     const [ordoredCommandes, setOrdoredCommandes] = React.useState([])
 
     React.useEffect(()=>{
-        console.log("test")
         fetch(`https://stodac.fr/api/user/getinfos/${authentication.id}`,{
             method: 'get', 
             headers: new Headers({
@@ -33,7 +32,12 @@ const MesCommandes = ()=>{
 
     return <div className="mes-commandes">
         <h1>Mes Commandes</h1>
+
         {
+        authentication.connected && <>
+        {
+            authentication.data.comande.length > 0 ?
+
             authentication.data.comande.map((commande)=>{
                 return <article>
                     <div className="title first">
@@ -78,6 +82,9 @@ const MesCommandes = ()=>{
                         <hr/>
                     </article>
             })
+            :
+            <h2>Vous n’avez passé aucune commande.</h2>
+        }</>
         }
     </div>
 }
