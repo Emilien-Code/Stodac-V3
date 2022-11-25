@@ -1,0 +1,160 @@
+@import "../../../utils/variables.scss";
+@import "../../../utils/mixins.scss";
+.commandes{
+    display: flex;
+    h1{
+        margin-bottom: 88px;
+    }
+    .commandes-container{
+        padding-top:165px;
+        padding-left:120px ;
+        padding-right: 120px;
+        width: 100%;
+    }
+        
+    .status-0{
+        background-color: yellow;
+    }
+    .status-1{
+        background-color: Aquamarine;
+    }
+    .status-2{
+        background-color: LightGreen;
+    }
+    .status-3{
+        background-color: lightCoral;
+    }
+    .status-4, .status-5{
+        background-color: red;
+    }
+
+    ul{
+        width: calc(100%) ;
+        @include mq("tablet", max){
+            width: 100%;
+        }
+        margin: 0;
+        .title  {
+
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &.first{
+                position: sticky;
+                background-color: map-get($brands-primary , "white" );
+                @include mq("tablet", max){
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+
+            h2{
+                font-size: map-get($fonts-sizes-desktop , "h2-conditions" );
+                @include mq("tablet", max){
+                    font-size: 16px;
+                }
+            }
+        }
+        ul{
+            width: 100%;
+            li{
+                width: 100%;
+                display: flex;
+                margin-top: 36px;
+                &:last-of-type{
+                    margin-bottom: 36px;
+                }
+                .infos{
+                    width: 100%;
+                    .title{
+                        margin-bottom: 45px;
+                        @include mq("tablet", max){
+                            margin-bottom: 8px;
+
+                        }
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+                h3{
+                    font-size: 24px;
+                    @include mq("tablet", max){
+                        font-size: 16px;
+                    }
+                }
+                picture{
+                    width: 200px;
+                    height: 200px;
+                    @include mq("tablet", max){
+                        width: 64px;
+                        height: 64px;
+                    }
+                    margin-right: 24px;
+                    @include mq("tablet", max){
+                        margin-right: 8px;
+                    }
+                    img{
+                        object-fit: cover;
+                        width: 200px;
+                        height: 200px;
+                        @include mq("tablet", max){
+                            width: 64px;
+                            height: 64px;
+                        }
+                    }
+                }
+            }
+        }
+        .line{
+            margin: 24px 0;
+        }
+        .line,
+        .frais_de_port,
+        .total_HT,
+        .total_TTC,
+        .etat{
+            display: flex;
+            justify-content: space-between;
+            @include mq("tablet", max){
+                &:last-of-type{
+                    flex-direction: column;
+                    p:first-of-type{
+                        margin-bottom: 8px;
+                    }
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .frais_de_port{
+            margin-bottom: 36px;
+            @include mq("tablet", max){
+                margin-bottom: 8px;
+            }
+
+        }
+        .total_HT{
+            margin-bottom: 16px;
+            @include mq("tablet", max){
+                margin-bottom: 8px;
+            }
+
+        }
+        .total_TTC{
+            margin-bottom: 36px;
+            @include mq("tablet", max){
+                margin-bottom: 8px;
+            }
+
+        }
+        hr{
+            width: 100%;
+            margin: 56px 0;
+            @include mq("tablet", max){
+                margin: 24px 0;
+            }
+
+        }
+    }
+
+}

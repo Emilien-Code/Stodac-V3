@@ -114,3 +114,18 @@
         transform: translateY(0px) rotate(0);
     }
 }
+
+.radio{
+    height: fit-content;
+    input{
+        display: none;
+    }
+    label  {
+        background-color: map-get($brands-primary , "grey" );
+        padding: 8px 12px;
+        border-radius: 19px;
+    }
+    input[type="radio"]:checked+label{ background-color: #d9D9D9; } 
+
+
+}

@@ -43,5 +43,12 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
                     <div className="more" onClick={nextPage}><Icon type="right"/></div>
                 </div>
     }
+    if(type==="radio"){
+        return <div className="radio">
+            <input type="radio" id={value} name="a" />
+            <label for={value}>{content}</label>
+      </div>
+
+    }
 }
 export default Button

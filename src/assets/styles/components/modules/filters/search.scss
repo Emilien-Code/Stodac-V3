@@ -44,8 +44,8 @@
         background-color: transparent;
     }
     button.text.green{
-        margin: 24px 77px;
         width: 280px;
+        margin: 24px calc((100% - 280px) / 2);
     }
 }
 .close-search{

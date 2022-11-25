@@ -1,0 +1,23 @@
+@import "../../../utils/variables.scss";
+.modale{
+    background-color: map-get($brands-primary, "grey" );
+    position: absolute;
+    padding: 64px;
+    width: 50vw;
+    border-radius: 50px;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    h2{
+        text-align: center;
+        margin-bottom: 56px;
+    }
+    div{
+        display: flex;
+        justify-content: space-between;
+        .green{
+            margin-left: 16px;
+        }
+    }
+}

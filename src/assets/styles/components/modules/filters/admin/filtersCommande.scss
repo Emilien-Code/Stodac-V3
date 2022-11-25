@@ -1,0 +1,30 @@
+@import "../../../../utils/variables.scss";
+@import "../../../../utils/mixins.scss";
+.admin-filters{
+
+    form{
+        padding: 10px;
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        height: 300px;
+        div{
+            margin: 20px 0;
+        }
+    }
+    position: sticky;
+    top: 0;
+    width: 304px;
+    height: 100vh;
+    background-color: map-get($brands-primary , "secondary-white");
+    &.sidebar{
+        width: 500px;
+    }
+    h4 {
+        padding-left: 10px;
+        font-size: map-get($fonts-sizes-desktop, "h4" );
+    }
+}

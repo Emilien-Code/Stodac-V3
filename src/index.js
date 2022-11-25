@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
+import { Router,createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import "./assets/styles/utils/root.scss"
 
@@ -25,6 +25,8 @@ import Payement from "./pages/paiement-commande";
 import Recap from "./pages/recap-commande";
 import ConfirmationCommande from './pages/confirmation-commande';
 import Menu from "./components/modules/Menu.jsx"
+import CommandesAdmin from "./pages/Admin/commandes.js"
+import ArticleAdmin from "./pages/Admin/articles.js"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +73,12 @@ const router = createBrowserRouter([
   },{
     path:"/confirmation-commande/:isSucces",
     element: <ConfirmationCommande/>
+  },{
+    path: "/admin/commandes",
+    element: <CommandesAdmin/>
+  },{
+    path: "/admin/articles",
+    element: <ArticleAdmin/>
   }
 
 ]);
