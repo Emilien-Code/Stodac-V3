@@ -7,7 +7,7 @@ import "../../../assets/styles/components/modules/filters/search.scss"
 import { useDispatch } from "react-redux";
 import { setSearched } from "../../../assets/scripts/store/redux-slices/filters";
 
-const Search = ()=>{
+const Search = ({isBlock})=>{
     const [articles, setArticles] = React.useState([])
     const [isOpen, setIsOpen] = React.useState(false) 
     const [fl, setFl] = React.useState("") 
@@ -33,7 +33,7 @@ const Search = ()=>{
 
     return (
             <>
-                <div className="search">
+                <div className={`search ${isBlock ? "block" : ""}`}>
                     <Input type="text" placeHolder='Rechercher' callBack={search}/>
                     <Icon type="search"/>
                     {

@@ -9,7 +9,10 @@
         padding-top:165px;
         padding-left:120px ;
         padding-right: 120px;
-        width: 100%;
+        width: calc(100vw - 300px);
+        &.articles-container{
+            padding-top:88px;
+        }
     }
         
     .status-0{
@@ -156,5 +159,49 @@
 
         }
     }
+    .articles-container{
+        .numbers{
+            flex-direction: row;
+            div{
+                &:first-of-type{
+                    margin-right: 16px;
+                }
+                width: 100%;
+            }
+        }
+        h3{
+            margin-top:80px;
+            margin-bottom: 24px;
+        }
+        div{
+            display: flex;
+            justify-content: space-between;
+            select,
+            input{
+                width: calc(50% - 80px);
+            }
+            div{
+                width: calc(50% - 80px);
 
+                flex-direction: column;
+                input{
+                    width: 100%;
+                }
+            }
+        }
+        .button{
+            position: relative;
+            width: calc(100% - 16px);
+            margin: 80px 0px;
+            &:first-of-type{
+                margin-right: 8px;
+            }
+            &:last-of-type{
+                margin-left: 8px;
+            }
+        }
+    }
+    .submit{
+        display: flex;
+    }
 }
