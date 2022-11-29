@@ -2,8 +2,10 @@ import React from "react";
 import "../assets/styles/components/pages/payement-commande.scss"
 import Bloc from "../components/sections/bloc"
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Payement = ()=>{
+  let navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart)
   const auth = useSelector((state) => state.authentication)
@@ -39,9 +41,9 @@ const Payement = ()=>{
           body: JSON.stringify(option)
       })
         .then(()=>{
-          window.location.href = '/confirmation-commande/succes'
+          navigate('/confirmation-commande/succes');
         }).catch(err=>{
-          window.location.href = '/confirmation-commande/erreur'
+          navigate('/confirmation-commande/erreur');
           console.log(err)
         })
       }

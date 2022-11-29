@@ -5,6 +5,7 @@ import Input from "../components/atoms/input";
 import { useSelector, useDispatch } from "react-redux";
 import { setConnected, setDisconnect, setData } from "../assets/scripts/store/redux-slices/authentication";
 import regex from "../assets/scripts/utils/regex";
+import { Link } from "react-router-dom"
 
 
 const Conexion = () => {
@@ -136,7 +137,7 @@ const Conexion = () => {
                 }
 
                 {
-                    isLogin && ( <a href="/mot-de-passe-oublie">Mot de passe oublié ? </a> )
+                    isLogin && ( <Link to="/mot-de-passe-oublie">Mot de passe oublié ? </Link> )
                 }
 
                 <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>

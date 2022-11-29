@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 // SCSS
 import "../assets/styles/components/pages/payement-commande.scss"
@@ -14,6 +15,7 @@ import { setData } from "../assets/scripts/store/redux-slices/authentication";
 
 
 const Recap = ()=>{
+    let navigate = useNavigate();
     const dispatch = useDispatch()
 
     
@@ -125,7 +127,7 @@ const Recap = ()=>{
                     modeDeLivraison: cart.deliveryMode
                 })
             })
-            .then(() => window.location.href = `/paiement-commande`)
+            .then(() => navigate(`/paiement-commande`))
             .catch(err => console.log(err))
         } 
 

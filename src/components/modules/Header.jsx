@@ -4,8 +4,12 @@ import "../../assets/styles/utils/variables.scss"
 import "../../assets/styles/components/modules/header.scss"
 import { setCart, setMenu } from "../../assets/scripts/store/redux-slices/modals";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate} from "react-router-dom"
 
-const Header = ()=>{
+
+const Header = (props)=>{
+    let navigate = useNavigate();
+
     const isMenuOpen = useSelector(state => state.modals.menu)
 
     const dispatch = useDispatch();
@@ -17,23 +21,22 @@ const Header = ()=>{
         dispatch(setMenu(!isMenuOpen))
     }
     const pushToLogin = ()=>{
-        window.location.href = `/se-connecter`;
-
+        navigate(`/se-connecter`);
     }
 
     return (
         <header>
             <nav>
-                <a className="header-stodac nav-link" href={`/`}>Stodac.</a>
+                <Link className="header-stodac nav-link" to={`/`}>Stodac.</Link>
                 <ul className="links">
                     <li>
-                        <a className="nav-link" href={`/boutique`}>Boutique</a>
+                        <Link className="nav-link" to={`/boutique`}>Boutique</Link>
                     </li>
                     <li>
-                        <a  className="nav-link" href={`/mes-commandes`}>Mes commandes</a>
+                        <Link  className="nav-link" to={`/mes-commandes`}>Mes commandes</Link>
                     </li>
                     <li>
-                        <a  className="nav-link" href={`/assistance`}>Assistance</a>
+                        <Link  className="nav-link" to={`/assistance`}>Assistance</Link>
                     </li>
                 </ul>
                 <ul className="buttons">
@@ -41,7 +44,7 @@ const Header = ()=>{
                         <Button  type="svg" callBack={openCart} content="cart"/>
                     </li>
                     <li className="nav-link"  >
-                        {/* <a className="nav-link" href={`/se-conecter`}> */}
+                        {/* <Link className="nav-link" to={`/se-conecter`}> */}
                             <Button callBack={pushToLogin} type="svg" content="login"/>
 
                     </li>

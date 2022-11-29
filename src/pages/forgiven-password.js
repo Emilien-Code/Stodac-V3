@@ -40,6 +40,7 @@ const ForgivenPassword = () => {
 
     const changepswd = () => {
         if(regex.passwordValidation(password) && password === confirmpassword)
+
         fetch("https://stodac.fr/api/utils/ResetPswd", {
             method: "POST",
             headers: {

@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCart, setMenu } from "../../assets/scripts/store/redux-slices/modals";
 import "../../assets/styles/components/modules/menu.scss"
+import { Link } from "react-router-dom"
+
 const Menu = ()=>{
     const dispatch = useDispatch()
     const isMenuOpen = useSelector(state => state.modals.menu)
@@ -11,13 +13,13 @@ const Menu = ()=>{
         return <div className="menu">
             <ul className="links">
                 <li>
-                    <a className="nav-link" href={`/boutique`}>Boutique</a>
+                    <Link className="nav-link" to={`/boutique`}>Boutique</Link>
                 </li>
                 <li>
-                    <a  className="nav-link" href={`/mes-commandes`}>Mes commandes</a>
+                    <Link  className="nav-link" to={`/mes-commandes`}>Mes commandes</Link>
                 </li>
                 <li>
-                    <a  className="nav-link" href={`/assistance`}>Assistance</a>
+                    <Link  className="nav-link" to={`/assistance`}>Assistance</Link>
                 </li>
             </ul>
         </div>

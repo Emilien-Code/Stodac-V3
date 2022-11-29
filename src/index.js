@@ -1,8 +1,7 @@
 import React from 'react';
-import { Router,createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
+import { BrowserRouter as Router, Routes, createBrowserRouter, RouterProvider, Route, } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
 import "./assets/styles/utils/root.scss"
-
 
 import reduxStore from "./assets/scripts/store/redux";
 import { Provider } from "react-redux";
@@ -27,71 +26,103 @@ import ConfirmationCommande from './pages/confirmation-commande';
 import Menu from "./components/modules/Menu.jsx"
 import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
-const router = createBrowserRouter([
-  {
-    path: "/",
-    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
-    element: <Boutique/> ,
-    errorElement: <NotFound/>
+import ForgivenPassword from './pages/forgiven-password';
+  const r = [{
+
   },{
-    path: "/boutique/:page",
-    
-    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
-    element: <Boutique/> ,
+
   },{
-    path: "/boutique",
-    // element: <React.Suspense fallback={</>}> <LazyBoutique/> ,
-    element: <Boutique/> ,
-  },{
-    path: "/mes-commandes",
-    element: <MesCommandes/>,
-  },{
-    path: "/assistance",
-    // element:  <React.Suspense fallback={</>}> <LazyAssistance/> ,
-    element:  <Assistance/> ,
-  },{
-    path: "/conditions-generales-de-vente",
-    // element: <React.Suspense fallback={</>}> <LazyConditionsGeneralesVente/> ,
-    element: <ConditionsGeneralesVente/> ,
-  },{
-    path: "/mentions-legales",
-    // element: <React.Suspense fallback={</>}> <LazyMentionsLegales/> ,
-    element:  <MentionsLegales/>,
-  },{
-    path: "/se-connecter",
-    element:<Connexion/>
-  },{
-    // a changer en sah ;)
-    path: "/paiement-commande",
-    element:<Payement/>
-  },{
-    path:"/article/:_id",
-    element: <ArticlePage/>
-  },{
-    path:"/recapitulatif-commande",
-    element: <Recap/>
-  },{
-    path:"/confirmation-commande/:isSucces",
-    element: <ConfirmationCommande/>
-  },{
-    path: "/admin/commandes",
-    element: <CommandesAdmin/>
-  },{
-    path: "/admin/articles",
-    element: <ArticleAdmin/>
+    path: "/mot-de-passe-oublie/:_token",
+    element: <ForgivenPassword/>
   }
 
-]);
+]
+const PageLayout = ({ children }) => children;
+
+const AnimationLayout = ()=>{
+  return <PageLayout></PageLayout>
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={reduxStore}>
-    <Header/>
-    <Menu/>
-    <Cart/>
-    <RouterProvider router={router} />
-    <Footer/>
+      <Router> 
+        <Header/>
+        <Menu/>
+        <Cart/>
+
+
+
+        <Routes element={<AnimationLayout/>}>
+     
+          <Route
+            path="/"
+            element={<Boutique/>}
+          />
+          <Route
+            path="/boutique/:page"
+            element={<Boutique/>}
+          />
+          <Route
+            path="/boutique/"
+            element={<Boutique/>}
+          />
+          <Route
+            path="/mes-commandes/"
+            element={<MesCommandes/>}
+          />
+          <Route
+            path="/assistance"
+            element={<Assistance/>}
+          />
+          <Route
+           path="/conditions-generales-de-vente"
+           element={<ConditionsGeneralesVente/>}
+          />
+          <Route
+            path="/mentions-legales"
+            element={<MentionsLegales/>}
+          />
+          <Route  
+            path="/se-connecter"
+            element={<Connexion/>}
+          />
+          <Route  
+            path="/paiement-commande"
+            element={<Payement/>}
+          />
+          <Route
+            path="/article/:_id"
+            element={<ArticlePage/>}
+          />
+          <Route
+              path="/recapitulatif-commande"
+              element={<Recap/>}
+          />
+          <Route
+            path="/confirmation-commande/:isSucces"
+            element={<ConfirmationCommande/>}
+          />
+          <Route
+              path="/admin/commandes"
+              element={<CommandesAdmin/>}
+          />
+          <Route
+            path="/admin/articles"
+            element={<ArticleAdmin/>}
+          />
+          <Route
+            path="/mot-de-passe-oublie"
+            element={<ForgivenPassword/>}
+          />
+          <Route 
+            path="/mot-de-passe-oublie/:_token"
+            element={<ForgivenPassword/>}
+          />
+        </Routes>
+        <Footer/>
+      </Router>
     </Provider>
 
   </React.StrictMode>

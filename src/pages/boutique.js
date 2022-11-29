@@ -4,9 +4,10 @@ import Button from "../components/atoms/Button.jsx";
 import "../assets/styles/components/pages/boutique.scss"
 import { useSelector } from "react-redux";
 import Filters from "../components/sections/filters.jsx";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Boutique = ()=>{
+    const navigate = useNavigate()
     const [articles, setArticles] = React.useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]);
     const [nbPages, setNbPages] = React.useState(1);
     const searchedWord = useSelector((state) => state.filters.searched);
@@ -21,7 +22,7 @@ const Boutique = ()=>{
             if(currentPage>1)
                 currentPage--
         }
-        window.location.href = `/boutique/${currentPage}`;
+        navigate(`/boutique/${currentPage}`);
     }
     
     React.useEffect(()=>{

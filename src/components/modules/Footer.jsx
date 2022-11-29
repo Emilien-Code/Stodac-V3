@@ -1,7 +1,9 @@
 import React from "react";
 import '../../assets/styles/components/modules/footer.scss'
+import { Link } from "react-router-dom"
 
-const Footer = ()=>{
+
+const Footer = (props)=>{
     return  <footer>
         <div className="marquee">
             
@@ -40,8 +42,8 @@ const Footer = ()=>{
                     <article>
                         <h3>Droits</h3>
                         <ul>
-                            <li><a href="/mentions-legales">Mentions légales</a></li>
-                            <li><a href="conditions-generales-de-vente">Conditions générales de vente</a></li>
+                            <li><Link to="/mentions-legales">Mentions légales</Link></li>
+                            <li><Link to="/conditions-generales-de-vente">Conditions générales de vente</Link></li>
                         </ul>
                     </article>
                 </section>

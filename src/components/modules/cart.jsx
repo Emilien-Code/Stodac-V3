@@ -6,14 +6,18 @@ import { setCart } from "../../assets/scripts/store/redux-slices/modals";
 import Article from "./article";
 import formatNumber from "../../assets/scripts/utils/priceNormalisation"
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
+
+
 const Cart = ()=>{
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const cartIsOpen = useSelector((state) => state.modals.cart);
     const cart = useSelector((state) => state.cart)
     const isEmpty = cart.cart.length <= 0 ? true : false
     const cartRef = React.useRef(null)
     const pushToCommande = ()=>{
-        window.location.href = `/recapitulatif-commande`
+        navigate(`/recapitulatif-commande`)
     }
     
 
