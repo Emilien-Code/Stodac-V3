@@ -85,8 +85,9 @@ const Cart = ()=>{
                     opacity: 0
                 },{
                     opacity: 1,
-                    duration: .3
-                }).fromTo(".total",{ opacity : 0 },{ opacity : 1 })
+                    duration: .3,
+                    stagger: .1,
+                }).fromTo(".total",{ opacity : 0 },{ opacity : 1, duration: .3 })
             
             }
 
@@ -94,7 +95,7 @@ const Cart = ()=>{
                 y: 100
             },{
                 y: 0,
-                duration: .4,
+                duration: .3,
                 onConclude: ()=>  {
                     if(!isEmpty)
                         document.querySelector(".cartNotEmpty").style.overflow = "auto"
@@ -117,9 +118,9 @@ const Cart = ()=>{
         if(!isEmpty){
 
             tl.to(".cartNotEmpty li", {
-                y: -20,
                 opacity: 0,
-                stagger: .3,
+                duration: .3,
+                stagger: .1,
             }).to(".total",{ opacity : 0 })
   
 
