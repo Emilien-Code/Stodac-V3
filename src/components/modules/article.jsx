@@ -36,8 +36,6 @@ const Article = ({data, display})=>{
 
     }
 
-    if(display==="fullPage") window.scrollTo(0, 125)
-
 
     const changeQty = (isMore)=>{
         if(isMore){

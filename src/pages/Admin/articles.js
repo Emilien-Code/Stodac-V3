@@ -64,7 +64,6 @@ const Articles = () => {
     }, [])
 
     const createArticle = ()=>{
-        console.log(selectedArticle)
         const fd = new FormData()
         fd.append('image', file)
         fd.append('name', selectedArticle.name)
