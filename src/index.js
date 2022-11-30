@@ -41,7 +41,6 @@ const AnimationLayout = ()=>{
   let location = useLocation()
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("test")
   }, [location]);
 
 
@@ -73,7 +72,7 @@ const nodeRef = React.useRef()
             tl.fromTo(
               ".transition-page",
               { 
-                translateY: window.scrollY,
+                translateY: 0,
                 rotate: 0
               },
               {
@@ -83,6 +82,7 @@ const nodeRef = React.useRef()
 
               })
             gsap.fromTo(".transition-bg",{
+              top: 0,
               opacity:1
             },{
               opacity: 0,
@@ -104,11 +104,12 @@ const nodeRef = React.useRef()
                 rotate: -4
               },
               {
-                translateY: window.scrollY,
+                translateY: 0,
                 rotate: 0,
                 duration: .5
               });
               gsap.fromTo(".transition-bg",{
+                top:0,
                 opacity:1
               },{
                 opacity: 1,
