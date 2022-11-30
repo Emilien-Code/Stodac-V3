@@ -27,25 +27,30 @@ import Menu from "./components/modules/Menu.jsx"
 import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
 import ForgivenPassword from './pages/forgiven-password';
+import ConfirmationEmail from './pages/confirmationEmail';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
-
+//LayoutComponent
 import gsap from "gsap";
 import { SwitchTransition, Transition, CSSTransition } from "react-transition-group";
 import "./assets/styles/components/modules/layout.scss"
 import { useLocation , Outlet, Navigate } from "react-router-dom";
+import { setCart, setMenu } from "./assets/scripts/store/redux-slices/modals";
+
 const PageLayout = ({ children }) => children
 
 
+const dispatch = useDispatch()
 const AnimationLayout = ()=>{
   let location = useLocation()
   React.useEffect(() => {
+    dispatch(setCart(false))
+    dispatch(setMenu(false))
     window.scrollTo(0, 0);
   }, [location]);
 
 
-const nodeRef = React.useRef()
         
 
   return <PageLayout> 
@@ -130,12 +135,10 @@ const ProtectedRoute = ({ pushTo, children }) => {
   const authentication = useSelector((state) => state.authentication)
   if(authentication.connected)  return children
   return <Navigate to={`/se-connecter/${pushTo}`}/>
-
 }
 
 const ProtectedAdminRoute = ({children, pushTo}) => {
   const authentication = useSelector((state) => state.authentication)
-
   if(authentication.connected && authentication.data.admin)  return children
   return <Navigate to={`/se-connecter/${pushTo}`}/>
 
@@ -240,6 +243,10 @@ root.render(
             <Route 
               path="/mot-de-passe-oublie/:_token"
               element={<ForgivenPassword/>}
+            />
+            <Route
+              path="/verify/:email/*"
+              element={<ConfirmationEmail/>}
             />
             <Route 
               path="*"
