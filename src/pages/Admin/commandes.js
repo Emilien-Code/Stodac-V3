@@ -365,7 +365,7 @@ const Commandes = () => {
                                             })
                                         }
                                     </select>
-                                {commande.comande.nometat[commande.comande.etat]}</p>
+                                </p>
                                 <p>Payement par {commande.comande.facture.moyendepayement}</p>
                             </div>
                                 <hr/>
