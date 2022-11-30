@@ -5,7 +5,7 @@ import Input from "../components/atoms/input";
 import { useSelector, useDispatch } from "react-redux";
 import { setConnected, setDisconnect, setData } from "../assets/scripts/store/redux-slices/authentication";
 import regex from "../assets/scripts/utils/regex";
-import { Link } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 
 
 const Conexion = () => {
@@ -20,7 +20,9 @@ const Conexion = () => {
     const [mobile, setMobile] = React.useState("");
     const [isCreated, setIsCreated] = React.useState(false);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate()
+    const pushTo = useParams().pushTo
+    
     const validatedFields = () => {
         if (!isLogin) {
           return regex.mailValidation(email) && firstName !== "" && lastName !== "" && regex.passwordValidation(password) && password===confirmPassword && regex.phoneValidation(mobile)
@@ -58,7 +60,17 @@ const Conexion = () => {
                 }), 
             })
             .then(response => response.json())
-            .then(json => dispatch(setData(json[0])))
+            .then(json => {
+                dispatch(setData(json[0]));
+                if(pushTo){
+                    if(window.location.href.includes("admin")){
+                        navigate(`/admin/${pushTo}`)
+                    }else{
+                        navigate(`/${pushTo}`)
+                    }
+
+                }
+            })
             .catch(err => console.log(err))
         })
         .catch(err => console.log("error when loging in", err))

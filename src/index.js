@@ -28,12 +28,13 @@ import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
 import ForgivenPassword from './pages/forgiven-password';
 
+import {useSelector} from 'react-redux';
 
 
 import gsap from "gsap";
 import { SwitchTransition, Transition, CSSTransition } from "react-transition-group";
 import "./assets/styles/components/modules/layout.scss"
-import { useLocation , Outlet } from "react-router-dom";
+import { useLocation , Outlet, Navigate } from "react-router-dom";
 const PageLayout = ({ children }) => children
 
 
@@ -125,6 +126,21 @@ const nodeRef = React.useRef()
 }
 
 
+const ProtectedRoute = ({ pushTo, children }) => {
+  const authentication = useSelector((state) => state.authentication)
+  if(authentication.connected)  return children
+  return <Navigate to={`/se-connecter/${pushTo}`}/>
+
+}
+
+const ProtectedAdminRoute = ({children, pushTo}) => {
+  const authentication = useSelector((state) => state.authentication)
+
+  if(authentication.connected && authentication.data.admin)  return children
+  return <Navigate to={`/se-connecter/${pushTo}`}/>
+
+}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -148,10 +164,14 @@ root.render(
               path="/boutique/"
               element={<Boutique/>}
             />
-            <Route
-              path="/mes-commandes/"
-              element={<MesCommandes/>}
-            />
+              <Route
+                path="/mes-commandes/"
+                element={
+                  <ProtectedRoute pushTo="mes-commandes">
+                    <MesCommandes/>
+                  </ProtectedRoute>
+                }
+              />
             <Route
               path="/assistance"
               element={<Assistance/>}
@@ -169,8 +189,21 @@ root.render(
               element={<Connexion/>}
             />
             <Route  
+              path="/se-connecter/:pushTo"
+              element={<Connexion/>}
+            />
+            <Route  
+              path="/se-connecter/admin/:pushTo"
+              element={<Connexion/>}
+            />
+            
+            <Route  
               path="/paiement-commande"
-              element={<Payement/>}
+              element={
+                <ProtectedRoute pushTo="paiement-commande">
+                  <Payement/>
+                </ProtectedRoute>
+              }
             />
             <Route
               path="/article/:_id"
@@ -178,7 +211,11 @@ root.render(
             />
             <Route
                 path="/recapitulatif-commande"
-                element={<Recap/>}
+                element={
+                  <ProtectedRoute pushTo="recapitulatif-commande">
+                    <Recap/>
+                  </ProtectedRoute>
+                }
             />
             <Route
               path="/confirmation-commande/:isSucces"
@@ -186,11 +223,15 @@ root.render(
             />
             <Route
                 path="/admin/commandes"
-                element={<CommandesAdmin/>}
+                element={
+                <ProtectedAdminRoute pushTo="admin/commandes">
+                  <CommandesAdmin/>
+                </ProtectedAdminRoute>
+              }
             />
             <Route
               path="/admin/articles"
-              element={<ArticleAdmin/>}
+              element={<ProtectedAdminRoute pushTo="admin/articles"><ArticleAdmin/></ProtectedAdminRoute>}
             />
             <Route
               path="/mot-de-passe-oublie"
