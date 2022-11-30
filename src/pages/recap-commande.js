@@ -11,7 +11,7 @@ import Input from "../components/atoms/input";
 
 //Store
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "../assets/scripts/store/redux-slices/authentication";
+import { setData, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
 
 
 const Recap = ()=>{
@@ -32,7 +32,11 @@ const Recap = ()=>{
                 'Authorization': 'Bearer ' + authentication.token, 
             }), 
         })
-        .then(response => response.json())
+        .then(response => {
+            if(response.ok)
+                return response.json()
+            dispatch(setDisconnect())
+        })
         .then(json => dispatch(setData(json[0])))
         .catch(err => console.log(err))
     }, [])

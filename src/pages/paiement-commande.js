@@ -1,16 +1,32 @@
 import React from "react";
 import "../assets/styles/components/pages/payement-commande.scss"
 import Bloc from "../components/sections/bloc"
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { setData, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
 const Payement = ()=>{
   let navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
   const auth = useSelector((state) => state.authentication)
 
-
+  React.useEffect(()=>{
+    fetch(`https://stodac.fr/api/user/getinfos/${auth.id}`,{
+        method: 'get', 
+        headers: new Headers({
+            'Authorization': 'Bearer ' + auth.token, 
+        }), 
+    })
+    .then(response => {
+        if(response.ok)
+            return response.json()
+        dispatch(setDisconnect())
+    })
+    .then(json => dispatch(setData(json[0])))
+    .catch(err => console.log(err))
+}, [])
 
     const saveFacture = (Factureid) => {
         let option = {

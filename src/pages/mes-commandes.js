@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setData } from "../assets/scripts/store/redux-slices/authentication";
+import { setData, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
 import "../assets/styles/components/pages/mes-commandes.scss"
 import formatNumber from "../assets/scripts/utils/priceNormalisation";
 const MesCommandes = ()=>{
@@ -16,7 +16,11 @@ const MesCommandes = ()=>{
                 'Authorization': 'Bearer ' + authentication.token, 
             }), 
         })
-        .then(response => response.json())
+        .then(response => {
+            if(response.ok)
+                return response.json()
+            dispatch(setDisconnect())
+        })
         .then(json => {
             dispatch(setData(json[0]))
             let a = JSON.parse(JSON.stringify(json[0].comande))

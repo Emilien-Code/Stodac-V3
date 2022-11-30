@@ -30,6 +30,7 @@ import ForgivenPassword from './pages/forgiven-password';
 import ConfirmationEmail from './pages/confirmationEmail';
 
 import {useSelector, useDispatch} from 'react-redux';
+import { setData, setDisconnect } from "./assets/scripts/store/redux-slices/authentication";
 
 //LayoutComponent
 import gsap from "gsap";
@@ -42,12 +43,17 @@ const PageLayout = ({ children }) => children
 
 
 const AnimationLayout = ()=>{
+  
   const dispatch = useDispatch()
+
   let location = useLocation()
+  
   React.useEffect(() => {
+  
     dispatch(setCart(false))
     dispatch(setMenu(false))
     window.scrollTo(0, 0);
+
   }, [location]);
 
 
@@ -64,7 +70,6 @@ const AnimationLayout = ()=>{
           key={location.pathname}
           unmountOnExit
           timeout={1000}
-
           onEnter={() => {
             let tl = gsap.timeline({
               onComplete: () => {
@@ -139,6 +144,24 @@ const ProtectedRoute = ({ pushTo, children }) => {
 
 const ProtectedAdminRoute = ({children, pushTo}) => {
   const authentication = useSelector((state) => state.authentication)
+  const dispatch = useDispatch()          
+
+  React.useEffect(()=>{
+    fetch(`https://stodac.fr/api/user/getinfos/${authentication.id}`,{
+        method: 'get', 
+        headers: new Headers({
+            'Authorization': 'Bearer ' + authentication.token, 
+        }), 
+    })
+    .then(response => {
+        if(response.ok)
+            return response.json()
+        dispatch(setDisconnect())
+    })
+    .then(json => dispatch(setData(json[0])))
+    .catch(err => console.log(err))
+}, [])
+
   if(authentication.connected && authentication.data.admin)  return children
   return <Navigate to={`/se-connecter/${pushTo}`}/>
 
