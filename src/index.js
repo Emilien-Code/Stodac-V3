@@ -200,6 +200,10 @@ root.render(
               path="/mot-de-passe-oublie/:_token"
               element={<ForgivenPassword/>}
             />
+            <Route 
+              path="*"
+              element={<NotFound/>}
+            />
           </Route>
         </Routes>
         <Footer/>
