@@ -27,6 +27,7 @@ import Menu from "./components/modules/Menu.jsx"
 import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
 import ForgivenPassword from './pages/forgiven-password';
+import ConfirmationEmail from './pages/confirmationEmail';
 
 
 
@@ -34,6 +35,7 @@ import gsap from "gsap";
 import { SwitchTransition, Transition, CSSTransition } from "react-transition-group";
 import "./assets/styles/components/modules/layout.scss"
 import { useLocation , Outlet } from "react-router-dom";
+
 const PageLayout = ({ children }) => children
 
 
@@ -199,6 +201,10 @@ root.render(
             <Route 
               path="/mot-de-passe-oublie/:_token"
               element={<ForgivenPassword/>}
+            />
+            <Route
+              path="/verify/:email/*"
+              element={<ConfirmationEmail/>}
             />
             <Route 
               path="*"
