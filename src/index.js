@@ -27,21 +27,103 @@ import Menu from "./components/modules/Menu.jsx"
 import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
 import ForgivenPassword from './pages/forgiven-password';
-  const r = [{
 
-  },{
 
-  },{
-    path: "/mot-de-passe-oublie/:_token",
-    element: <ForgivenPassword/>
-  }
 
-]
-const PageLayout = ({ children }) => children;
+import gsap from "gsap";
+import { SwitchTransition, Transition, CSSTransition } from "react-transition-group";
+import "./assets/styles/components/modules/layout.scss"
+import { useLocation , Outlet } from "react-router-dom";
+const PageLayout = ({ children }) => children
+
 
 const AnimationLayout = ()=>{
-  return <PageLayout></PageLayout>
+  let location = useLocation()
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("test")
+  }, [location]);
+
+
+const nodeRef = React.useRef()
+        
+
+  return <PageLayout> 
+    <div className="transition-bg"></div>
+        <div className='transition-page'>
+
+      <span>Stodac</span>
+    </div>
+    <SwitchTransition mode={"out-in"}>
+        <Transition
+          key={location.pathname}
+          unmountOnExit
+          timeout={1000}
+
+          onEnter={() => {
+            let tl = gsap.timeline({
+              onComplete: () => {
+                setTimeout(()=>{
+                  document.querySelector(".transition-page").style.display = "none";
+                  document.querySelector(".transition-bg").style.display = "none";
+                },500)
+              }
+            })
+            gsap.killTweensOf(".transition-page");
+            tl.fromTo(
+              ".transition-page",
+              { 
+                translateY: window.scrollY,
+                rotate: 0
+              },
+              {
+                translateY: "-120vh",
+                rotate: 4,
+                duration: .5
+
+              })
+            gsap.fromTo(".transition-bg",{
+              opacity:1
+            },{
+              opacity: 0,
+              duration: 0.5
+            })
+          }}
+          onExit={() => {
+            document.querySelector(".transition-page").style.display = "flex";
+            document.querySelector(".transition-bg").style.display = "block";
+            
+            let tl = gsap.timeline({
+
+            })
+            gsap.killTweensOf(".transition-page");
+            tl.fromTo(
+              ".transition-page",
+              { 
+                translateY: "-100vh",
+                rotate: -4
+              },
+              {
+                translateY: window.scrollY,
+                rotate: 0,
+                duration: .5
+              });
+              gsap.fromTo(".transition-bg",{
+                opacity:1
+              },{
+                opacity: 1,
+                duration: 0.5
+              })
+          }}
+        >
+          <Outlet/>
+        </Transition>
+      </SwitchTransition>
+    
+    </PageLayout>
 }
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -51,75 +133,73 @@ root.render(
         <Header/>
         <Menu/>
         <Cart/>
-
-
-
-        <Routes element={<AnimationLayout/>}>
-     
-          <Route
-            path="/"
-            element={<Boutique/>}
-          />
-          <Route
-            path="/boutique/:page"
-            element={<Boutique/>}
-          />
-          <Route
-            path="/boutique/"
-            element={<Boutique/>}
-          />
-          <Route
-            path="/mes-commandes/"
-            element={<MesCommandes/>}
-          />
-          <Route
-            path="/assistance"
-            element={<Assistance/>}
-          />
-          <Route
-           path="/conditions-generales-de-vente"
-           element={<ConditionsGeneralesVente/>}
-          />
-          <Route
-            path="/mentions-legales"
-            element={<MentionsLegales/>}
-          />
-          <Route  
-            path="/se-connecter"
-            element={<Connexion/>}
-          />
-          <Route  
-            path="/paiement-commande"
-            element={<Payement/>}
-          />
-          <Route
-            path="/article/:_id"
-            element={<ArticlePage/>}
-          />
-          <Route
-              path="/recapitulatif-commande"
-              element={<Recap/>}
-          />
-          <Route
-            path="/confirmation-commande/:isSucces"
-            element={<ConfirmationCommande/>}
-          />
-          <Route
-              path="/admin/commandes"
-              element={<CommandesAdmin/>}
-          />
-          <Route
-            path="/admin/articles"
-            element={<ArticleAdmin/>}
-          />
-          <Route
-            path="/mot-de-passe-oublie"
-            element={<ForgivenPassword/>}
-          />
-          <Route 
-            path="/mot-de-passe-oublie/:_token"
-            element={<ForgivenPassword/>}
-          />
+        <Routes >
+          <Route element={<AnimationLayout/>}>
+            <Route
+              path="/"
+              element={<Boutique/>}
+            />
+            <Route
+              path="/boutique/:page"
+              element={<Boutique/>}
+            />
+            <Route
+              path="/boutique/"
+              element={<Boutique/>}
+            />
+            <Route
+              path="/mes-commandes/"
+              element={<MesCommandes/>}
+            />
+            <Route
+              path="/assistance"
+              element={<Assistance/>}
+            />
+            <Route
+            path="/conditions-generales-de-vente"
+            element={<ConditionsGeneralesVente/>}
+            />
+            <Route
+              path="/mentions-legales"
+              element={<MentionsLegales/>}
+            />
+            <Route  
+              path="/se-connecter"
+              element={<Connexion/>}
+            />
+            <Route  
+              path="/paiement-commande"
+              element={<Payement/>}
+            />
+            <Route
+              path="/article/:_id"
+              element={<ArticlePage/>}
+            />
+            <Route
+                path="/recapitulatif-commande"
+                element={<Recap/>}
+            />
+            <Route
+              path="/confirmation-commande/:isSucces"
+              element={<ConfirmationCommande/>}
+            />
+            <Route
+                path="/admin/commandes"
+                element={<CommandesAdmin/>}
+            />
+            <Route
+              path="/admin/articles"
+              element={<ArticleAdmin/>}
+            />
+            <Route
+              path="/mot-de-passe-oublie"
+              element={<ForgivenPassword/>}
+            />
+            <Route 
+              path="/mot-de-passe-oublie/:_token"
+              element={<ForgivenPassword/>}
+            />
+          </Route>
         </Routes>
         <Footer/>
       </Router>

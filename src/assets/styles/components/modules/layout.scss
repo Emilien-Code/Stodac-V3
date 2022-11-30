@@ -1,0 +1,31 @@
+@import "../../utils/variables.scss";
+
+.transition-page{
+    position: absolute;
+    top: 0;
+    left: -200px;
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    width: calc(100vw + 400px);
+    height: 100vh;
+    z-index: 1000;
+    background-color: map-get($brands-primary, "white" );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span{
+        font-size: 40px;
+    }
+    display: none;
+
+    
+}
+.transition-bg{
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  background-color: #232323;
+}
