@@ -69,7 +69,7 @@ const Cart = ()=>{
                 y: 100
             },{
                 y: 0,
-                duration: .4
+                duration: .2
             })
             if(isEmpty){
 
@@ -86,19 +86,23 @@ const Cart = ()=>{
             if(!isEmpty){
 
                 tl.fromTo(".cartNotEmpty li", {
-                    opacity: 0
+                    opacity: 0,
+                    y: 50
                 },{
+                    y: 0,
                     opacity: 1,
                     duration: .3,
-                    stagger: .1,
-                }).fromTo(".total",{ opacity : 0 },{ opacity : 1, duration: .3 })
+                    stagger: .2,
+                }).fromTo(".total",{ y:20, opacity : 0 },{ y: 0, opacity : 1, duration: .3 })
             
             }
 
             tl.fromTo(".cart-footer .button",{
-                y: 100
+                y: 20,
+                opacity: 0
             },{
                 y: 0,
+                opacity: 1,
                 duration: .3,
                 onConclude: ()=>  {
                     if(!isEmpty)
@@ -114,18 +118,22 @@ const Cart = ()=>{
         const tl = gsap.timeline({})
 
         tl.to(".cart-footer .button", {
-            y: -100,
-            duration: .4,
-
+            y: 20,
+            opacity: 0,
+            duration: .3,
         })
+        if(!isEmpty) tl.to(".total",{ y:20, opacity : 0, duration: .3 })
+        tl.to('hr', {opacity: 0, duration : .2})
+
 
         if(!isEmpty){
 
             tl.to(".cartNotEmpty li", {
+                y: 50,
                 opacity: 0,
                 duration: .3,
-                stagger: .1,
-            }).to(".total",{ opacity : 0 })
+                stagger: .2,
+            })
   
 
         }else{
@@ -139,10 +147,9 @@ const Cart = ()=>{
             
         }
 
-        tl.to('hr', {opacity: 0, duration : .2})
         tl.to('.cart-header',{
             y: 100,
-            duration: .4
+            duration: .2
         })
         tl.to(
             cartRef.current,{
