@@ -41,8 +41,8 @@ import { setCart, setMenu } from "./assets/scripts/store/redux-slices/modals";
 const PageLayout = ({ children }) => children
 
 
-const dispatch = useDispatch()
 const AnimationLayout = ()=>{
+  const dispatch = useDispatch()
   let location = useLocation()
   React.useEffect(() => {
     dispatch(setCart(false))
