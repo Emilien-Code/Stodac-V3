@@ -67,7 +67,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
-                                <span>{data.price ? `${formatNumber(data.price)}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
+                                <span>{data.price ? `TTC ${formatNumber(data.price)}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
                             </div>
@@ -84,8 +84,8 @@ const Article = ({data, display})=>{
                         </picture>
                         <figcaption>
                             <div className="top">
-                                <p>{data.name ? data.name : "chargement..."}</p>
-                                <span>{formatNumber(data.price)}€</span>
+                                <p>{data.name ? "TTC "+data.name : "chargement..."}</p>
+                                <span>TTC {formatNumber(data.price)}€</span>
                             </div>
                             <div className="bottom">
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
@@ -115,7 +115,7 @@ const Article = ({data, display})=>{
                                 <p>{data.reference}</p>
                             </article>
                             <article>
-                                <p>Prix</p>
+                                <p>Prix TTC</p>
                                 <p>{formatNumber(data.price)}€</p>
                             </article>
                         </section>
@@ -140,7 +140,7 @@ const Article = ({data, display})=>{
                                 <img src={data.img} alt={"illustration de " + data.name} />
                             </picture>
                             <figcaption>
-                                <p>{data.name ? data.name : "chargement..."}</p>
+                                <p>{data.name ? "TTC "+data.name : "chargement..."}</p>
                                 <span>{formatNumber(data.price)}€</span>
                             </figcaption>
                         </figure>
