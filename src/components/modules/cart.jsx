@@ -69,7 +69,6 @@ const Cart = ()=>{
                 y: 100
             },{
                 y: 0,
-                duration: .2
             })
             if(isEmpty){
 
@@ -91,7 +90,6 @@ const Cart = ()=>{
                 },{
                     y: 0,
                     opacity: 1,
-                    duration: .3,
                     stagger: .2,
                 }).fromTo(".total",{ y:20, opacity : 0 },{ y: 0, opacity : 1, duration: .3 })
             
@@ -131,7 +129,6 @@ const Cart = ()=>{
             tl.to(".cartNotEmpty li", {
                 y: 50,
                 opacity: 0,
-                duration: .3,
                 stagger: .2,
             })
   
@@ -149,7 +146,6 @@ const Cart = ()=>{
 
         tl.to('.cart-header',{
             y: 100,
-            duration: .2
         })
         tl.to(
             cartRef.current,{

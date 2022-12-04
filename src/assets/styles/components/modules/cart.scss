@@ -68,10 +68,14 @@
             width:   460px;
             @include mq("tablet", max){
                 margin: 120px auto 80px 12%;
-                
                 width: 216px
             }
             
+        }
+        h2{
+            @include mq("tablet", max) {
+                font-size: 1.5em;
+            }
         }
         hr{
             height: 1px;
