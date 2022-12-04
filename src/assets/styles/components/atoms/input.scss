@@ -27,6 +27,8 @@ input[type="checkbox"]{
     }
 }
 select{
+    border: solid map-get($brands-primary,"black") 1px;
+    color: map-get($brands-primary,"black");
     -moz-appearance:none; 
     -webkit-appearance:none;
     appearance:none;
