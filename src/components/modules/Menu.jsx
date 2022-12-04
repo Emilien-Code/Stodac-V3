@@ -25,7 +25,7 @@ const Menu = ()=>{
                 tl.fromTo(".menu",{
                     y: '-100%',
                     rotate: '-5deg',
-                    width: '120%',
+                    width: '150%',
                     x: -100
                 },{
                     y: 0,
@@ -74,21 +74,21 @@ const Menu = ()=>{
                 y: '-110%',
                 x: -100,
                 rotate: '-5deg',
-                duration: 0.5,
-                width: '120%',
-                onComplete: ()=>{
-                    setTimeout(()=>{document.querySelector(".transition-bg").style.display = "none";},800)
-
-                }
+                duration: 0.4,
+                width: '150%',
             })
             gsap.fromTo(".transition-bg",{
                 opacity: 1,
-
+                
             },{
                 opacity: 0,
-                duration: 0.5
+                duration: 0.5,
             })
-
+            
+            setTimeout(()=>{
+                document.querySelector(".transition-bg").style.display = "none";
+                setIsShown(false)
+            },1000)
 
 
 
