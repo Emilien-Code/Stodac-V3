@@ -1,5 +1,6 @@
 import React from "react";
 import "../../assets/styles/components/atoms/input.scss";
+import Icon from "./Icon";
 const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput", selectValues=[]})=>{
 
     const addWord = (e)=>{
@@ -19,7 +20,10 @@ const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput
         case "checkbox": 
             return <input type="checkbox" onChange={addWord}/>
         case "select": 
-            return <select onChange={(e)=>{ callBack(e.target.value) }}>
+            return <div className="select-container">
+                <Icon type="downarrow"/>
+                <select onChange={(e)=>{ callBack(e.target.value) }}>
+                {defaultValue === "Marques" || defaultValue === "Categories" ? <option value={""} selected>{defaultValue}</option> : ""}
                 {
                     selectValues.map((value)=> {
                         if(value === defaultValue){
@@ -28,7 +32,8 @@ const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput
                         return <option value={value} key={value}>{value}</option>
                     })
                 }
-            </select>
+                </select>
+            </div>
         default : 
             return <>aucuns type correspondant</>
     }
