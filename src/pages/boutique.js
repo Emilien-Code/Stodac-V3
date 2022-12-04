@@ -11,6 +11,8 @@ const Boutique = ()=>{
     const [articles, setArticles] = React.useState([{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},]);
     const [nbPages, setNbPages] = React.useState(1);
     const searchedWord = useSelector((state) => state.filters.searched);
+    const searchedCategorie = useSelector((state) => state.filters.category);
+    const searchedManufacturer = useSelector((state) => state.filters.manufactor);
 
     const page = useParams()
     let currentPage = page.page ? page.page : 1
@@ -32,12 +34,34 @@ const Boutique = ()=>{
             .then(data => setArticles(data))
         }
     },[searchedWord])
+
+
+    React.useEffect(()=>{
+        if(searchedCategorie || searchedManufacturer){
+            fetch(`https://stodac.fr/api/stuff/getBy/`,{
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: searchedCategorie,
+                    manufacturer:searchedManufacturer
+                })
+            })
+            .then(response => response.json())
+            .then(data => setArticles(data))
+        }else{
+            load(0)
+        }
+    },[searchedCategorie, searchedManufacturer])
+
+
     
     const load = (start)=>{
         fetch(`https://stodac.fr/api/stuff/all/20/${start}`)
         .then(response => response.json())
         .then( data => setArticles(data))
-        // .then(()=>dispatch(setPage({articles: articles, page: currentPage})))
         .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
     }
 
@@ -58,7 +82,7 @@ const Boutique = ()=>{
             <Filters/>
         <section className="store-wrapper">
         {
-            articles ? 
+            articles.length > 0 ? 
 
             articles.map((article, index)=>{
                 return <Article display="boutique" key={index} data={article}/>

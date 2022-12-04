@@ -69,7 +69,7 @@ const Bloc = ({type, saveFacture,})=>{
                             })
                         }
                         <div className="bottom">
-                            <p>Total</p><p>{formatNumber(cart.total)}€</p>
+                            <p>Total TTC</p><p>{formatNumber(cart.total)}€</p>
                         </div>
                         </>
                     )
