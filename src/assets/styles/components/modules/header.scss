@@ -1,7 +1,9 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 header{
-
+    position: sticky;
+    top: -125px;
+    z-index: 4;
     background-color: map-get( $brands-primary , "secondary-white" );
     nav{
         width: 90%;
