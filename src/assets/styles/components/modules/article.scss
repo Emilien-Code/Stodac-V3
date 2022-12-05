@@ -200,8 +200,7 @@
     picture {
         flex-basis: 50%;
         height: 100vh;
-        //  background-color: map-get($brands-primary, "secondary-white" );
-        background-color: #D9D9D9;
+        background-color: map-get($brands-primary, "secondary-white" );
         position: sticky;
         top: 0;
         img{
