@@ -2,6 +2,7 @@
 @import "../../utils/mixins.scss";
 header{
     position: sticky;
+    transition: .5s;
     top: -125px;
     z-index: 4;
     background-color: map-get( $brands-primary , "secondary-white" );

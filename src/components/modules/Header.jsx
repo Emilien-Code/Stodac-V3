@@ -11,9 +11,7 @@ const Header = (props)=>{
     let navigate = useNavigate();
 
     const isMenuOpen = useSelector(state => state.modals.menu)
-
     const dispatch = useDispatch();
-    
     const openCart = ()=>{
         dispatch(setCart(true))
     }
@@ -24,6 +22,24 @@ const Header = (props)=>{
         navigate(`/se-connecter`);
     }
 
+
+    React.useEffect(()=>{
+         
+        let lastScroll = 0
+        let currentScroll = 0
+        document.addEventListener("scroll", ()=>{
+            currentScroll = window.scrollY;
+            
+            if(lastScroll > currentScroll && currentScroll ){
+                document.querySelector("header").style.top = "0px";
+            }else{
+                document.querySelector("header").style.top = "-125px";
+            }
+            
+            lastScroll = currentScroll
+
+        })
+    },[])
     return (
         <header>
             <nav>
