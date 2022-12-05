@@ -305,7 +305,7 @@ const Commandes = () => {
                                 </p>
                             </div>
                             <div className="line">
-                                <p>Adresse de livraison</p>
+                                <p>Adresse de facturation</p>
                                 <p>
                                     {commande.comande.facture.streetNumber} {" "}
                                     {commande.comande.facture.street} {", "}
