@@ -22,7 +22,12 @@ const Conexion = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const pushTo = useParams().pushTo
-    
+
+    React.useEffect(()=>{
+        if(isLogedin || isCreated){
+            navigate("/mon-espace")
+        }
+    })
     const validatedFields = () => {
         if (!isLogin) {
           return regex.mailValidation(email) && firstName !== "" && lastName !== "" && regex.passwordValidation(password) && password===confirmPassword && regex.phoneValidation(mobile)
@@ -68,7 +73,8 @@ const Conexion = () => {
                     }else{
                         navigate(`/${pushTo}`)
                     }
-
+                }else{
+                    navigate(`/mon-espace`)
                 }
             })
             .catch(err => console.log(err))
