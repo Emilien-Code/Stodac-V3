@@ -8,6 +8,11 @@ input:not([type="checkbox"]){
     width: 100%;
     border: 1px solid map-get($brands-primary,"black");
 }
+input:disabled{
+    color: map-get($brands-primary,"dark-grey");
+    border: solid 1px map-get($brands-primary,"dark-grey");
+
+}
 input[type="checkbox"]{
     appearance: none;
     width: 24px;

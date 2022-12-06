@@ -13,6 +13,8 @@ const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput
                 return <input className={className} defaultValue={defaultValue} type="text" onChange={addWord} placeholder={placeHolder}/>
             }
             return <input className={className} type="text" onChange={addWord} placeholder={placeHolder}/>
+        case 'locked-text': 
+            return <input className={className} defaultValue={defaultValue} type="text" disabled onChange={addWord} placeholder={placeHolder}/>
         case 'number':
             return <input className={className} type="number" onChange={addWord} placeholder={placeHolder}/>
         case 'password':
