@@ -38,6 +38,7 @@ import { SwitchTransition, Transition, CSSTransition } from "react-transition-gr
 import "./assets/styles/components/modules/layout.scss"
 import { useLocation , Outlet, Navigate } from "react-router-dom";
 import { setCart, setMenu } from "./assets/scripts/store/redux-slices/modals";
+import MonEspace from './pages/mon-espace';
 
 const PageLayout = ({ children }) => children
 
@@ -191,10 +192,10 @@ root.render(
               element={<Boutique/>}
             />
               <Route
-                path="/mes-commandes/"
+                path="/mon-espace/"
                 element={
-                  <ProtectedRoute pushTo="mes-commandes">
-                    <MesCommandes/>
+                  <ProtectedRoute pushTo="mon-espace">
+                    <MonEspace/>
                   </ProtectedRoute>
                 }
               />

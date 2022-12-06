@@ -35,8 +35,6 @@ const MesCommandes = ()=>{
     }, [])
 
     return <div className="mes-commandes">
-        <h1>Mes Commandes</h1>
-
         {
         authentication.connected && <>
         {

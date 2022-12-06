@@ -1,0 +1,85 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.mon-espace{
+    header  {
+        position: static;
+        padding: 0 5%;
+        margin: 116px 0;
+        background-color: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include mq("tablet", max){
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            margin: 72px 0;
+
+        }
+        .button{
+            width: fit-content;
+            padding: 12px 40px ;
+            font-size: 16px;
+            @include mq("tablet", max){
+                width: 100%;
+            }
+        }
+    }
+    h1{
+        line-height: 40px;
+        font-size: 40px;
+        @include mq("tablet", max){
+            font-size: 24px;
+            margin-bottom: 22px;
+        }
+
+    }
+    nav{
+        padding: 0 5%;
+        .thin-button{
+            margin-right: 72px;
+            margin-bottom: 20px;
+        }
+
+        &:after{
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: map-get($brands-primary , "grey" );
+            margin-bottom: 194px;
+            @include mq("tablet", max){
+                margin-bottom: 72px;
+            }
+        }
+    } 
+    .mon-compte{
+        padding: 0 5%;
+        width: 100%;
+        max-width: 720px;
+        h1{
+            margin-bottom: 32px;
+            font-style: italic;
+            font-family: "Roboto Regular", Arial, Helvetica, sans-serif;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 12px;
+            button{
+                position: absolute;
+                transform: translateX(100%);
+                right: -32px;
+                font-size: 16px;
+                text-decoration: underline;
+            }
+        }
+        .grey,.green{
+            margin-top: 40px;
+            margin-bottom: 160px;
+            width: fit-content;
+            padding: 12px 40px ;
+            font-size: 16px;
+        }
+    }
+}
