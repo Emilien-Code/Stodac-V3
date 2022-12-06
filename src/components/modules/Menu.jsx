@@ -106,7 +106,7 @@ const Menu = ()=>{
                     <Link className="nav-link" to={`/boutique`}>Boutique</Link>
                 </li>
                 <li>
-                    <Link  className="nav-link" to={`/mes-commandes`}>Mes commandes</Link>
+                    <Link  className="nav-link" to={`/mon-espace`}>Mon espace</Link>
                 </li>
                 <li>
                     <Link  className="nav-link" to={`/assistance`}>Assistance</Link>
