@@ -10,7 +10,7 @@ const PntRelais = () => {
              console.log('script chargé')
              callColissimo()
         })
-
+        
     }, [])
 
     const callColissimo = ()=>{
@@ -21,7 +21,7 @@ const PntRelais = () => {
                 "ceLang" : "fr",
                 "URLColissimo": " https://ws.colissimo.fr",
                 "ceCountryList": "FR",
-                "callBackFrame": "noCallBack",
+                "callBackFrame": "callBackFrame",
                 "ceCountry": "FR",
                 "dyPreparationTime": 1,
             "token": response.token,
