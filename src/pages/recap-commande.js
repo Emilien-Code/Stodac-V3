@@ -54,10 +54,12 @@ const Recap = ()=>{
         setAdress( ()=> {
 
             if (cart.deliveryMode==="Point Relais"){
+                console.log(document.getElementById("pudoWidgetAddress1").value)
                 return{
-                    adress: document.getElementById("pudoWidgetAddress1").value,
+                    adresse: document.getElementById("pudoWidgetAddress1").value,
                     city: document.getElementById("pudoWidgetTown").value,
-                    postCode: document.getElementById("pudoWidgetZipCode").value
+                    postCode: document.getElementById("pudoWidgetZipCode").value,
+                    complement: ""
                 }
             }
             if(cart.deliveryMode==="Domicile"){
