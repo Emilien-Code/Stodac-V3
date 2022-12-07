@@ -58,8 +58,8 @@ const MonEspace = ()=>{
                     tel: mobile==="" ? user.data.mobile : mobile,
                     street: street==="" ? user.data.street : street ,
                     city: city==="" ? user.data.city : city ,
-                    streetNumber: parseInt(streetNumber==="" ? user.data.streetNumber : streetNumber) ,
-                    postCode: parseInt(postCode==="" ? user.data.postCode : postCode) ,
+                    streetNumber: streetNumber==="" ? user.data.streetNumber : streetNumber ,
+                    postCode: postCode==="" ? user.data.postCode : postCode ,
                     entreprise: user.data.entreprise,
                     complement: complement==="" ? user.data.complement : complement,
                 })  
@@ -95,7 +95,7 @@ const MonEspace = ()=>{
 
     return <main className="mon-espace">
         <header>
-            <h1>Bienvenu(e) {user.data.firstNames}</h1>
+            <h1>Bienvenu(e) {user.data.firstName}</h1>
             <Button color="black" type="text" content="Déconexion" callBack={logout}/>
         </header>
         <nav>
