@@ -1,5 +1,5 @@
 import React from "react";
-
+import $ from 'jquery'
 const PntRelais = () => {
     React.useEffect(()=>{
         const script = document.createElement("script");
@@ -10,10 +10,9 @@ const PntRelais = () => {
              console.log('script chargé')
              callColissimo()
         })
-        
     }, [])
 
-    const callColissimo = ()=>{
+    function callColissimo  (){
         fetch('https://stodac.fr/api/utils/token')
         .then((response) => response.json())
         .then((response) => {
@@ -21,17 +20,15 @@ const PntRelais = () => {
                 "ceLang" : "fr",
                 "URLColissimo": " https://ws.colissimo.fr",
                 "ceCountryList": "FR",
-                "callBackFrame": "callBackFrame",
+                "callBackFrame": "test",
                 "ceCountry": "FR",
                 "dyPreparationTime": 1,
             "token": response.token,
           })
-        }).catch(()=>{
+        }).catch(err=>{
+            console.log(err)
         })
 
-      }
-      const test=(e)=>{
-            console.log(e.target.value)
       }
 
 

@@ -145,7 +145,9 @@ const Payement = ({type, saveFacture}) => {
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>
                 <p>Point relais</p>
                 <div className="pnt-relais-container">
-                    <PntRelais/>
+                    {
+                    nomdiv==="modePointRelais" ? <PntRelais/> : "invisible"
+                    }
                 </div>
 
             </div>
