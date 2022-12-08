@@ -68,13 +68,30 @@ const Boutique = ()=>{
 
     
     React.useEffect(()=>{
-        load((currentPage-1) * 20);
+        if(searchedCategorie || searchedManufacturer){
+            fetch(`https://stodac.fr/api/stuff/getBy/`,{
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: searchedCategorie,
+                    manufacturer:searchedManufacturer
+                })
+            })
+            .then(response => response.json())
+            .then(data => setArticles(data))
+        }else{
 
-        fetch('https://stodac.fr/api/stuff/count/')
-        .then(response => response.json())
-        .then( data => setNbPages(data.nb / 20))
-        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
-
+            load((currentPage-1) * 20);
+            
+        }
+            fetch('https://stodac.fr/api/stuff/count/')
+            .then(response => response.json())
+            .then( data => setNbPages(data.nb / 20))
+            .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+            
     }, [])
 
     
@@ -95,7 +112,7 @@ const Boutique = ()=>{
         </section>
 
         <section className="load">
-            <Button type="page-select" color="" value={currentPage} callBack={nextPage} maxValue={nbPages}  />
+            <Button type="page-select" color="" value={currentPage} callBack={nextPage} maxValue={nbPages}/> 
         </section>
 
         </main>
