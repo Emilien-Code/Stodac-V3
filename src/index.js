@@ -34,7 +34,7 @@ import { setData, setDisconnect } from "./assets/scripts/store/redux-slices/auth
 
 //LayoutComponent
 import gsap from "gsap";
-import { SwitchTransition, Transition, CSSTransition } from "react-transition-group";
+import { SwitchTransition, Transition } from "react-transition-group";
 import "./assets/styles/components/modules/layout.scss"
 import { useLocation , Outlet, Navigate } from "react-router-dom";
 import { setCart, setMenu } from "./assets/scripts/store/redux-slices/modals";
@@ -50,7 +50,7 @@ const AnimationLayout = ()=>{
   let location = useLocation()
   
   React.useEffect(() => {
-  
+
     dispatch(setCart(false))
     dispatch(setMenu(false))
     window.scrollTo(0, 0);
@@ -107,10 +107,11 @@ const AnimationLayout = ()=>{
             })
           }}
           onExit={() => {
- 
-            $body.style.overflow = 'hidden';
-            $body.style.position = 'fixed';
-            $body.style.width = '100%';
+            setTimeout(()=>{
+              $body.style.overflow = 'hidden';
+              $body.style.position = 'fixed';
+              $body.style.width = '100%';
+            },500)
             document.querySelector(".transition-page").style.display = "flex";
             document.querySelector(".transition-bg").style.display = "block";
             
