@@ -26,7 +26,6 @@ const Cart = ()=>{
         if(cartIsOpen){
             $body.style.overflow = 'hidden';
             $body.style.position = 'fixed';
-            // $body.style.top = `-${scrollPosition}px`;
             $body.style.width = '100%';
         }else{
             $body.style.overflow = 'hidden auto';
