@@ -95,7 +95,7 @@ const Conexion = () => {
                 password: password,
                 firstName: firstName,
                 lastName: lastName,
-                mobile: 33 + mobile,
+                mobile: mobile,
             })
             }).then(function () {
                 console.log('ok')
