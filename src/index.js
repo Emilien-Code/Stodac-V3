@@ -57,6 +57,7 @@ const AnimationLayout = ()=>{
 
   }, [location]);
 
+  const $body = document.querySelector("body")
 
         
 
@@ -72,6 +73,10 @@ const AnimationLayout = ()=>{
           unmountOnExit
           timeout={1000}
           onEnter={() => {
+            $body.style.overflow = 'hidden auto';
+            $body.style.removeProperty('position');
+            $body.style.removeProperty('top');
+            $body.style.removeProperty('width');
             let tl = gsap.timeline({
               onComplete: () => {
                 setTimeout(()=>{
@@ -102,6 +107,10 @@ const AnimationLayout = ()=>{
             })
           }}
           onExit={() => {
+ 
+            $body.style.overflow = 'hidden';
+            $body.style.position = 'fixed';
+            $body.style.width = '100%';
             document.querySelector(".transition-page").style.display = "flex";
             document.querySelector(".transition-bg").style.display = "block";
             
