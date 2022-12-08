@@ -1,5 +1,4 @@
 import React from "react";
-import $ from 'jquery'
 const PntRelais = () => {
     React.useEffect(()=>{
         const script = document.createElement("script");
