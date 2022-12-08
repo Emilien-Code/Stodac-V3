@@ -1,7 +1,7 @@
 import React from "react";
 import "../../assets/styles/components/atoms/input.scss";
 import Icon from "./Icon";
-const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput", selectValues=[]})=>{
+const Input = ({type, placeHolder, defaultValue, callBack, handleKeyDown, className="ClassInput", selectValues=[]})=>{
 
     const addWord = (e)=>{
         callBack(e.target.value)
@@ -12,13 +12,13 @@ const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput
             if(defaultValue){
                 return <input className={className} defaultValue={defaultValue} type="text" onChange={addWord} placeholder={placeHolder}/>
             }
-            return <input className={className} type="text" onChange={addWord} placeholder={placeHolder}/>
+            return <input className={className} type="text" onChange={addWord} onKeyDown={handleKeyDown} placeholder={placeHolder}/>
         case 'locked-text': 
             return <input className={className} defaultValue={defaultValue} type="text" disabled onChange={addWord} placeholder={placeHolder}/>
         case 'number':
             return <input className={className} type="number" onChange={addWord} placeholder={placeHolder}/>
         case 'password':
-            return <input className={className} type="password" onChange={addWord} placeholder={placeHolder}/>
+            return <input className={className} type="password" onKeyDown={handleKeyDown} onChange={addWord} placeholder={placeHolder}/>
         case "checkbox": 
             return <input type="checkbox" onChange={addWord}/>
         case "select": 

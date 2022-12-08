@@ -107,7 +107,14 @@ const Conexion = () => {
     
     
     }
-
+    const handleKeyDown = event => {
+        if(event.key==="Enter"){
+            if(isLogin) 
+                login()
+            else
+                createAccount()
+        }
+      };
     const logout = ()=>{
         dispatch(setDisconnect())
     }
@@ -135,7 +142,12 @@ const Conexion = () => {
                     )
                 }
                     <div className="row">
-                        <Input callBack={setPassword} type="password" placeHolder="Mot de passe" />
+                        {
+                            isLogin ? 
+                                <Input callBack={setPassword} type="password" handleKeyDown={handleKeyDown} placeHolder="Mot de passe" />
+                                :
+                                <Input callBack={setPassword} type="password" placeHolder="Mot de passe" />
+                        }
                         <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
                     </div>
 
@@ -147,7 +159,13 @@ const Conexion = () => {
                                 <div className={`validator ${password===confirmPassword&&confirmPassword!=="" ? "green" : "red"}`}></div>   
                             </div>
                             <div className="row">
-                                <Input type="text" callBack={setMobile} placeHolder="Numéro de téléphone" />
+                                {
+                                    isLogin ? 
+                                    <Input type="text" callBack={setMobile} placeHolder="Numéro de téléphone" />
+                                    :
+                                    <Input type="text" callBack={setMobile} handleKeyDown={handleKeyDown} placeHolder="Numéro de téléphone" />
+
+                                }
                                 <div className={`validator ${regex.phoneValidation(mobile) ? "green" : "red"}`}></div>   
                             </div>
                         </>
