@@ -42,8 +42,15 @@ const Recap = ()=>{
     }, [])
 
     const push = ()=>{
-        let arePointRelaisDatas =   document.getElementById("pudoWidgetAddress1").value !== "" && document.getElementById("pudoWidgetTown").value !== "" && document.getElementById("pudoWidgetZipCode").value !== ""
-        let areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== "" && document.querySelector(".complement").value !== ""
+        let arePointRelaisDatas;
+        let areDomicileData;
+        
+        if(cart.deliveryMode === "Point Relais"){
+            arePointRelaisDatas = document.getElementById("pudoWidgetAddress1").value !== "" && document.getElementById("pudoWidgetTown").value !== "" && document.getElementById("pudoWidgetZipCode").value !== ""
+        }
+        if(cart.deliveryMode==="Domicile"){
+            areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== "" && document.querySelector(".complement").value !== ""
+        }
         
         
         if(areCGVAccepted && (arePointRelaisDatas || areDomicileData || cart.deliveryMode === "Sur Place")){
