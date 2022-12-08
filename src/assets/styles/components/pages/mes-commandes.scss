@@ -4,6 +4,10 @@
 .mes-commandes{
     padding: 0 5%;
     width: 100%;
+    margin-bottom: 194px;
+    @include mq("tablet", max){
+        margin-bottom: 72px;
+    }
     h1{
 
         margin: 160px 0 152px 0;
