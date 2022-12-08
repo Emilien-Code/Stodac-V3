@@ -51,7 +51,7 @@ $fonts-sizes-desktop:(
 );
 
 $fonts-sizes-mobile:(
-  "h1": 48px,
+  "h1": 44px,
   "h1-line": 48px,
 
   "h2" : 40px,
@@ -67,5 +67,14 @@ $fonts-sizes-mobile:(
   "login-title-line": 32px,
 
   "menu": 16px,
-  "menu-line": 20px
+  "menu-line": 20px,
+
+
+
+
+  "h2-conditions" : 32px,
+  "h3-conditions" : 24px,
+
+  "p-condition-line": 32px,
+
 );
