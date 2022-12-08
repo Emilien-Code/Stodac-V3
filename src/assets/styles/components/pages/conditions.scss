@@ -39,5 +39,10 @@
     }
     article     {
         margin-bottom: 64px ;
+        a{
+            background-color: map-get($brands-primary , "green" );
+            padding: 2px 8px;
+            border-radius: 16px;
+        }
     }
 }

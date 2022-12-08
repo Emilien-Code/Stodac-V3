@@ -3,13 +3,14 @@ import Search from "../modules/filters/search";
 import Input from "../atoms/input";
 import "../../assets/styles/components/sections/filters.scss"
 import { setManufacter, setCategory } from "../../assets/scripts/store/redux-slices/filters";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Filters = ()=>{
     const dispatch = useDispatch()
     const [manufacturers, setManufacters] = React.useState([]);
     const [categories, setCategories] = React.useState([]);
-
+    const filters = useSelector((state) => state.filters)
+    console.log(filters)
     React.useEffect(()=>{
         
         fetch(`https://stodac.fr/api/stuff/manufacturer`)
@@ -26,13 +27,12 @@ const Filters = ()=>{
 
 
 
-
     return (
     <div className="filters">
         <Search/>
         <div className="selects">
-            <Input type="select" defaultValue={"Marques"} selectValues={manufacturers} callBack={(e)=>{dispatch(setManufacter(e))}}/>
-            <Input type="select" defaultValue={"Categories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
+            <Input type="select" defaultValue={filters.manufactor ? filters.manufactor : "Marques"} selectValues={manufacturers} callBack={(e)=>{dispatch(setManufacter(e))}}/>
+            <Input type="select" defaultValue={filters.category ? filters.category : "Categories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
         </div>
     </div>
     )
