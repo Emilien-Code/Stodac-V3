@@ -72,6 +72,11 @@
                 right: -32px;
                 font-size: 16px;
                 text-decoration: underline;
+                @include mq("tablet", max){
+                    transform: translateX(0);
+                    right: 32px;
+                    
+                }
             }
         }
         .grey,.green{
