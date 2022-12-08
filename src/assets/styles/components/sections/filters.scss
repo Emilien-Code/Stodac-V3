@@ -20,23 +20,29 @@
         display: flex;
         right: 5%;
         select  {
-            margin-left: 16px;
-            background-color: map-get($brands-primary, "secondary-white");
-
             @include mq("filter-critic", max){
                 width: 100%;
                 margin: 0;
-                margin-bottom: 8px;
             }
         }
         
         @include mq("filter-critic", max){
+
             position: relative;
             flex-direction: column;
             width: 90%;
             margin: 0;
             top: 51px;
             left: 5%;
+
         }
     }
+}
+
+.select-container{
+    margin-bottom: 8px;
+    @include mq("filter-critic", min){
+        margin-left: 16px;
+    }
+
 }

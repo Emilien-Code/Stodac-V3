@@ -26,7 +26,12 @@ input[type="checkbox"]{
 }
 .select-container{
     position: relative;
-    svg{
+    background-color: map-get($brands-primary, "secondary-white");
+
+    border-radius: 24px;
+
+    label{
+        z-index: 1;
         position: absolute;
         right: 11px;
     }
@@ -34,6 +39,7 @@ input[type="checkbox"]{
 select{
     border: solid map-get($brands-primary,"black") 1px;
     color: map-get($brands-primary,"black");
+    background-color: transparent;
     -moz-appearance:none; 
     -webkit-appearance:none;
     appearance:none;
@@ -41,4 +47,6 @@ select{
     width: 280px;
     padding: 12px 24px;
     border-radius: 24px;
+    position: relative;
+    z-index: 2;
 }

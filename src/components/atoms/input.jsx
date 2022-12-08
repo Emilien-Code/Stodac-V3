@@ -23,8 +23,10 @@ const Input = ({type, placeHolder, defaultValue, callBack, className="ClassInput
             return <input type="checkbox" onChange={addWord}/>
         case "select": 
             return <div className="select-container">
-                <Icon type="downarrow"/>
-                <select onChange={(e)=>{ callBack(e.target.value) }}>
+                <label htmlFor={defaultValue}>
+                    <Icon type="downarrow"/>
+                </label>
+                <select onChange={(e)=>{ callBack(e.target.value) }} id={defaultValue}>
                 {defaultValue === "Marques" || defaultValue === "Categories" ? <option value={""} selected>{defaultValue}</option> : ""}
                 {
                     selectValues.map((value)=> {
