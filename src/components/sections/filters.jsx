@@ -31,8 +31,8 @@ const Filters = ()=>{
     <div className="filters">
         <Search/>
         <div className="selects">
-            <Input type="select" defaultValue={filters.manufactor ? filters.manufactor : "Marques"} selectValues={manufacturers} callBack={(e)=>{dispatch(setManufacter(e))}}/>
-            <Input type="select" defaultValue={filters.category ? filters.category : "Categories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
+            <Input type="select" selectType="Marques" defaultValue={filters.manufactor ? filters.manufactor : "Marques"} selectValues={manufacturers} callBack={(e)=>{dispatch(setManufacter(e))}}/>
+            <Input type="select" selectType="Categories" defaultValue={filters.category ? filters.category : "Categories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
         </div>
     </div>
     )

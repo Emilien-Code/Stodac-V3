@@ -1,7 +1,7 @@
 import React from "react";
 import "../../assets/styles/components/atoms/input.scss";
 import Icon from "./Icon";
-const Input = ({type, placeHolder, defaultValue, callBack, handleKeyDown, className="ClassInput", selectValues=[]})=>{
+const Input = ({type, placeHolder, defaultValue, callBack, handleKeyDown,selectType, className="ClassInput", selectValues=[]})=>{
 
     const addWord = (e)=>{
         callBack(e.target.value)
@@ -27,13 +27,13 @@ const Input = ({type, placeHolder, defaultValue, callBack, handleKeyDown, classN
                     <Icon type="downarrow"/>
                 </label>
                 <select onChange={(e)=>{ callBack(e.target.value) }} id={defaultValue}>
-                {defaultValue === "Marques" || defaultValue === "Categories" ? <option value={""} selected>{defaultValue}</option> : ""}
+                    {selectType ? <option value={""}>{selectType}</option> : ""}
                 {
                     selectValues.map((value)=> {
                         if(value === defaultValue){
                             return <option selected key={value} value={value}>{value}</option>
                         }
-                        return <option value={value} key={value}>{value}</option>
+                        return value !== "" ? <option value={value} key={value}>{value}</option> : ""
                     })
                 }
                 </select>
