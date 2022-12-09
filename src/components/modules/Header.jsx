@@ -32,8 +32,10 @@ const Header = (props)=>{
             
             if(lastScroll > currentScroll && currentScroll ){
                 document.querySelector("header").style.top = "0px";
+                document.querySelector(".count").style.top = `62.5px`;
             }else{
                 document.querySelector("header").style.top = "-125px";
+                document.querySelector(".count").style.top = `-62.5px`;
             }
             
             lastScroll = currentScroll
