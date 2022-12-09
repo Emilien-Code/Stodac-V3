@@ -27,7 +27,7 @@ const Conexion = () => {
         if(isLogedin || isCreated){
             navigate("/mon-espace")
         }
-    })
+    },[])
     const validatedFields = () => {
         if (!isLogin) {
           return regex.mailValidation(email) && firstName !== "" && lastName !== "" && regex.passwordValidation(password) && password===confirmPassword && regex.phoneValidation(mobile)
