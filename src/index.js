@@ -50,7 +50,7 @@ const AnimationLayout = ()=>{
   let location = useLocation()
   
   React.useEffect(() => {
-    console.log()
+
     dispatch(setCart(false))
     dispatch(setMenu(false))
     window.scrollTo(0, 0);
