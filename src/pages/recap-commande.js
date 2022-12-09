@@ -157,7 +157,7 @@ const Recap = ()=>{
             <div className="conditions-vente">
                 <Input type="checkbox" callBack={toggleCGV}/> <a href="/conditions-generales-de-vente" target="_blank">J’accepte les conditions générales de vente</a>
             </div>
-            <Button type="text" content="Commander" color="green" callBack={push}/>
+            <Button type="text" content="Commander" isDisabled={!areCGVAccepted} color="green" callBack={push}/>
         </div>
     </div>
 }

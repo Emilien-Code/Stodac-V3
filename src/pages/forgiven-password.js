@@ -22,42 +22,48 @@ const ForgivenPassword = () => {
     },[])
 
     const sendMail = () => {
-        fetch("https://stodac.fr/api/utils/requestResetPswd", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({email: email})
-        })
-        .then(res => {
-            if(res.ok){
-                setResponse("succes")
-            }
-        })
-        .catch(setResponse("err"))
+        if(email){
+
+            fetch("https://stodac.fr/api/utils/requestResetPswd", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email: email})
+            })
+            .then(res => {
+                if(res.ok){
+                    setResponse("succes")
+                }
+            })
+            .catch(setResponse("err"))
+        }
     }
 
     const changepswd = () => {
-        if(regex.passwordValidation(password) && password === confirmpassword)
+        if(password && confirmpassword){
 
-        fetch("https://stodac.fr/api/utils/ResetPswd", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                token: token,
-                password: password
+            if(regex.passwordValidation(password) && password === confirmpassword)
+            
+            fetch("https://stodac.fr/api/utils/ResetPswd", {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    token: token,
+                    password: password
+                })
             })
-        })
-        .then(res => {
-            if(res.ok){
-                setResponse("succes")
-            }
-        })
-        .catch(setResponse("err"))
+            .then(res => {
+                if(res.ok){
+                    setResponse("succes")
+                }
+            })
+            .catch(setResponse("err"))
+        }
     }
 
 
@@ -72,7 +78,7 @@ const ForgivenPassword = () => {
                     :   <>
                         <h1>Réinitialisation de votre mot de passe</h1>
                         <Input type="text" callBack={setEmail} placeHolder="Adresse email"/>
-                        <Button type="text" color="green" content="Réinitialiser le mot de passe" callBack={sendMail}/>
+                        <Button type="text" color="green" content="Réinitialiser le mot de passe" isDisabled={!email} callBack={sendMail}/>
                     </>
                 ):(
                     response ? 
