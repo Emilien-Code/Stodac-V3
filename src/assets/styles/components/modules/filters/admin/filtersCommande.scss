@@ -1,7 +1,20 @@
 @import "../../../../utils/variables.scss";
 @import "../../../../utils/mixins.scss";
 .admin-filters{
-
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button{
+            padding: 0;
+            width: fit-content;
+            border: none;
+            svg{
+                width: 48px;
+                height: 48px;
+            }
+        }
+    }
     form{
         padding: 10px;
         display: flex;
@@ -22,7 +35,7 @@
         overflow-y: scroll;
     background-color: map-get($brands-primary , "secondary-white");
     &.sidebar{
-        width: 300px;
+        width: 350px;
     }
     h4 {
         padding-left: 10px;
@@ -35,7 +48,17 @@
         position: relative;
         left: 0;
         width: calc(100% - 48px);
-        margin: 32px 24px;
+        margin: 32px 24px 8px;
+    }
+    .select-container{
+        width: calc(100% - 48px);
+        margin: 8px 24px;
+        select{
+            width: 100%;
+        }
+        &:last-of-type{
+            margin-bottom: 32px;
+        }
     }
     h4{
         padding-left: 24px;
