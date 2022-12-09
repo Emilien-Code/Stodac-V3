@@ -2,7 +2,7 @@
 @import "../../utils/mixins.scss";
 .menu{
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     width: 100vw;
     height: calc(100vh - 125px);
     padding: 5%;
