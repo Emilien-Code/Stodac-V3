@@ -4,15 +4,17 @@
 
 .row{
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: relative;
+    max-width: 380px;
+    margin: auto;
     input{
         width: 100%;
     }
     .validator{
-        position: relative;
-        right: 32px;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 16px;
         height:  16px;
         border-radius: 50%;
@@ -58,9 +60,7 @@
         }
     }
     button.black, button.green{
-        @include mq("tablet", min){
-            width: 380px
-        }
+        max-width: 380px;
     }
     a{
         display: block;
