@@ -18,3 +18,23 @@
         background-color: map-get($brands-primary, "red");
     }
 }
+.error-popup{
+    opacity: 0;
+    position: absolute;
+    display: block;
+    top: 189px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: map-get($brands-primary, "bubble-grey");
+    padding: 24px 32px;
+    border-radius: 80px;
+    font-size: 16px;
+    z-index: 10;
+    @include mq("tablet", max){
+        padding: 16px 24px;
+        width: 50%;
+        min-width: 335px;
+        font-size: 12px;
+    }
+
+}

@@ -26,14 +26,11 @@
         
     }
 }
-.nom-prenom{
-    width: calc(100% - 16px);
-}
 
 
 .login{
     width: 700px;
-    margin: 64px auto;
+    margin: 128px auto 64px auto;
     text-align: center;
     padding: 0px 100px;
     border-radius: 74px;
@@ -81,6 +78,9 @@
         }
         
         .nom-prenom{
+            width: 100%;
+            max-width: 380px;
+            margin: auto;
             input{
                 width: 47.5%;
             }

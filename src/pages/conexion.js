@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setConnected, setDisconnect, setData } from "../assets/scripts/store/redux-slices/authentication";
 import regex from "../assets/scripts/utils/regex";
 import { Link, useParams, useNavigate } from "react-router-dom"
+import Bubble from "../components/atoms/Bubbles";
+
 
 
 const Conexion = () => {
@@ -22,6 +24,7 @@ const Conexion = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const pushTo = useParams().pushTo
+    const [error,setError] = React.useState("")
 
     React.useEffect(()=>{
         if(isLogedin || isCreated){
@@ -35,6 +38,12 @@ const Conexion = () => {
           return regex.mailValidation(email) && regex.passwordValidation(confirmPassword)
         }
     }
+
+    React.useEffect(()=>{
+        setTimeout(()=>{
+            setError("")
+        },6000)
+    },[error])
 
     const login = ()=>{
         fetch('https://stodac.fr/api/user/login/mail', {
@@ -51,7 +60,7 @@ const Conexion = () => {
         .then(response => {
             if(response.ok)
                 return response.json();
-            console.log("mot de passe ou email incorrecte")
+            setError("Adresse email ou mot de passe invalide.")
         })
         .then(data => {
             dispatch(setConnected(data))
@@ -77,7 +86,7 @@ const Conexion = () => {
                     navigate(`/mon-espace`)
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err=> console.log(err))
         })
         .catch(err => console.log("error when loging in", err))
     }
@@ -97,11 +106,14 @@ const Conexion = () => {
                 lastName: lastName,
                 mobile: mobile,
             })
-            }).then(function () {
-                console.log('ok')
-                setIsCreated(true)
+            }).then(function (res) {
+                console.log(res)
+                if(res.ok)
+                    setIsCreated(true)
+                else
+                    setError("Adresse email déjà utilisée.")
             }).catch(function (error) {
-              console.log(error);
+                console.log(error)
             });
         }
     
@@ -127,6 +139,10 @@ const Conexion = () => {
 
         
             return <section className={`login ${isLogin ? " " : "create"}`}>
+                {
+                    error && <Bubble type="error" text={error}/>
+
+                }
                 <h1>{isLogin ? "Conexion" : "Créer un compte"}</h1>
                 <div className="row">
                     <Input callBack={setEmail} type="text" placeHolder="Adresse Mail" />
