@@ -7,7 +7,7 @@ import "../../../assets/styles/components/modules/filters/search.scss"
 import { useDispatch } from "react-redux";
 import { setSearched } from "../../../assets/scripts/store/redux-slices/filters";
 
-const Search = ({isBlock})=>{
+const Search = ({isBlock, isPreview})=>{
     const [articles, setArticles] = React.useState([])
     const [isOpen, setIsOpen] = React.useState(false) 
     const [fl, setFl] = React.useState("") 
@@ -34,10 +34,10 @@ const Search = ({isBlock})=>{
     return (
             <>
                 <div className={`search ${isBlock ? "block" : ""}`}>
-                    <Input type="text" placeHolder='Rechercher' callBack={search}/>
+                    <Input type="text" placeHolder='Rechercher' handleKeyDown={push} callBack={search} />
                     <Icon type="search"/>
                     {
-                        articles.length > 0 ? 
+                        articles.length && isPreview > 0 ? 
                         <>
                             <div className="articles">
                         

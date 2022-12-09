@@ -3,6 +3,7 @@
 .commandes{
     select{
         background-color: transparent;
+        width: 100%;
     }
     display: flex;
     h1{
@@ -180,7 +181,6 @@
          
             display: flex;
             justify-content: space-between;
-            select,
             input{
                 width: calc(50% - 80px);
             }

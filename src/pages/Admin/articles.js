@@ -2,10 +2,8 @@ import React from "react";
 import Filters from "../../components/modules/filters/Admin/sidebar";
 import "../../assets/styles/components/pages/admin/commandes.scss"
 import { useSelector, useDispatch } from "react-redux";
-import formatNumber from "../../assets/scripts/utils/priceNormalisation";
 import Icon from "../../components/atoms/Icon";
 import Modale from "../../components/modules/formulars/Modale"
-import { useParams } from "react-router-dom";
 import Input from "../../components/atoms/input";
 import Button from "../../components/atoms/Button";
 const Articles = () => {
@@ -17,6 +15,9 @@ const Articles = () => {
     const [showModale, setShowModale] = React.useState(false);
     const [selectedArticle,setSelectedArticle] = React.useState([]);
     const [file, setFile] = React.useState();
+    const searchedWord = useSelector((state) => state.filters.searched);
+    const searchedCategorie = useSelector((state) => state.filters.category);
+    const searchedManufacturer = useSelector((state) => state.filters.manufactor);
 
     const createStuff = (fd)=>{
         fetch(`https://stodac.fr/api/stuff/`, {
@@ -30,6 +31,36 @@ const Articles = () => {
         .then(data => console.log(data))
         .catch(err => console.log(err))
     }
+    React.useEffect(()=>{
+        if(searchedCategorie || searchedManufacturer){
+            fetch(`https://stodac.fr/api/stuff/getBy/`,{
+                method: 'POST',
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    category: searchedCategorie,
+                    manufacturer:searchedManufacturer
+                })
+            })
+            .then(response => response.json())
+            .then(data => setArticles(data))
+        }else{
+            fetch(`https://stodac.fr/api/stuff/all/2000/0`)
+            .then(response => response.json())
+            .then( data => setArticles(data))
+            .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+        }
+    },[searchedCategorie, searchedManufacturer])
+    React.useEffect(()=>{
+        if(searchedWord){
+            fetch(`https://stodac.fr/api/stuff/name/${searchedWord}/4`)
+            .then(response => response.json())
+            .then(data => setArticles(data))
+        }
+    },[searchedWord])
+
 
     const removeArticle = ()=>{
         fetch(`https://stodac.fr/api/stuff/${selectedArticle._id}`,{
@@ -104,10 +135,24 @@ const Articles = () => {
         })
 
     }
-
+    const more = ()=>{
+        setSelectedArticle({
+            img: "img",
+            name: "nom",
+            manufacturer: "Marques",
+            qty: "0",
+            price: "0",
+            poids: "0",
+            reference:"#REF",
+            category:"Categories",
+            state:"Neuf",
+            description:"Description",
+            compatibility:"Compatibilité1, Compatibilité2, ... "
+        })
+    }
 
     return <div className="commandes">
-            <Filters callBack={editArticle} articles={articles}/>
+            <Filters callBack={editArticle} articles={articles} more={more}/>
             {
                 showModale ? <Modale 
                                 text="Voulez vous changer l'état de la commande ?" 
@@ -125,12 +170,12 @@ const Articles = () => {
                 <Input type="text" defaultValue={selectedArticle.reference} callBack={(e)=>{selectedArticle.reference = e}}/>
                 <h3>Marque</h3>
                 <div>
-                    <Input type="select" defaultValue={selectedArticle.manufacturer} selectValues={manufacturers} callBack={(e)=>{selectedArticle.manufacturer = e}}/>
+                    <Input type="select" selectType="Marques" defaultValue={selectedArticle.manufacturer} selectValues={manufacturers} callBack={(e)=>{selectedArticle.manufacturer = e}}/>
                     <Input type="text"  callBack={(e)=>{ selectedArticle.manufacturer = e}}/>
                 </div>
                 <h3>Catégorie</h3>
                 <div>
-                    <Input type="select" defaultValue={selectedArticle.category} selectValues={categories} callBack={(e)=>{selectedArticle.category = e}}/>
+                    <Input type="select" selectType="Catégories" defaultValue={selectedArticle.category} selectValues={categories} callBack={(e)=>{selectedArticle.category = e}}/>
                     <Input type="text"  callBack={(e)=>{selectedArticle.category = e}}/>
                 </div>
                 <div>
