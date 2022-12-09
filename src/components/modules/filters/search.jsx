@@ -30,11 +30,13 @@ const Search = ({isBlock, isPreview})=>{
         setIsOpen(false)
     }
 
-
+    const enter = (e)=>{
+        if(e.key === "Enter") push()
+    }
     return (
             <>
                 <div className={`search ${isBlock ? "block" : ""}`}>
-                    <Input type="text" placeHolder='Rechercher' handleKeyDown={push} callBack={search} />
+                    <Input type="text" placeHolder='Rechercher' handleKeyDown={enter} callBack={search} />
                     <Icon type="search"/>
                     {
                         articles.length && isPreview > 0 ? 
