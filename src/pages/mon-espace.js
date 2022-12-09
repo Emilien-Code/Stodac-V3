@@ -142,7 +142,7 @@ const MonEspace = ()=>{
                     <Input type={isComplementLocked ? "locked-text" : "text"} defaultValue={user.data.complement} isLocked={true} callBack={e=>setComplement(e)} placeHolder="Complément"/>     
                     <Button type="thin" content="MODIFIER" callBack={()=>{setIsComplementLocked(false)}}/> 
                 </div>           
-                <Button type="text" color={isValid ? 'green' : 'grey'} content="Enregistrer" callBack={send}/>
+                <Button type="text" color={'green'} isDisabled={!isValid}content="Enregistrer" callBack={send}/>
             </div> : ""
             
         }

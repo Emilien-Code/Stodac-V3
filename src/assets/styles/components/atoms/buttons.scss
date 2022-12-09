@@ -28,9 +28,12 @@
         width: 100%;
         padding: 12px 0;
         border-radius: 80px;
-        &:hover {
-            span{
-                animation: rollUp 500ms ease-out forwards;
+        &:not(.disabled){
+            
+            &:hover {
+                span{
+                    animation: rollUp 500ms ease-out forwards;
+                }
             }
         }
         span{
@@ -47,7 +50,7 @@
         color: map-get($brands-primary, "white");
         
     }
-    &.grey{
+    &.disabled{
         background-color: map-get($brands-primary, "dark-grey");
     }
 }

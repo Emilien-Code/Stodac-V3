@@ -1,8 +1,9 @@
 import React from "react";
 import Icon from "../atoms/Icon"
 import "../../assets/styles/components/atoms/buttons.scss"
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
-const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
+const Button = ({content, type, color, value, callBack, maxValue, isDisabled=false}, ...props)=>{
 
 
     const nextPage = (e)=>{
@@ -27,7 +28,7 @@ const Button = ({content, type, color, value, callBack, maxValue}, ...props)=>{
         return <button onClick={exec} className={"thin-button " + type + " " + color + " "}>{content}</button>
     }
     if(type === "text"){
-        return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span></button>
+        return <button onClick={exec} className={"button " + `${isDisabled ? "disabled " : "" }` + type + " " + color + " "}><span className="span">{content}</span></button>
     }
     if(type === "selecteur"){
         return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span><Icon type="right"/></button>
