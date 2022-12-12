@@ -75,7 +75,7 @@ const MesCommandes = ()=>{
                     </div>
                     <div className="total_TTC">
                         <p>Total TTC :</p>
-                        <p>{formatNumber(commande.prix.prix_ttl_panier)} €</p>
+                        <p>{formatNumber(commande.prix.prix_ttl)} €</p>
                     </div>
                     <div className="etat">
                         <p>Status : {commande.nometat[commande.etat]}</p>
