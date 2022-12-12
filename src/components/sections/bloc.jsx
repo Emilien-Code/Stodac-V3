@@ -55,6 +55,33 @@ const Bloc = ({type, saveFacture,})=>{
                 <p className="title">{type}</p>
                 <hr/> 
                 {
+                    type==="Récapitulatif" && (
+                        <div className="bloc0">
+                        <div className="recap-commande">
+                                {
+              
+                                    cart.cart.map((el)=>{
+                                        return <div className="line">
+                                        <p>{el.name}</p>
+                                        <p>{el.quantity * el.price}€</p>
+                                    </div>
+                                    })  
+                                }
+              
+                                <div className="line fdp">
+                                    <p>Frais de ports</p>
+                                    <p>{cart.deliveryPrice}€</p>
+                                </div>
+              
+                                <div className="line">
+                                    <p>Total TTC</p>
+                                    <p>{formatNumber(cart.total + cart.deliveryPrice)}€</p>
+                                </div>
+                            </div>
+                      </div>
+                    )
+                }
+                {
                     type==="Facturation" && (<Facturation/>)
                 }
                 {

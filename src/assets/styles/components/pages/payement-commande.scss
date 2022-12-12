@@ -30,4 +30,23 @@
             }
         }
     }
+    .recap-commande{
+        margin-top: 40px;
+
+        .line  {
+            &:first-of-type, &.fdp{
+                margin-top: 32px;
+            }
+            margin: 12px 0;
+            display: flex;
+            justify-content: space-between;
+            p:first-child{
+                font-family: "Roboto bold";
+            }
+            p{
+                font-size: 20px;
+                line-height: 32px;
+            }
+        }
+    }
 }

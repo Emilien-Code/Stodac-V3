@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-
+import formatNumber from "../assets/scripts/utils/priceNormalisation";
 // SCSS
 import "../assets/styles/components/pages/payement-commande.scss"
 
@@ -152,6 +152,9 @@ const Recap = ()=>{
         </div>
         <div className="Bloc2">
             <Bloc type="Mode de livraison"/>
+        </div>
+        <div className="Bloc2">
+            <Bloc type="Récapitulatif"/>
         </div>
         <div className="confirm">
             <div className="conditions-vente">

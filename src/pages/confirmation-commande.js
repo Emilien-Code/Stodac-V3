@@ -14,7 +14,7 @@ const ConfirmationCommande = ()=>{
 
 
     React.useEffect(()=>{
-        setCommand(cart.cart)
+        setCommand(JSON.parse(JSON.stringify(cart.cart)))
         setDeliveryPrice(cart.deliveryPrice)
         setTotal(cart.total + cart.deliveryPrice)
         setIsSucces(window.location.href.includes("succes"))
