@@ -6,6 +6,21 @@ header{
     top: -125px;
     z-index: 4;
     background-color: map-get( $brands-primary , "secondary-white" );
+
+
+.button.green{
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    padding: 2px;
+    line-height: 18px;
+    border-radius: 16px;
+    text-align: center;
+    z-index: 10;
+    background-color: map-get($brands-primary,"grey");
+
+}
+
     nav{
         width: 90%;
         margin: 0 auto;

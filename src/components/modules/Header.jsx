@@ -8,6 +8,7 @@ import { Link, useNavigate} from "react-router-dom"
 
 
 const Header = (props)=>{
+    const cart = useSelector((state) => state.cart)
     let navigate = useNavigate();
 
     const isMenuOpen = useSelector(state => state.modals.menu)
@@ -32,15 +33,11 @@ const Header = (props)=>{
             
             if(lastScroll > currentScroll && currentScroll ){
                 document.querySelector("header").style.top = "0px";
-                document.querySelector(".count").style.top = `62.5px`;
             }else{
                 document.querySelector("header").style.top = "-125px";
             }
-            
-            if(lastScroll < currentScroll)
-                document.querySelector(".count").style.top = `-62.5px`;
 
-                
+
             lastScroll = currentScroll
 
         })
@@ -62,7 +59,12 @@ const Header = (props)=>{
                 </ul>
                 <ul className="buttons">
                     <li className="nav-link">
-                        <Button  type="svg" callBack={openCart} content="cart"/>
+                        {
+                            cart.quantity ?
+                            <Button  type="text" callBack={openCart} color="green" content={cart.quantity}/>
+                            :
+                            <Button  type="svg" callBack={openCart} content="cart"/>
+                         }
                     </li>
                     <li className="nav-link"  >
                         {/* <Link className="nav-link" to={`/se-conecter`}> */}

@@ -3,6 +3,7 @@
 
 .cart-wrapper{
     position: fixed;
+    top: 0!important;
     background-color: #232323E0;
     z-index: 10;
     width: 100%;
@@ -103,20 +104,4 @@
         }
     }
 
-}
-
-.count{
-    position: fixed;
-    right: calc(5% + 48px + 48px);
-    top: calc(125px / 2);
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
-    line-height: 32px;
-    border-radius: 16px;
-    text-align: center;
-    z-index: 10;
-    background-color: map-get($brands-primary,"green");
-    transition: .5s;
-    animation-delay: 0;
 }

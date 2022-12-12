@@ -205,16 +205,16 @@ const Cart = ()=>{
                 </div>
             </aside>
     </div>
-    }else{
-        return <>{
-                cart.quantity ?
+    }//else{
+    //     return <>{
+    //             cart.quantity ?
                 
-                 <div className="count">
-                    {cart.quantity}
-                 </div> 
-                 : <></>
-                }</>
-    }
+    //              <div className="count">
+    //                 {cart.quantity}
+    //              </div> 
+    //              : <></>
+    //             }</>
+    // }
 }
 
 export default Cart
