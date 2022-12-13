@@ -344,7 +344,7 @@ const Commandes = () => {
                             </div>
                             <div className="total_TTC">
                                 <p>Total TTC :</p>
-                                <p>{formatNumber(commande.comande.prix.prix_ttl_panier)} €</p>
+                                <p>{formatNumber(commande.comande.prix.prix_ttl)} €</p>
                             </div>
                             <div className="etat">
                                 <p className={`status-${commande.comande.etat}`}>Status : 
