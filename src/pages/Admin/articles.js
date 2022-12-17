@@ -2,35 +2,44 @@ import React from "react";
 import Filters from "../../components/modules/filters/Admin/sidebar";
 import "../../assets/styles/components/pages/admin/commandes.scss"
 import { useSelector, useDispatch } from "react-redux";
-import Icon from "../../components/atoms/Icon";
 import Modale from "../../components/modules/formulars/Modale"
 import Input from "../../components/atoms/input";
 import Button from "../../components/atoms/Button";
+import formatNumber from "../../assets/scripts/utils/priceNormalisation";
 const Articles = () => {
-    const authentication = useSelector((state) => state.authentication)
     const [articles, setArticles] = React.useState([]);
     const auth = useSelector((state) => state.authentication);
     const [manufacturers, setManufacters] = React.useState([]);
     const [categories, setCategories] = React.useState([]);
-    const [showModale, setShowModale] = React.useState(false);
+
+    const [showCreateModale, setShowCreateModale] = React.useState(false);
+    const [showChangeModale, setShowChangeModale] = React.useState(false);
+    const [showDeleteModale, setShowDeleteModale] = React.useState(false);
+    
     const [selectedArticle,setSelectedArticle] = React.useState([]);
     const [file, setFile] = React.useState();
     const searchedWord = useSelector((state) => state.filters.searched);
     const searchedCategorie = useSelector((state) => state.filters.category);
     const searchedManufacturer = useSelector((state) => state.filters.manufactor);
 
-    const createStuff = (fd)=>{
-        fetch(`https://stodac.fr/api/stuff/`, {
-            method: 'POST', 
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': 'Bearer ' + auth.token, 
-            }, 
-            body: fd
-        })
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-    }
+
+    React.useEffect(()=>{
+        fetch(`https://stodac.fr/api/stuff/all/2000/0`)
+        .then(response => response.json())
+        .then( data => setArticles(data))
+        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+        
+        fetch(`https://stodac.fr/api/stuff/manufacturer`)
+        .then(response => response.json())
+        .then( data => setManufacters(data))
+        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+
+        fetch(`https://stodac.fr/api/stuff/categories`)
+        .then(response => response.json())
+        .then( data => setCategories(data))
+        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+
+    }, [])
     React.useEffect(()=>{
         if(searchedCategorie || searchedManufacturer){
             fetch(`https://stodac.fr/api/stuff/getBy/`,{
@@ -61,38 +70,44 @@ const Articles = () => {
         }
     },[searchedWord])
 
+    const handleStuff = (action) => {
+        if(action === 'create') setShowCreateModale(true);
+        if(action === 'change') setShowChangeModale(true);
+        if(action === 'delete') setShowDeleteModale(true);
+    }
 
     const removeArticle = ()=>{
+        console.log(auth.token)
         fetch(`https://stodac.fr/api/stuff/${selectedArticle._id}`,{
             method: 'DELETE', 
             headers: {
-              'Authorization': 'Bearer ' + authentication.token, 
+                'Authorization': 'Bearer ' + auth.token,  
             },
+            body: JSON.stringify({
+                userId: auth.id
+            })
         })
+        setShowDeleteModale(false)
     }
 
-    const editArticle = (article) => {
-        console.log(article)
-        setSelectedArticle(article)
+    const editArticle = (_article) => {
+        let article = JSON.parse(JSON.stringify(_article));
+        article.price = article.price / 1.2;
+        setSelectedArticle(article);
     }
-    
-    React.useEffect(()=>{
-        fetch(`https://stodac.fr/api/stuff/all/2000/0`)
-        .then(response => response.json())
-        .then( data => setArticles(data))
-        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
-        
-        fetch(`https://stodac.fr/api/stuff/manufacturer`)
-        .then(response => response.json())
-        .then( data => setManufacters(data))
-        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
+    const createStuff = (fd)=>{
+        fetch(`https://stodac.fr/api/stuff/`, {
+            method: 'POST', 
+            headers: {
+                'Accept': 'application/json',
+                'Authorization': 'Bearer ' + auth.token, 
+            }, 
+            body: fd
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }
 
-        fetch(`https://stodac.fr/api/stuff/categories`)
-        .then(response => response.json())
-        .then( data => setCategories(data))
-        .catch(error => console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message));
-
-    }, [])
 
     const createArticle = ()=>{
         const fd = new FormData()
@@ -109,6 +124,7 @@ const Articles = () => {
         fd.append('compatibility', JSON.stringify([selectedArticle.compatibility]))
 
         createStuff(fd)
+        setShowCreateModale(false)
     }
 
     const changeStuff = () => {
@@ -117,7 +133,7 @@ const Articles = () => {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + authentication.token, 
+              'Authorization': 'Bearer ' + auth.token, 
             },
             body: JSON.stringify({
                 image: selectedArticle.img,
@@ -130,11 +146,15 @@ const Articles = () => {
                 category: selectedArticle.category,
                 state: selectedArticle.state,
                 description: selectedArticle.description,
-                compatibility: JSON.stringify([selectedArticle.compatibility])
+                compatibility: JSON.stringify(selectedArticle.compatibility),
+                userId: auth.id
             })
         })
+        setShowCreateModale(false)
+
 
     }
+
     const more = ()=>{
         setSelectedArticle({
             img: "img",
@@ -154,11 +174,29 @@ const Articles = () => {
     return <div className="commandes">
             <Filters callBack={editArticle} articles={articles} more={more}/>
             {
-                showModale ? <Modale 
-                                text="Voulez vous changer l'état de la commande ?" 
+                showCreateModale ? <Modale 
+                                text="Voulez créer l'article ?" 
                                 valid="Oui" unvalid="Non" 
-                                yesCallback={()=>{createStuff()}} 
-                                noCallBack={()=>{setShowModale(false)}}
+                                yesCallback={()=>{createArticle()}} 
+                                noCallBack={()=>{setShowCreateModale(false)}}
+                                /> 
+                            : <></>
+            }
+            {
+                showChangeModale ? <Modale 
+                                text="Voulez modifier l'article ?" 
+                                valid="Oui" unvalid="Non" 
+                                yesCallback={()=>{changeStuff()}} 
+                                noCallBack={()=>{setShowChangeModale(false)}}
+                                /> 
+                            : <></>
+            }
+            {
+                showDeleteModale ? <Modale 
+                                text="Voulez supprimer l'article ?" 
+                                valid="Oui" unvalid="Non" 
+                                yesCallback={()=>{removeArticle()}} 
+                                noCallBack={()=>{setShowDeleteModale(false)}}
                                 /> 
                             : <></>
             }
@@ -201,7 +239,7 @@ const Articles = () => {
                         <div>
 
                             <h3>Prix HT</h3>
-                            <Input type="text" defaultValue={selectedArticle.price} callBack={(e)=>{selectedArticle.price = e}}/>
+                            <Input type="text" defaultValue={formatNumber(selectedArticle.price)} callBack={(e)=>{selectedArticle.price = e}}/>
                         </div>
                     </div>
                 </div>
@@ -212,10 +250,10 @@ const Articles = () => {
 
                 <div className="submit">
                     {
-                        selectedArticle._id ? <Button type="text" color="black" content="Supprimer" callBack={removeArticle}/> : <Button type="text" color="white"/>
+                        selectedArticle._id ? <Button type="text" color="black" content="Supprimer" callBack={()=>{handleStuff('delete')}}/> : <Button type="text" color="white"/>
                     }
                     
-                    <Button type="text" color="green" content={selectedArticle._id ? "Modifier" : "Ajouter"} callBack={selectedArticle._id ? changeStuff : createArticle}/>
+                    <Button type="text" color="green" content={selectedArticle._id ? "Modifier" : "Ajouter"} callBack={selectedArticle._id ? ()=>{handleStuff('change')} : ()=>{handleStuff('create')}}/>
                 </div>
             </div>
         </div>
