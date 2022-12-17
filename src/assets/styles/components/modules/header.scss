@@ -14,11 +14,15 @@ header{
     font-size: 16px;
     padding: 2px;
     line-height: 18px;
-    border-radius: 16px;
+    border-radius: 24px;
     text-align: center;
     z-index: 10;
     background-color: map-get($brands-primary,"grey");
-
+    @include mq("tablet-wide", min) {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 6px;
+    }
 }
 
     nav{
@@ -47,6 +51,7 @@ header{
             }
             display: flex;
             justify-content: space-between;
+            align-items: center;
             a,li {
                 position: relative;
             }
