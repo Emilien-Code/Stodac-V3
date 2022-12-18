@@ -49,7 +49,7 @@ const Recap = ()=>{
             arePointRelaisDatas = document.getElementById("pudoWidgetAddress1").value !== "" && document.getElementById("pudoWidgetTown").value !== "" && document.getElementById("pudoWidgetZipCode").value !== ""
         }
         if(cart.deliveryMode==="Domicile"){
-            areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== "" && document.querySelector(".complement").value !== ""
+            areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== ""
         }
         
         
@@ -109,9 +109,6 @@ const Recap = ()=>{
                 formatedCart.push({
                     article: {
                         category: article.category,
-                        commentaires: article.commentaires,
-                        compatibility: article.compatibility,
-                        description: article.description,
                         img: article.img,
                         manufacturer: article.manufacturer,
                         name: article.name,
@@ -135,6 +132,7 @@ const Recap = ()=>{
                     'Authorization': 'Bearer ' + authentication.token, 
                 }, 
                 body: JSON.stringify({
+                    userId: authentication.id,
                     panier: formatedCart,
                     adresseLivraison: adress,
                     modeDeLivraison: cart.deliveryMode
