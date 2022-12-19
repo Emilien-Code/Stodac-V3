@@ -1,8 +1,18 @@
 import React from "react";
 import "../assets/styles/components/pages/conditions.scss"
-
+import { Helmet } from "react-helmet";
 const MentionsLegales = ()=>{
-    return <section className="condition-wrapper">
+    return <>
+                <Helmet>
+                <title>
+                    Mentions Légales | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+                <meta
+                    name="description"
+                    content="Une intérogation Juridique ? Visitez nos mentions légales de vente pour y voir plus clair !"
+                />
+            </Helmet>
+    <section className="condition-wrapper">
       <article>
         <h1>MENTIONS LEGALES</h1>
         <h2>INFORMATIONS EDITORIALES</h2>
@@ -144,6 +154,7 @@ const MentionsLegales = ()=>{
   </article>
 
   </section>
+  </>
 }
 
 

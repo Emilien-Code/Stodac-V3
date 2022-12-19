@@ -2,6 +2,7 @@ import React from "react";
 import Article from "../components/modules/article";
 // import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const ArticlePage = () => {
@@ -19,7 +20,18 @@ const ArticlePage = () => {
     },[])
 
 
-    return <Article display="fullPage" data={article}/>
+    return <>
+            <Helmet>
+                <title>
+                    {`${article.name}`} | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+                <meta
+                    name="description"
+                    content={`${article.description}`}
+                />
+            </Helmet>
+        <Article display="fullPage" data={article}/>
+    </>
 }
 
 export default ArticlePage

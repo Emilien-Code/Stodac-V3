@@ -1,7 +1,18 @@
 import React from "react";
 import "../assets/styles/components/pages/conditions.scss"
+import { Helmet } from "react-helmet";
 const ConditionsGeneralesVente = ()=> {
-    return <section className="condition-wrapper">    
+    return <>
+            <Helmet>
+                <title>
+                    Conditions generales de vente | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+                <meta
+                    name="description"
+                    content="Une intérogation sur votre achat ? Visitez nos conditions générales de vente pour y voir plus clair !"
+                />
+            </Helmet>
+    <section className="condition-wrapper">    
         <article>
             <h1>Conditions Générales de Vente</h1>
             <p>Les présentes conditions de vente sont conclues d’une part par la société AMC Est au capital social de 60000€ dont le siège social est situé à 11 bis rue de Lorraine 54360 Damelevières, immatriculée au Registre du Commerce et des Sociétés de Nancy sous le numéro 794 396 325 000 27 ci-après dénommée "AMC Est" et gérant le site stodac.fr et, d’autre part, par toute personne physique ou morale souhaitant procéder à un achat via le site internet stodac.fr dénommée ci-après " l’acheteur ".</p>
@@ -64,6 +75,7 @@ const ConditionsGeneralesVente = ()=> {
             <p>Les présentes conditions de vente à distance sont soumises à la loi française. Pour tous litiges ou contentieux, le Tribunal compétent sera celui de Nancy.</p>
         </article>
     </section>
+    </>
 }
 
 export default ConditionsGeneralesVente

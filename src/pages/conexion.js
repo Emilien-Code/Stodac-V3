@@ -7,6 +7,7 @@ import { setConnected, setDisconnect, setData } from "../assets/scripts/store/re
 import regex from "../assets/scripts/utils/regex";
 import { Link, useParams, useNavigate } from "react-router-dom"
 import Bubble from "../components/atoms/Bubbles";
+import { Helmet } from "react-helmet";
 
 
 
@@ -138,7 +139,17 @@ const Conexion = () => {
     if(!isLogedin && !isCreated){
 
         
-            return <section className={`login ${isLogin ? " " : "create"}`}>
+            return <>
+                <Helmet>
+                    <title>
+                        {`${isLogin ? "Se connecter" : "Créer un compte"}`} | Stodac : Vente d'accessoires pour poêles à granulés 
+                    </title>
+                    <meta
+                        name="description"
+                        content="Connectez vous à votre espace Stodac et profitez de vous vos avantages clients."
+                    />
+                </Helmet>
+            <section className={`login ${isLogin ? " " : "create"}`}>
                 {
                     error && <Bubble type="error" text={error}/>
 
@@ -166,6 +177,7 @@ const Conexion = () => {
                         }
                         <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
                     </div>
+                    
 
                 {
                     !isLogin && (
@@ -195,6 +207,7 @@ const Conexion = () => {
                 <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
                 <Button callBack={toggle} color="black" type="text" content={isLogin ? "Créer un compte" : "Se connecter"}/>
             </section>
+            </>
 
 
     }else{

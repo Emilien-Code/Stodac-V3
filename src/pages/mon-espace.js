@@ -5,6 +5,8 @@ import Input from "../components/atoms/input";
 import MesCommandes from "./mes-commandes";
 import { useDispatch, useSelector } from "react-redux";
 import { setDisconnect, setData } from "../assets/scripts/store/redux-slices/authentication";
+import { Helmet } from "react-helmet";
+
 const MonEspace = ()=>{
     const [selected,setSelected] = React.useState("Mon compte")
     const user = useSelector((state) => state.authentication)
@@ -93,7 +95,17 @@ const MonEspace = ()=>{
                 }
             }
 
-    return <main className="mon-espace">
+    return <>
+            <Helmet>
+                <title>
+                    Mon espace | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+                <meta
+                    name="description"
+                    content="Accedez à votre espace client afin de consulter vos commandes."
+                />
+            </Helmet>
+        <main className="mon-espace">
         <header>
             <h1>Bienvenu(e) {user.data.firstName}</h1>
             <Button color="black" type="text" content="Déconexion" callBack={logout}/>
@@ -147,7 +159,7 @@ const MonEspace = ()=>{
             
         }
         </main>
-
+</>
 
 }
 

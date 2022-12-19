@@ -5,6 +5,7 @@ import "../assets/styles/components/pages/boutique.scss"
 import { useSelector } from "react-redux";
 import Filters from "../components/sections/filters.jsx";
 import { useNavigate, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Boutique = ()=>{
     const navigate = useNavigate()
@@ -95,7 +96,17 @@ const Boutique = ()=>{
     }, [])
 
     
-    return <main>
+    return <>
+          <Helmet>
+            <title>
+                Boutique | Stodac : Vente d'accessoires pour poêles à granulés 
+            </title>
+            <meta
+                name="description"
+                content="Vous recherchez des pièces pour votre poêle ? Rendez vous sur stodac.fr, spécialiste dans vente d'accessoires et pièces détachées pour poêles à granulés de bois."
+            />
+          </Helmet>
+    <main>
             <Filters/>
         <section className="store-wrapper">
         {
@@ -116,6 +127,7 @@ const Boutique = ()=>{
         </section>
 
         </main>
+        </>
 }
 
 export default Boutique
