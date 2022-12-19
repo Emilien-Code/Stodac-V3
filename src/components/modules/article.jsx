@@ -140,8 +140,8 @@ const Article = ({data, display})=>{
                                 <img src={data.img} alt={"illustration de " + data.name} />
                             </picture>
                             <figcaption>
-                                <p>{data.name ? "TTC "+data.name : "chargement..."}</p>
-                                <span>{formatNumber(data.price)}€</span>
+                                <p>{data.name ? data.name : "chargement..."}</p>
+                                <span>{"TTC " +formatNumber(data.price)}€</span>
                             </figcaption>
                         </figure>
                         {/* <hr /> */}
