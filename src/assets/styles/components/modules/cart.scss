@@ -105,3 +105,17 @@
     }
 
 }
+.count  {
+    opacity: 1!important;
+    font-size: 14px;
+    position: absolute;
+    right: calc(5% + (48px * 2));
+    transform: translate(50%, -43px);
+    z-index: 4;
+    top: 100px;
+    font-family: "Roboto Bold", Arial, Arial, Helvetica, sans-serif;
+    @include mq("tablet", max){
+        top: 98px;
+
+    }
+}
