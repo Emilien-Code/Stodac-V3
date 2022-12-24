@@ -129,9 +129,6 @@ const Bloc = ({type, saveFacture,})=>{
             {
                 type==="Panier" && (<Information message="La totalitée des prix indiqués sur le site sont toute taxes comprises (ttc)" />)
             }
-            {
-                type==="Mode de livraison" && (<Information message="Nous ne prenons aucunes marge sur les frais de livraison. " />)
-            }
         </section>
     )
 }

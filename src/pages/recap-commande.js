@@ -39,14 +39,16 @@ const Recap = ()=>{
         })
         .then(json => dispatch(setData(json[0])))
         .catch(err => console.log(err))
+        
     }, [])
 
     const push = ()=>{
         let arePointRelaisDatas;
         let areDomicileData;
-        
+        let savedPointRelais = JSON.parse(localStorage.getItem("PDR"))
+
         if(cart.deliveryMode === "Point Relais"){
-            arePointRelaisDatas = document.getElementById("pudoWidgetAddress1").value !== "" && document.getElementById("pudoWidgetTown").value !== "" && document.getElementById("pudoWidgetZipCode").value !== ""
+            arePointRelaisDatas = savedPointRelais && savedPointRelais.adresse1 !== "" &&  savedPointRelais.localite !== "" && savedPointRelais.codePostal !== ""
         }
         if(cart.deliveryMode==="Domicile"){
             areDomicileData = document.querySelector(".num").value !== "" && document.querySelector(".rue").value !== "" && document.querySelector(".ville").value !== "" &&  document.querySelector(".cp").value !== ""
@@ -61,11 +63,10 @@ const Recap = ()=>{
         setAdress( ()=> {
 
             if (cart.deliveryMode==="Point Relais"){
-                console.log(document.getElementById("pudoWidgetAddress1").value)
                 return{
-                    adresse: document.getElementById("pudoWidgetAddress1").value,
-                    city: document.getElementById("pudoWidgetTown").value,
-                    postCode: document.getElementById("pudoWidgetZipCode").value,
+                    adresse: savedPointRelais.adresse1,
+                    city: savedPointRelais.localite,
+                    postCode: savedPointRelais.codePostal,
                     complement: ""
                 }
             }

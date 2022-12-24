@@ -102,14 +102,16 @@ const Payement = ({type, saveFacture}) => {
                     </div>
                 )
             }
-            <div className={nomdiv==="modePaypal"? "visible" : "invisible"}>
-                <p>Paypal ou carte bleue</p>
-                <Paypal saveFacture={saveFacture} commandeInfo=""/>
-            </div>
+            {
+                nomdiv === "modePaypal"  && (<div className={nomdiv==="modePaypal"? "visible" : "invisible"}>
+                    <p className="visible-p">Paypal ou carte bleue</p>
+                    <Paypal saveFacture={saveFacture} commandeInfo=""/>
+                </div>)
+            }
 
 
             <div className={nomdiv==="modeCheque" ? "visible" : "invisible"}>
-                <p>Cheque</p>
+                <p className="visible-p">Cheque</p>
 
                 <p className="desc">La commande vous sera envoyée aussi tôt le chèque reçu. Ce dernier sera envoyé au 11 Bis Rue de Lorraine, 54360 Damelevières et sera à l'ordre d'AMC EST.</p>
                 
@@ -119,7 +121,7 @@ const Payement = ({type, saveFacture}) => {
 
 
             <div className={nomdiv==="modeVirement" ? "visible" : "invisible"}>
-                <p>Virement</p>
+                <p className="visible-p">Virement</p>
 
                 <p className="desc">La commande vous sera envoyée aussitôt le virement effectué.<br/>IBAN : FR7614707090263112192565018 <br/>BIC : CCBPFRPPMTZ</p>
                 
@@ -133,7 +135,7 @@ const Payement = ({type, saveFacture}) => {
 
             {/* LIVRAISON */}
             <div className={nomdiv==="modeDimicile"? "visible" : "invisible"}>
-                <p>Livraison à domicile</p>
+                <p className="visible-p">Livraison à domicile</p>
                 <div className="delivery-adress">
                     <Input placeHolder="Numéro" type="text" callBack={getNumber} className="num"/>
                     <Input placeHolder="Rue" type="text" callBack={getStreet} className="rue"/>
@@ -143,7 +145,7 @@ const Payement = ({type, saveFacture}) => {
                 </div>
             </div>
             <div className={nomdiv==="modePointRelais" ? "visible" : "invisible"}>
-                <p>Point relais</p>
+                <p className="visible-p">Point relais</p>
                 <div className="pnt-relais-container">
                     {
                     nomdiv==="modePointRelais" ? <PntRelais/> : "invisible"
@@ -152,7 +154,7 @@ const Payement = ({type, saveFacture}) => {
 
             </div>
             <div className={nomdiv==="modeSurPlace" ? "visible" : "invisible"}>
-                <p>Sur place</p>
+                <p className="visible-p">Sur place</p>
                 <p className="desc">Vous pouvez retirer votre commande dans nos locaux à Damelevières, 54360.</p>
                 <p className="desc">Un mail communiquant l'adresse vous sera envoyé.</p>
             </div>

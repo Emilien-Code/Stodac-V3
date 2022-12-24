@@ -59,12 +59,7 @@ const Header = (props)=>{
                 </ul>
                 <ul className="buttons">
                     <li className="nav-link">
-                        {
-                            cart.quantity ?
-                            <Button  type="text" callBack={openCart} color="green" content={cart.quantity}/>
-                            :
                             <Button  type="svg" callBack={openCart} content="cart"/>
-                         }
                     </li>
                     <li className="nav-link"  >
                         {/* <Link className="nav-link" to={`/se-conecter`}> */}

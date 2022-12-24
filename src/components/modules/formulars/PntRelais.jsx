@@ -2,13 +2,18 @@ import React from "react";
 const PntRelais = () => {
     React.useEffect(()=>{
         const script = document.createElement("script");
-        script.src = "https://ws.colissimo.fr/widget-point-retrait/resources/js/jquery.plugin.colissimo.min.js";
+        script.src = "https://ws.colissimo.fr/widget-colissimo/js/jquery.plugin.colissimo.min.js";
+        script.setAttribute("id", "ColissimoPDR")
         document.body.appendChild(script);
 
         script.addEventListener("load", ()=>{
              console.log('script chargé')
              callColissimo()
         })
+
+        return () => {
+            document.querySelector("#ColissimoPDR").remove()
+        }
     }, [])
 
     function callColissimo  (){
@@ -21,6 +26,9 @@ const PntRelais = () => {
                 "ceCountryList": "FR",
                 "callBackFrame": "test",
                 "ceCountry": "FR",
+                "ceAddress" : "",
+                "ceZipCode" : "54000",
+                "ceTown" : "Nancy",
                 "dyPreparationTime": 1,
             "token": response.token,
           })
@@ -31,17 +39,12 @@ const PntRelais = () => {
       }
 
 
+
     return (
         <div id="ptnrelais">
             <div id="widget-container">
                 
             </div>
-            <input type="hidden" id="pudoWidgetErrorCode" onChange={(e)=>test(e)}/>
-            <input type="hidden" id="pudoWidgetAddress1" onChange={(e)=>test(e)}/>
-            <input type="hidden" id="pudoWidgetTown" onChange={(e)=>test(e)}/>
-            <input type="hidden" id="pudoWidgetCountry" onChange={(e)=>test(e)}/>
-            <input type="hidden" id="pudoWigdetType" onChange={(e)=>test(e)}/>
-            <input type="hidden" id="pudoWidgetZipCode" onChange={(e)=>test(e)}/>
         </div>
     )
 }

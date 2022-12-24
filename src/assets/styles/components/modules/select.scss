@@ -38,7 +38,7 @@
 }
 .visible{
     width: 100%;
-    p{
+    .visible-p{
         margin-top: 24px;
         font-size: 24px;
         color: map-get($brands-primary, "black");
