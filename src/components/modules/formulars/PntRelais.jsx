@@ -7,7 +7,6 @@ const PntRelais = () => {
         document.body.appendChild(script);
 
         script.addEventListener("load", ()=>{
-             console.log('script chargé')
              callColissimo()
         })
 

@@ -14,6 +14,7 @@ const ConfirmationCommande = ()=>{
 
 
     React.useEffect(()=>{
+        console.log(cart.cart)
         setCommand(JSON.parse(JSON.stringify(cart.cart)))
         setDeliveryPrice(cart.deliveryPrice)
         setTotal(cart.total + cart.deliveryPrice)
@@ -21,8 +22,10 @@ const ConfirmationCommande = ()=>{
 
 
 
-        dispatch(removeAllProductsFromCart())
-        dispatch(checkQuantity())
+        return () => {
+            dispatch(removeAllProductsFromCart())
+            dispatch(checkQuantity())
+        }
     },[])
 
 
@@ -40,10 +43,10 @@ const ConfirmationCommande = ()=>{
                 <hr></hr>
                 {
 
-                    command.map((el)=>{
-                        return <div className="line">
+                    command.map((el, index)=>{
+                        return <div className="line" key={index}>
                         <p>{el.name}</p>
-                        <p>{el.quantity * el.price}€</p>
+                        <p>{formatNumber(el.quantity * el.price)}€</p>
                     </div>
                     })  
                 }

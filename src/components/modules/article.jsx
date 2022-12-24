@@ -84,7 +84,7 @@ const Article = ({data, display})=>{
                         </picture>
                         <figcaption>
                             <div className="top">
-                                <p>{data.name ? "TTC "+data.name : "chargement..."}</p>
+                                <p>{data.name ? data.name : "chargement..."}</p>
                                 <span>TTC {formatNumber(data.price)}€</span>
                             </div>
                             <div className="bottom">

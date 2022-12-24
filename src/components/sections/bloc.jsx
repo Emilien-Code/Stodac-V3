@@ -63,7 +63,7 @@ const Bloc = ({type, saveFacture,})=>{
                                     cart.cart.map((el)=>{
                                         return <div className="line">
                                         <p>{el.name}</p>
-                                        <p>{el.quantity * el.price}€</p>
+                                        <p>{formatNumber(el.quantity * el.price)}€</p>
                                     </div>
                                     })  
                                 }
