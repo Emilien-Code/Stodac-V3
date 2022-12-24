@@ -6,14 +6,12 @@
 
 
 
-    // .pnt-relais-container{
-    //     height: 550px;
-    //     @include mq("tablet", max){
-    //         height: 2050px;
-    //     }
-
-    // }
-
+    .pnt-relais-container{
+        // height: 550px;
+        @include mq("phone-grand", max){
+            height: 2079px;
+        }
+    }
 
     .modifier{
         cursor: pointer;

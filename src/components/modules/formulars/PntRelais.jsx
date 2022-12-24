@@ -12,17 +12,15 @@ const PntRelais = () => {
         })
 
         setTimeout(()=> {
-            const a = document.querySelector("#widget-container").getBoundingClientRect()
+            const a = document.querySelector("#widget_colissimo_contenu").getBoundingClientRect()
             console.log("GBR", a)
             document.querySelector(".pnt-relais-container").style.height = a.height
-        }, 1000)
-
-
+        }, 3000)
         return () => {
             document.querySelector("#ColissimoPDR").remove()
         }
     }, [])
-
+    
     function callColissimo  (){
         fetch('https://stodac.fr/api/utils/token')
         .then((response) => response.json())
@@ -37,8 +35,8 @@ const PntRelais = () => {
                 "ceZipCode" : "54000",
                 "ceTown" : "Nancy",
                 "dyPreparationTime": 1,
-            "token": response.token,
-          })
+                "token": response.token,
+            })
         }).catch(err=>{
             console.log(err)
         })
