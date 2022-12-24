@@ -29,12 +29,34 @@ const Header = (props)=>{
         let lastScroll = 0
         let currentScroll = 0
         document.addEventListener("scroll", ()=>{
+            const count = document.querySelector(".count")
             currentScroll = window.scrollY;
             
             if(lastScroll > currentScroll && currentScroll ){
+
                 document.querySelector("header").style.top = "0px";
+                if(count){
+                    if(currentScroll > 125){
+                        count.style.top = `${window.innerWidth > 768 ? "100px" : "98px"}`;  
+                    }else{
+                        count.style.transition = "0s"
+                        count.style.top = `${window.innerWidth > 768 ? `${100 - currentScroll}px` : `${98 - currentScroll}px`}`;
+                    }
+                }
+                
             }else{
+
                 document.querySelector("header").style.top = "-125px";
+                if(currentScroll > 125){
+                    if(count){
+                        count.style.transition = "0.5s"
+                        count.style.top = `${window.innerWidth > 768 ? "-25px" : "-27px"}`;
+                    }
+                }else{
+                    count.style.transition = "0s"
+                    count.style.top = `${window.innerWidth > 768 ? `${100 - currentScroll}px` : `${98 - currentScroll}px`}`;
+                }
+
             }
 
 
