@@ -11,6 +11,13 @@ const PntRelais = () => {
              callColissimo()
         })
 
+        setTimeout(()=> {
+            const a = document.querySelector("#widget-container").getBoundingClientRect()
+            console.log("GBR", a)
+            document.querySelector(".pnt-relais-container").style.height = a.height
+        }, 1000)
+
+
         return () => {
             document.querySelector("#ColissimoPDR").remove()
         }

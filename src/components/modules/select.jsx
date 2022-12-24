@@ -16,6 +16,7 @@ import "../../assets/styles/components/modules/select.scss"
 
 
 const Payement = ({type, saveFacture}) => {
+    const [PDR, setPDR] = React.useState(null)
     const cart = useSelector((state) => state.cart)
 
     const dispatch = useDispatch();
@@ -77,6 +78,16 @@ const Payement = ({type, saveFacture}) => {
         dispatch(setCommandeInfo(infoCommande))
     }
 
+    React.useEffect(()=> {
+        window.addEventListener('PDR', ()=>{
+            setPDR(JSON.parse(localStorage.getItem('PDR')))
+        })
+    }, [PDR])
+
+    React.useEffect(()=>{
+        if(nomdiv === "modePointRelais"){
+        }
+    },[nomdiv])
 
     return (
         <div className="select">  
@@ -149,6 +160,9 @@ const Payement = ({type, saveFacture}) => {
                 <div className="pnt-relais-container">
                     {
                     nomdiv==="modePointRelais" ? <PntRelais/> : "invisible"
+                    }
+                    {
+                        PDR ? <p>Livré à : {PDR.adresse1}, {PDR.localite}, {PDR.codePostal}</p> : <></>
                     }
                 </div>
 

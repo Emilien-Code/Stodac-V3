@@ -109,7 +109,7 @@ const Bloc = ({type, saveFacture,})=>{
                         }
                         <hr />
                         <div className="bottom">
-                            <p>Frais de ports</p><p>{cart.deliveryMode ? cart.deliveryPrice + "€" : ""}</p>
+                            <p>Frais de ports</p><p>{cart.deliveryMode ? formatNumber(cart.deliveryPrice) + "€" : ""}</p>
                         </div>
                         </>
                     )

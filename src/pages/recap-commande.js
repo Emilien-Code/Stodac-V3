@@ -139,7 +139,10 @@ const Recap = ()=>{
                     modeDeLivraison: cart.deliveryMode
                 })
             })
-            .then(() => navigate(`/paiement-commande`))
+            .then(() => {
+                localStorage.setItem('PDR', false)
+                navigate(`/paiement-commande`)
+            })
             .catch(err => console.log(err))
         } 
 

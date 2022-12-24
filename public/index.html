@@ -54,6 +54,7 @@
     <script>
       function test(point){
         localStorage.setItem('PDR', JSON.stringify(point));
+        window.dispatchEvent(new Event("PDR"));
       }
     </script>
   </body>
