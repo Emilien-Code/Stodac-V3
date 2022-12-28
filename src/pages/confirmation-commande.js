@@ -26,6 +26,7 @@ const ConfirmationCommande = ()=>{
         return () => {
             dispatch(removeAllProductsFromCart())
             dispatch(checkQuantity())
+            dispatch(setDeliveryPrice(0))
         }
     },[])
 
