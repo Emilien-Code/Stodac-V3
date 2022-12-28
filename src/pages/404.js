@@ -1,6 +1,7 @@
 import React from "react";
 import Bubble from "../components/atoms/Bubbles"
 import "../assets/styles/components/pages/404.scss"
+import { Helmet } from "react-helmet";
 const NotFound = ()=>{
     let position = {}
     let cursor = {}
@@ -49,16 +50,23 @@ const NotFound = ()=>{
     }
 
     return (
-        <div className="not-found">
-            <h1>404</h1>
-            <p>La page que vous avez demandé n'existe pas</p>
-            <Bubble text="👀" color="green" dataParallaxSpeed="0.3"/>
-            <Bubble text="👀" color="green" dataParallaxSpeed="-0.1"/>
-            <Bubble text="👀" color="green" dataParallaxSpeed="0.4"/>
-            <Bubble text="👀" color="green" dataParallaxSpeed="-0.6"/>
-            <Bubble text="👀" color="green" dataParallaxSpeed="-0.2"/>
-            <Bubble text="👀" color="green" dataParallaxSpeed="0.1"/>
-        </div>
+        <>
+            <Helmet>
+                <title>
+                   La page n'a pas étée trouvé | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+            </Helmet>
+            <div className="not-found">
+                <h1>404</h1>
+                <p>La page que vous avez demandé n'existe pas</p>
+                <Bubble text="👀" color="green" dataParallaxSpeed="0.3"/>
+                <Bubble text="👀" color="green" dataParallaxSpeed="-0.1"/>
+                <Bubble text="👀" color="green" dataParallaxSpeed="0.4"/>
+                <Bubble text="👀" color="green" dataParallaxSpeed="-0.6"/>
+                <Bubble text="👀" color="green" dataParallaxSpeed="-0.2"/>
+                <Bubble text="👀" color="green" dataParallaxSpeed="0.1"/>
+            </div>
+        </>
     )
 }
 export default NotFound

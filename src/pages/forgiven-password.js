@@ -4,6 +4,7 @@ import Button from "../components/atoms/Button"
 import "../assets/styles/components/pages/resetpassword.scss"
 import regex from "../assets/scripts/utils/regex";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const ForgivenPassword = () => {
 
@@ -67,23 +68,29 @@ const ForgivenPassword = () => {
     }
 
 
-    return <section className="resetpassword">
+    return <>
+                <Helmet>
+            <title>
+                Mot de passe oublié | Stodac : Vente d'accessoires pour poêles à granulés
+            </title>
+        </Helmet>
+    <section className="resetpassword">
         <aside>
 
             { isRequesting ? (
-                    response ? 
-                    
-                    response==='succes' ? <h1> Un message vous à été envoyé</h1> : <h1>Une erreur est survenue</h1>
-                    
-                    :   <>
+                response ? 
+                
+                response==='succes' ? <h1> Un message vous à été envoyé</h1> : <h1>Une erreur est survenue</h1>
+                
+                :   <>
                         <h1>Réinitialisation de votre mot de passe</h1>
                         <Input type="text" callBack={setEmail} placeHolder="Adresse email"/>
                         <Button type="text" color="green" content="Réinitialiser le mot de passe" isDisabled={!email} callBack={sendMail}/>
                     </>
                 ):(
                     response ? 
-
-                        response==='succes' ? <h1> Votre mot de passe à bien été changé</h1> : <h1>Une erreur est survenue</h1>
+                    
+                    response==='succes' ? <h1> Votre mot de passe à bien été changé</h1> : <h1>Une erreur est survenue</h1>
                     
                     : <>
                         <h1>Réinitialisation de votre mot de passe</h1>
@@ -105,6 +112,7 @@ const ForgivenPassword = () => {
         </aside>
 
     </section>
+            </>
 }
 
 export default ForgivenPassword

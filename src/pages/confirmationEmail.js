@@ -2,7 +2,7 @@ import React from "react";
 import Bubble from "../components/atoms/Bubbles"
 import "../assets/styles/components/pages/404.scss"
 import { useParams, useLocation } from "react-router-dom";
-
+import { Helmet } from "react-helmet";
 const ConfirmationEmail = ()=>{
 
     const email = useParams().email
@@ -29,15 +29,22 @@ const ConfirmationEmail = ()=>{
     },[])
 
     return(
-        <div className="not-found">
-            <h1 className="small">{isSucces ? "Email validée" : "Impossible de valider l'inscription, une erreur est survenue"}</h1>
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-            <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
-        </div>
+        <>
+            <Helmet>
+                <title>
+                    Confiramtion de votre email | Stodac : Vente d'accessoires pour poêles à granulés
+                </title>
+            </Helmet>
+            <div className="not-found">
+                <h1 className="small">{isSucces ? "Email validée" : "Impossible de valider l'inscription, une erreur est survenue"}</h1>
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+                <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
+            </div>
+        </>
     )
 
 }

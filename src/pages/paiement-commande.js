@@ -3,6 +3,8 @@ import "../assets/styles/components/pages/payement-commande.scss"
 import Bloc from "../components/sections/bloc"
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 
 import { setData, setDisconnect } from "../assets/scripts/store/redux-slices/authentication";
 const Payement = ()=>{
@@ -73,13 +75,20 @@ const Payement = ()=>{
 
 
 
-    return <div className="payement-command">
-        <div className="bloc1">
-            <Bloc type="Facturation"/>
-        </div>
-        <div className="Bloc2">
-            <Bloc type="Mode de payement" saveFacture={saveFacture}/>
-        </div>
-    </div>
+    return <>
+      <Helmet>
+        <title>
+            Payement de votre commande | Stodac : Vente d'accessoires pour poêles à granulés
+        </title>
+      </Helmet>
+      <div className="payement-command">
+          <div className="bloc1">
+              <Bloc type="Facturation"/>
+          </div>
+          <div className="Bloc2">
+              <Bloc type="Mode de payement" saveFacture={saveFacture}/>
+          </div>
+      </div>
+    </>
 }
 export default Payement

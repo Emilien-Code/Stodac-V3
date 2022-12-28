@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import formatNumber from "../assets/scripts/utils/priceNormalisation";
+import { Helmet } from "react-helmet";
 // SCSS
 import "../assets/styles/components/pages/payement-commande.scss"
 
@@ -148,22 +149,29 @@ const Recap = ()=>{
 
     }, [adress])
 
-    return <div className="payement-command">
-        <div className="bloc1">
-            <Bloc type="Panier"/>
-        </div>
-        <div className="Bloc2">
-            <Bloc type="Mode de livraison"/>
-        </div>
-        <div className="Bloc2">
-            <Bloc type="Récapitulatif"/>
-        </div>
-        <div className="confirm">
-            <div className="conditions-vente">
-                <Input type="checkbox" callBack={toggleCGV}/> <a href="/conditions-generales-de-vente" target="_blank">J’accepte les conditions générales de vente</a>
+    return <>
+        <Helmet>
+            <title>
+                Récapitulatif de votre commande | Stodac : Vente d'accessoires pour poêles à granulés
+            </title>
+        </Helmet>
+        <div className="payement-command">
+            <div className="bloc1">
+                <Bloc type="Panier"/>
             </div>
-            <Button type="text" content="Commander" isDisabled={!areCGVAccepted} color="green" callBack={push}/>
+            <div className="Bloc2">
+                <Bloc type="Mode de livraison"/>
+            </div>
+            <div className="Bloc2">
+                <Bloc type="Récapitulatif"/>
+            </div>
+            <div className="confirm">
+                <div className="conditions-vente">
+                    <Input type="checkbox" callBack={toggleCGV}/> <a href="/conditions-generales-de-vente" target="_blank">J’accepte les conditions générales de vente</a>
+                </div>
+                <Button type="text" content="Commander" isDisabled={!areCGVAccepted} color="green" callBack={push}/>
+            </div>
         </div>
-    </div>
+    </>
 }
 export default Recap
