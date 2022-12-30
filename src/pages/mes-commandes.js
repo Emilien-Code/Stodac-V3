@@ -66,7 +66,7 @@ const MesCommandes = ()=>{
                         }
                     </ul>
                     <div className="frais_de_port">
-                        <p>Frais de ports :</p>
+                        <p>Frais de port :</p>
                         <p>{formatNumber(commande.prix.prix_ttl_fdp)} €</p>
                     </div>
                     <div className="total_HT">
@@ -78,8 +78,8 @@ const MesCommandes = ()=>{
                         <p>{formatNumber(commande.prix.prix_ttl)} €</p>
                     </div>
                     <div className="etat">
-                        <p>Status : {commande.nometat[commande.etat]}</p>
-                        <p>Payement par {commande.facture.moyendepayement}</p>
+                        <p>Statut : {commande.nometat[commande.etat]}</p>
+                        <p>Paiement par {commande.facture.moyendepayement}</p>
                     </div>
                         <hr/>
                     </article>
