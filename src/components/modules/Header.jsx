@@ -54,8 +54,10 @@ const Header = (props)=>{
                             count.style.top = `${window.innerWidth > 768 ? "-25px" : "-27px"}`;
                         }
                     }else{
-                        count.style.transition = "0s"
-                        count.style.top = `${window.innerWidth > 768 ? `${100 - currentScroll}px` : `${98 - currentScroll}px`}`;
+                        if(count){
+                            count.style.transition = "0s"
+                            count.style.top = `${window.innerWidth > 768 ? `${100 - currentScroll}px` : `${98 - currentScroll}px`}`;
+                        }
                     }
 
                 }
