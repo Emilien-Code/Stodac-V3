@@ -107,7 +107,7 @@ const MonEspace = ()=>{
             </Helmet>
         <main className="mon-espace">
         <header>
-            <h1>Bienvenu(e) {user.data.firstName}</h1>
+            <h1>Bienvenue {user.data.firstName}</h1>
             <Button color="black" type="text" content="Déconnexion" callBack={logout}/>
         </header>
         <nav>
