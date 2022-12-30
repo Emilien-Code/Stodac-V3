@@ -29,17 +29,17 @@ const Assistance = ()=>{
                 </article>
                 <article>
                     <h2>Mon poêle ne s'allume pas</h2>
-                    <p>Les granules ne descende pas, regardez <Link to="/" onClick={()=>sendTo("Motoréducteur ")}>les Motoréducteurs</Link></p>
-                    <p>Les granules tombent mais ne s'enflamme pas, regardez <Link to="/" onClick={()=>sendTo("Résistance")}>les Résistances</Link></p>
+                    <p>Les granules ne descendent pas, regardez <Link to="/" onClick={()=>sendTo("Motoréducteur ")}>les Motoréducteurs</Link></p>
+                    <p>Les granules tombent mais ne s'enflamment pas, regardez <Link to="/" onClick={()=>sendTo("Résistance")}>les Résistances</Link></p>
                 </article>
                 <article>
                     <h2>Rien ne s'affiche sur l'écran</h2>
                     <p>Vérifier prise, fusible puis</p>
                     <p><Link to="/" onClick={()=>sendTo("Ecran | Afficheur | Display")}>Écran </Link></p>
-                    <p><Link to="/" onClick={()=>sendTo("Carte électronique")}> Carte Éléctronique </Link></p>
+                    <p><Link to="/" onClick={()=>sendTo("Carte électronique")}> Carte Électronique </Link></p>
                 </article>
                 <article>
-                    <h2>Mon poêle fait du bruit: </h2>
+                    <h2>Mon poêle fait du bruit</h2>
                     <p><Link to="/" onClick={()=>sendTo("Ventilateur")}> Ventilateur centrifuge</Link></p>
                     <p><Link to="/" onClick={()=>sendTo("Ventilateur")}> Ventilateur tangentiel</Link></p>
                     <p><Link to="/" onClick={()=>sendTo("Extracteur fumées")}>Extracteur</Link></p>
