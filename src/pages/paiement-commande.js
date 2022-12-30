@@ -86,7 +86,7 @@ const Payement = ()=>{
               <Bloc type="Facturation"/>
           </div>
           <div className="Bloc2">
-              <Bloc type="Mode de payement" saveFacture={saveFacture}/>
+              <Bloc type="Mode de paiement" saveFacture={saveFacture}/>
           </div>
       </div>
     </>
