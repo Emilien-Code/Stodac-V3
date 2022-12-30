@@ -69,7 +69,7 @@ const Bloc = ({type, saveFacture,})=>{
                                 }
               
                                 <div className="line fdp">
-                                    <p>Frais de ports</p>
+                                    <p>Frais de port</p>
                                     <p>{cart.deliveryPrice}€</p>
                                 </div>
               
@@ -109,7 +109,7 @@ const Bloc = ({type, saveFacture,})=>{
                         }
                         <hr />
                         <div className="bottom">
-                            <p>Frais de ports</p><p>{cart.deliveryMode ? formatNumber(cart.deliveryPrice) + "€" : ""}</p>
+                            <p>Frais de port</p><p>{cart.deliveryMode ? formatNumber(cart.deliveryPrice) + "€" : ""}</p>
                         </div>
                         </>
                     )
@@ -127,7 +127,7 @@ const Bloc = ({type, saveFacture,})=>{
                 type==="Mode de payement" && (<Information message="Paiement sécurisé par paypal" />)
             }
             {
-                type==="Panier" && (<Information message="La totalitée des prix indiqués sur le site sont toute taxes comprises (ttc)" />)
+                type==="Panier" && (<Information message="Les prix indiqués sur le site sont toutes taxes comprises (ttc)" />)
             }
         </section>
     )
