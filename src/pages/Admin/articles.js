@@ -218,7 +218,7 @@ const Articles = () => {
                 </div>
                 <div>
                     <div>
-                        <h3>Quantitée</h3>
+                        <h3>Quantité</h3>
                         <Input type="text" defaultValue={selectedArticle.qty} callBack={(e)=>{selectedArticle.qty = e}}/>
                     </div>
                     <div>
@@ -243,7 +243,7 @@ const Articles = () => {
                         </div>
                     </div>
                 </div>
-                <h3>Compatibilitées</h3>
+                <h3>Compatibilités</h3>
                 <Input type="text" defaultValue={selectedArticle.compatibility} callBack={(e)=>{selectedArticle.compatibility = e}}/>
                 <h3>Description</h3>
                 <Input type="text" defaultValue={selectedArticle.description} callBack={(e)=>{selectedArticle.description = e}}/>
