@@ -60,7 +60,7 @@ const ConfirmationCommande = ()=>{
                     }
 
                     <div className="line fdp">
-                        <p>Frais de ports</p>
+                        <p>Frais de port</p>
                         <p>{deliveryPrice}€</p>
                     </div>
 
