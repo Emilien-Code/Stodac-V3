@@ -335,7 +335,7 @@ const Commandes = () => {
                                 }
                             </ul>
                             <div className="frais_de_port">
-                                <p>Frais de ports :</p>
+                                <p>Frais de port :</p>
                                 <p>{formatNumber(commande.comande.prix.prix_ttl_fdp)} €</p>
                             </div>
                             <div className="total_HT">
@@ -347,7 +347,7 @@ const Commandes = () => {
                                 <p>{formatNumber(commande.comande.prix.prix_ttl)} €</p>
                             </div>
                             <div className="etat">
-                                <p className={`status-${commande.comande.etat}`}>Status : 
+                                <p className={`status-${commande.comande.etat}`}>Statut : 
                                     <select onChange={(e)=>{
                                         setShowModale(true)
                                         setUpdate({
@@ -366,7 +366,7 @@ const Commandes = () => {
                                         }
                                     </select>
                                 </p>
-                                <p>Payement par {commande.comande.facture.moyendepayement}</p>
+                                <p>Paiement par {commande.comande.facture.moyendepayement}</p>
                             </div>
                                 <hr/>
                             </li>
