@@ -57,13 +57,13 @@ const Facturation = () => {
         <>
             <div className="Facturation">
                 <Input type="text" placeHolder="Nom *" className="nom" callBack={getLastName}/>
-                <Input type="text" placeHolder="Prenom *" className="prenom" callBack={getFirstName}/>
+                <Input type="text" placeHolder="Prénom *" className="prenom" callBack={getFirstName}/>
                 <Input type="text" placeHolder="Entreprise" className="entreprise" callBack={getCorporation}/>
-                <Input type="text" placeHolder="Numero *" className="numero" callBack={getNumber}/>
+                <Input type="text" placeHolder="Numéro *" className="numero" callBack={getNumber}/>
                 <Input type="text" placeHolder="Rue *" className="rue" callBack={getStreet}/>
                 <Input type="text" placeHolder="Ville *" className="ville" callBack={getCity}/>
                 <Input type="text" placeHolder="Code Postal *" className="cp" callBack={getPostCode}/>
-                <Input type="text" placeHolder="Complement" className="complement" callBack={getComplement}/>
+                <Input type="text" placeHolder="Complément" className="complement" callBack={getComplement}/>
             </div>
         </>
     )
