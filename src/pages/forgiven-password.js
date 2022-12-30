@@ -80,17 +80,17 @@ const ForgivenPassword = () => {
             { isRequesting ? (
                 response ? 
                 
-                response==='succes' ? <h1> Un message vous à été envoyé</h1> : <h1>Une erreur est survenue</h1>
+                response==='succes' ? <h1> Un message vous a été envoyé</h1> : <h1>Une erreur est survenue</h1>
                 
                 :   <>
                         <h1>Réinitialisation de votre mot de passe</h1>
-                        <Input type="text" callBack={setEmail} placeHolder="Adresse email"/>
+                        <Input type="text" callBack={setEmail} placeHolder="Adresse mail"/>
                         <Button type="text" color="green" content="Réinitialiser le mot de passe" isDisabled={!email} callBack={sendMail}/>
                     </>
                 ):(
                     response ? 
                     
-                    response==='succes' ? <h1> Votre mot de passe à bien été changé</h1> : <h1>Une erreur est survenue</h1>
+                    response==='succes' ? <h1> Votre mot de passe a bien été changé</h1> : <h1>Une erreur est survenue</h1>
                     
                     : <>
                         <h1>Réinitialisation de votre mot de passe</h1>
@@ -106,9 +106,9 @@ const ForgivenPassword = () => {
             <h2>Réinitialisation du mot de passe.</h2>
             <p>Nous vous permettons de réinitialiser votre mot de passe. En entrant votre adresse mail, nous vous enverrons un lien valable une heure.</p>
             <h2>Que faire si je ne reçois pas de mail ?</h2>
-            <p>Si après une demande de réinitialisation de votre mot de passe, vous ne recevez aucuns mail*, assurez vous que l’adresse email saisie est correcte et que vous avez bien un compte sur stodac.fr. 
+            <p>Si après une demande de réinitialisation de votre mot de passe, vous ne recevez aucun mail*, assurez vous que l’adresse mail saisie est correcte et que vous avez bien un compte sur stodac.fr. 
                 Si ces deux conditions sont validées, contactez notre support client en cliquant <a href="mailto:contact@stodac.fr">ici</a>.</p>
-            <p className="asterisk">* L’envoies du mail peut prendre quelques minutes selon l’état des serveurs.</p>
+            <p className="asterisk">* L’envoi du mail peut prendre quelques minutes selon l’état des serveurs.</p>
         </aside>
 
     </section>
