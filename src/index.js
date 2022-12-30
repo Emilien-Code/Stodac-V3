@@ -86,9 +86,14 @@ const AnimationLayout = ()=>{
             let tl = gsap.timeline({
               onComplete: () => {
                 setTimeout(()=>{
-                  document.querySelector(".transition-page").style.display = "none";
-                  document.querySelector(".transition-bg").style.display = "none";
-                },500)
+                  try{
+
+                    document.querySelector(".transition-page").style.display = "none";
+                    document.querySelector(".transition-bg").style.display = "none";
+                  }catch{
+                    console.log("impossible")
+                  }
+                  },500)
               }
             })
             gsap.killTweensOf(".transition-page");

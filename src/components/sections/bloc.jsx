@@ -85,7 +85,7 @@ const Bloc = ({type, saveFacture,})=>{
                     type==="Facturation" && (<Facturation/>)
                 }
                 {
-                    type==="Mode de payement" && (<Select type="payement" saveFacture={saveFacture}/>)
+                    type==="Mode de paiement" && (<Select type="payement" saveFacture={saveFacture}/>)
                 }
                 {
                     type === "Panier" && (
@@ -116,7 +116,7 @@ const Bloc = ({type, saveFacture,})=>{
                 }
 
                 {
-                    (type==="Facturation" || type==="Mode de payement") && ( <hr/> )
+                    (type==="Facturation" || type==="Mode de paiement") && ( <hr/> )
                 }
                 
             </div>
@@ -124,7 +124,7 @@ const Bloc = ({type, saveFacture,})=>{
                 type==="Facturation" && (<Information message="Les champs * sont obligatoires" />)
             }
             {
-                type==="Mode de payement" && (<Information message="Paiement sécurisé par paypal" />)
+                type==="Mode de paiement" && (<Information message="Paiement sécurisé par paypal" />)
             }
             {
                 type==="Panier" && (<Information message="Les prix indiqués sur le site sont toutes taxes comprises (ttc)" />)

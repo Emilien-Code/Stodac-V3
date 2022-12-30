@@ -16,18 +16,20 @@ const ConfirmationCommande = ()=>{
 
     React.useEffect(()=>{
         console.log(cart.cart)
-        setCommand(JSON.parse(JSON.stringify(cart.cart)))
-        setDeliveryPrice(cart.deliveryPrice)
-        setTotal(cart.total + cart.deliveryPrice)
-        setIsSucces(window.location.href.includes("succes"))
+        if(cart.cart){
+            setCommand(JSON.parse(JSON.stringify(cart.cart)))
+            setDeliveryPrice(cart.deliveryPrice)
+            setTotal(cart.total + cart.deliveryPrice)
+            setIsSucces(window.location.href.includes("succes"))
+        }
 
 
 
-        return () => {
+        setTimeout(() => {
             dispatch(removeAllProductsFromCart())
             dispatch(checkQuantity())
             dispatch(setDeliveryPrice(0))
-        }
+        },1500)
     },[])
 
 
@@ -53,7 +55,7 @@ const ConfirmationCommande = ()=>{
                         
                         command.map((el, index)=>{
                             return <div className="line" key={index}>
-                            <p>{el.name}</p>
+                            <p>{el.quantity} x {el.name}</p>
                             <p>{formatNumber(el.quantity * el.price)}€</p>
                         </div>
                         })  
@@ -61,7 +63,7 @@ const ConfirmationCommande = ()=>{
 
                     <div className="line fdp">
                         <p>Frais de port</p>
-                        <p>{deliveryPrice}€</p>
+                        <p>{formatNumber(deliveryPrice)}€</p>
                     </div>
 
                     <div className="line">
