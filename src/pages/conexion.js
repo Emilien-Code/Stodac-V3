@@ -154,9 +154,9 @@ const Conexion = () => {
                     error && <Bubble type="error" text={error}/>
 
                 }
-                <h1>{isLogin ? "Conexion" : "Créer un compte"}</h1>
+                <h1>{isLogin ? "Connexion" : "Créer un compte"}</h1>
                 <div className="row">
-                    <Input callBack={setEmail} type="text" placeHolder="Adresse Mail" />
+                    <Input callBack={setEmail} type="text" placeHolder="Adresse mail" />
                     <div className={`validator ${regex.mailValidation(email) ? "green" : "red"}`}></div>   
 
                 </div>
@@ -183,7 +183,7 @@ const Conexion = () => {
                     !isLogin && (
                         <>
                             <div className="row">
-                                <Input type="password" callBack={setConfirmPassword} placeHolder="Confirmez le mot de passe" />
+                                <Input type="password" callBack={setConfirmPassword} placeHolder="Confirmer le mot de passe" />
                                 <div className={`validator ${password===confirmPassword&&confirmPassword!=="" ? "green" : "red"}`}></div>   
                             </div>
                             <div className="row">
