@@ -32,11 +32,11 @@ const ConfirmationEmail = ()=>{
         <>
             <Helmet>
                 <title>
-                    Confiramtion de votre email | Stodac : Vente d'accessoires pour poêles à granulés
+                    Confiramtion de votre compte | Stodac : Vente d'accessoires pour poêles à granulés
                 </title>
             </Helmet>
             <div className="not-found">
-                <h1 className="small">{isSucces ? "Email validée" : "Impossible de valider l'inscription, une erreur est survenue"}</h1>
+                <h1 className="small">{isSucces ? "Votre compte a bien été validé" : "Impossible de valider l'inscription, une erreur est survenue"}</h1>
                 <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
                 <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
                 <Bubble text={isSucces ? "🎉" : "😞"} color={isSucces ? "green" : "red"} />
