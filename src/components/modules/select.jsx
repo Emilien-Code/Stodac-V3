@@ -99,7 +99,7 @@ const Payement = ({type, saveFacture}) => {
                 type==="payement" && (
                     <div className={nomdiv==="modePayement" ? "modePayement" : "invisible"}>
                         <Button content="Paypal ou carte bleue" type="selecteur" callBack={selectionnerP}/>
-                        <Button content="Cheque" type="selecteur" callBack={selectionnerC}/>
+                        <Button content="Chèque" type="selecteur" callBack={selectionnerC}/>
                         <Button content="Virement" type="selecteur" callBack={selectionnerV}/>
                     </div>
                 )
