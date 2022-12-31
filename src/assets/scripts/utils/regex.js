@@ -7,7 +7,7 @@ const passwordValidation = (password)=>{
   return regexp.test(String(password));
 }
 const phoneValidation = (mobile)=>{
-  const regexp = /^[0-9]{10}$/;
+  const regexp = /^[0-9]{10}|[+][0-9]{11}$/;
   return regexp.test(String(mobile));
 }
 
