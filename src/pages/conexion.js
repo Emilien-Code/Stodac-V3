@@ -177,7 +177,9 @@ const Conexion = () => {
                         }
                         <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
                     </div>
-                    
+                    <div className="row indication">
+                        <p>Votre mot de passe doit contenir au moins 1 majuscule 1 chiffre et 8 charactères, </p>
+                    </div>                    
 
                 {
                     !isLogin && (
