@@ -94,9 +94,19 @@ const ForgivenPassword = () => {
                     
                     : <>
                         <h1>Réinitialisation de votre mot de passe</h1>
-                        <Input type="password" callBack={setpassword} placeHolder="Nouveau mot de passe"/>
-                        <Input type="password" callBack={setconfirmpassword} placeHolder="Confirmation du mot de passe"/>
-                        <Button type="text" color="green" content="Réinitialiser le mot de passe" callBack={changepswd}/>
+                        <div className="row indication">
+                            <p>Votre mot de passe doit contenir au moins 1 majuscule 1 chiffre et 8 charactères, </p>
+                        </div>     
+                        <div className="row">
+                            <Input type="password" callBack={setpassword} placeHolder="Nouveau mot de passe"/>
+                            <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
+                        </div>
+                        
+                        <div className="row">
+                            <Input type="password" callBack={setconfirmpassword} placeHolder="Confirmation du mot de passe"/>
+                            <div className={`validator ${password === confirmpassword ? "green" : "red"}`}></div>   
+                        </div>
+                        <Button type="text" color="green" isDisabled={!(regex.passwordValidation(password) && password === confirmpassword)} content="Réinitialiser le mot de passe" callBack={changepswd}/>
                     </>
                 )
             }
