@@ -18,7 +18,7 @@ const ConfirmationCommande = ()=>{
         console.log(cart.cart)
         if(cart.cart){
             setCommand(JSON.parse(JSON.stringify(cart.cart)))
-            setDeliveryPrice(cart.deliveryPrice)
+            setDeliveryPrice(JSON.parse(JSON.stringify(cart.deliveryPrice)))
             setTotal(cart.total + cart.deliveryPrice)
             setIsSucces(window.location.href.includes("succes"))
         }
