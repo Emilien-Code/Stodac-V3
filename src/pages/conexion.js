@@ -36,7 +36,7 @@ const Conexion = () => {
         if (!isLogin) {
           return regex.mailValidation(email) && firstName !== "" && lastName !== "" && regex.passwordValidation(password) && password===confirmPassword && regex.phoneValidation(mobile)
         } else {
-          return regex.mailValidation(email) && regex.passwordValidation(confirmPassword)
+          return regex.mailValidation(email) && regex.passwordValidation(password)
         }
     }
 
@@ -177,9 +177,12 @@ const Conexion = () => {
                         }
                         <div className={`validator ${regex.passwordValidation(password) ? "green" : "red"}`}></div>   
                     </div>
+                    {
+                            !isLogin ? 
                     <div className="row indication">
                         <p>Votre mot de passe doit contenir au moins 1 majuscule 1 chiffre et 8 charactères, </p>
-                    </div>                    
+                    </div>     : <></>                
+                    }
 
                 {
                     !isLogin && (
@@ -206,7 +209,7 @@ const Conexion = () => {
                     isLogin && ( <Link to="/mot-de-passe-oublie">Mot de passe oublié ? </Link> )
                 }
 
-                <Button callBack={isLogin ? login : createAccount } color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
+                <Button callBack={isLogin ? login : createAccount } isDisabled={!validatedFields()} color="green" type="text" content={isLogin ? "Se connecter" : "Créer mon compte"}/>
                 <Button callBack={toggle} color="black" type="text" content={isLogin ? "Créer un compte" : "Se connecter"}/>
             </section>
             </>
