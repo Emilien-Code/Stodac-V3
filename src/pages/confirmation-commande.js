@@ -2,14 +2,14 @@ import React from "react";
 import Bubble from "../components/atoms/Bubbles"
 import "../assets/styles/components/pages/404.scss"
 import { useSelector, useDispatch } from "react-redux";
-import { removeAllProductsFromCart, checkQuantity } from "../assets/scripts/store/redux-slices/cart.js"
+import { removeAllProductsFromCart, checkQuantity, setDeliveryPrice } from "../assets/scripts/store/redux-slices/cart.js"
 import formatNumber from "../assets/scripts/utils/priceNormalisation";
 import { Helmet } from "react-helmet";
 const ConfirmationCommande = ()=>{
     const cart = useSelector((state) => state.cart);
     const [isSucces, setIsSucces] = React.useState(true)
     const [command, setCommand] = React.useState([])
-    const [deliveryPrice, setDeliveryPrice] = React.useState(0)
+    const [deliveryPrice, setD] = React.useState(0)
     const [total, setTotal] = React.useState(0)
     const dispatch= useDispatch()
 
@@ -18,7 +18,7 @@ const ConfirmationCommande = ()=>{
         console.log(cart.cart)
         if(cart.cart){
             setCommand(JSON.parse(JSON.stringify(cart.cart)))
-            setDeliveryPrice(JSON.parse(JSON.stringify(cart.deliveryPrice)))
+            setD(JSON.parse(JSON.stringify(cart.deliveryPrice)))
             setTotal(cart.total + cart.deliveryPrice)
             setIsSucces(window.location.href.includes("succes"))
         }
