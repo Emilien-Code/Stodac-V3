@@ -32,7 +32,7 @@ const Filters = ()=>{
         <Search isPreview={true}/>
         <div className="selects">
             <Input type="select" selectType="Marques" defaultValue={filters.manufactor ? filters.manufactor : "Marques"} selectValues={manufacturers} callBack={(e)=>{dispatch(setManufacter(e))}}/>
-            <Input type="select" selectType="Categories" defaultValue={filters.category ? filters.category : "Categories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
+            <Input type="select" selectType="Catégories" defaultValue={filters.category ? filters.category : "Catégories"} selectValues={categories} callBack={(e)=>{dispatch(setCategory(e))}}/>
         </div>
     </div>
     )

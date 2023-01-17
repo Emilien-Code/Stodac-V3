@@ -67,9 +67,10 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
+                                <p>Ref : {data.reference}</p>
                                 <span>{data.price ? `TTC ${formatNumber(data.price)}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
-                                <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
+                                <Button color="green" type="text" callBack={addToCart} content="Ajouter au panier"/>
                             </div>
                         </figcaption>
                     </figure>
@@ -121,7 +122,7 @@ const Article = ({data, display})=>{
                         </section>
                         <section>
                             <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
-                            <Button color="green" type="text" callBack={addToCart} content="Ajouter au pannier"/>
+                            <Button color="green" type="text" callBack={addToCart} content="Ajouter au panier"/>
                         </section>
                         <p>{data.description}</p>
                         {/* A mettre dans un component */}

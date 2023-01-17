@@ -29,8 +29,8 @@ const Assistance = ()=>{
                 </article>
                 <article>
                     <h2>Mon poêle ne s'allume pas</h2>
-                    <p>Les granules ne descendent pas, regardez <Link to="/" onClick={()=>sendTo("Motoréducteur ")}>les Motoréducteurs</Link></p>
-                    <p>Les granules tombent mais ne s'enflamment pas, regardez <Link to="/" onClick={()=>sendTo("Résistance")}>les Résistances</Link></p>
+                    <p>Les granules ne descendent pas, regarder <Link to="/" onClick={()=>sendTo("Motoréducteur ")}>les Motoréducteurs</Link></p>
+                    <p>Les granules tombent mais ne s'enflamment pas, regarder <Link to="/" onClick={()=>sendTo("Résistance")}>les Résistances</Link></p>
                 </article>
                 <article>
                     <h2>Rien ne s'affiche sur l'écran</h2>

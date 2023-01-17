@@ -95,7 +95,7 @@ const ForgivenPassword = () => {
                     : <>
                         <h1>Réinitialisation de votre mot de passe</h1>
                         <div className="row indication">
-                            <p>Votre mot de passe doit contenir au moins 1 majuscule 1 chiffre et 8 charactères, </p>
+                            <p>Votre mot de passe doit contenir au moins 1 majuscule 1 chiffre et 8 caractères, </p>
                         </div>     
                         <div className="row">
                             <Input type="password" callBack={setpassword} placeHolder="Nouveau mot de passe"/>
