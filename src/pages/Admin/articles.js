@@ -66,7 +66,11 @@ const Articles = () => {
         if(searchedWord){
             fetch(`https://stodac.fr/api/stuff/name/${searchedWord}/4`)
             .then(response => response.json())
-            .then(data => setArticles(data))
+            .then(data1 => {
+                fetch(`https://stodac.fr/api/stuff/reference/${searchedWord}/4`)
+                .then(response => response.json())
+                .then(data2 => setArticles([...data1, ...data2]))
+            })
         }
     },[searchedWord])
 

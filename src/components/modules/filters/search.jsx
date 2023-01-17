@@ -14,11 +14,21 @@ const Search = ({isBlock, isPreview})=>{
     const dispatch = useDispatch();
     const search = (firstLetters)=>{
         setFl(firstLetters)
+        setArticles([])
         if(firstLetters){
             setIsOpen(true)
             fetch(`https://stodac.fr/api/stuff/name/${firstLetters}/4`)
             .then(response => response.json())
-            .then(data => setArticles(data))
+            .then(data1 => {
+
+                fetch(`https://stodac.fr/api/stuff/reference/${firstLetters}/4`)
+                .then(response => response.json())
+                .then(data2 => setArticles([...data1, ...data2]))
+                
+            })
+
+
+
         }
     }
     const push = ()=>{
