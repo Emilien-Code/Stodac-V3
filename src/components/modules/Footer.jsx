@@ -7,20 +7,12 @@ const Footer = (props)=>{
     return  <footer>
         <div className="marquee">
             
-                <section className="slider">
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                </section>
-                <section className="slider">
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                    <span>Stodac</span>
-                </section>
+                <p>
+                Stodac : Spécialiste de la pièce détachée de poêle à granules.
+                </p>
+                <p>
+                    Stodac : Spécialiste de la pièce détachée de poêle à granules.
+                </p>
 
         </div>
                 <section className="infos">

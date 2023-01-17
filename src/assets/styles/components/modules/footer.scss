@@ -43,21 +43,20 @@ footer{
     .marquee {
         position: relative;
         left: -160px;
+        width: fit-content;
         display: flex;
     }
 
-    .slider{
+    p{
         animation: marquee 60s infinite linear  ;
+        font-family: "Roboto Black";
         font-size: map-get($fonts-sizes-desktop , "h1");
+        width: 200vw;
         @include mq("tablet", max) {
+            width: 250vw;
             font-size: map-get($fonts-sizes-mobile , "h1");
         }
-        span{
-            margin-left: 40px;  
-        @include mq("tablet", max) {
-            margin-left: 16px;
-        }
-        }
+
     }
     .copy-rights{
         position: absolute;
