@@ -52,6 +52,7 @@
     }
     &.disabled{
         background-color: map-get($brands-primary, "dark-grey");
+        cursor: not-allowed;
     }
 }
 .selecteur{
