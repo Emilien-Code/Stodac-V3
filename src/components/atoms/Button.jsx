@@ -43,7 +43,7 @@ const Button = ({content, type, color, value, callBack, maxValue, isDisabled=fal
     if(type === "page-select"){
         return  <div className={"button " + type + " " + color + " "}>
                     <div className="less" onClick={prevPage}><Icon type="left"/></div>
-                    {value}
+                    {value}/{maxValue}
                     <div className="more" onClick={nextPage}><Icon type="right"/></div>
                 </div>
     }
