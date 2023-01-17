@@ -28,6 +28,12 @@
             a{
                 margin-left: 16px;
             }
+            a{
+                color: map-get($brands-primary, "green");
+                &:visited{
+                    color: map-get($brands-primary, "black");
+                }
+            }
         }
     }
     .recap-commande{
