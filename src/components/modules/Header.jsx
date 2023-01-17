@@ -10,6 +10,7 @@ import { Link, useNavigate} from "react-router-dom"
 const Header = (props)=>{
     const cart = useSelector((state) => state.cart)
     let navigate = useNavigate();
+    const authentication = useSelector((state) => state.authentication)
 
     const isMenuOpen = useSelector(state => state.modals.menu)
     const dispatch = useDispatch();
@@ -77,12 +78,30 @@ const Header = (props)=>{
                     <li>
                         <Link className="nav-link" to={`/boutique`}>Boutique</Link>
                     </li>
-                    <li>
-                        <Link  className="nav-link" to={`/mon-espace`}>Mon espace</Link>
-                    </li>
-                    <li>
-                        <Link  className="nav-link" to={`/assistance`}>Assistance</Link>
-                    </li>
+                    {
+                        authentication.data.admin && (
+                            <>
+                                <li>
+                                    <Link  className="nav-link" to={`/admin/articles`}>Articles</Link>
+                                </li>
+                                <li>
+                                    <Link  className="nav-link" to={`/admin/commandes`}>Commandes</Link>
+                                </li>
+                            </>
+                        )
+                    }
+                    {
+                        !authentication.data.admin && (
+                            <>
+                                <li>
+                                    <Link  className="nav-link" to={`/mon-espace`}>Mon espace</Link>
+                                </li>
+                                <li>
+                                    <Link  className="nav-link" to={`/assistance`}>Assistance</Link>
+                                </li>
+                            </>
+                    )
+                    }
                 </ul>
                 <ul className="buttons">
                     <li className="nav-link">
