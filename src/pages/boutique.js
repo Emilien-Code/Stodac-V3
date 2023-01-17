@@ -123,7 +123,7 @@ const Boutique = ()=>{
         </section>
 
         <section className="load">
-            <Button type="page-select" color="" value={currentPage} callBack={nextPage} maxValue={nbPages}/> 
+            <Button type="page-select" color="" value={currentPage} callBack={nextPage} maxValue={Math.floor(nbPages) + 1}/> 
         </section>
 
         </main>
