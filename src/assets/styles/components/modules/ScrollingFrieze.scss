@@ -1,0 +1,41 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+
+.stodac-scrolling-frieze{
+    width: 100%;
+    padding: 40px 0;
+    overflow-x: hidden;
+    transform-origin: center;
+    transform: rotate(-2.85deg) ;///translateX(-50%);
+    .line{
+        &:first-of-type{
+            margin-bottom: 24px;
+            @include mq("tablet", max){
+                margin-bottom: 20px;
+            }
+        }
+        &:nth-of-type(1){
+            transform: translate(-50%);
+        }
+        
+        display: flex;
+        width: 5999px;
+
+        @include mq("tablet", max){
+            width: 1033px;
+        }
+        span{
+            //  font-family: "Everett-Regular";
+            margin-right: 40px;
+            font-size: 40px;
+            // font-size: map-get($fonts-sizes-desktop, "scrolling-freeze");
+            // line-height: map-get($fonts-sizes-desktop, "scrolling-freeze-line");
+            @include mq("tablet", max){
+                font-size: 24px;
+                // font-size: map-get($fonts-sizes-mobile, "scrolling-freeze");
+                // line-height: map-get($fonts-sizes-mobile, "scrolling-freeze-line");
+                margin-right: 12px;
+            }
+        }
+    }
+}
