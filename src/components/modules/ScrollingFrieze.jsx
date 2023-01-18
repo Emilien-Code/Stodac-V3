@@ -7,39 +7,36 @@ const isVisible = (element) => {
     return object.top < window.innerHeight && object.bottom > 0;
 }
 const ScrollingFrieze = ()=>{
+    let scrollValue = 1
+    let lastScroll = 0
+    let currentScroll = 0
+    const translate = ()=>{
+        
+        currentScroll = window.scrollY;
+        if(lastScroll > currentScroll && currentScroll ){
+            scrollValue++
+        }else{
+            scrollValue--
+        }
+        if(isVisible(document.querySelector(".stodac-scrolling-frieze"))){
+            
+            document.querySelectorAll(".stodac-scrolling-frieze .line").forEach((line, index) => {
+                gsap.to(line, {
+                    x: (index%2 === 0 ? -1 : 1) * scrollValue// - window.innerWidth/2
+                })
+            })
+            
+        }
+        lastScroll = currentScroll
+    }
 
     React.useEffect(()=>{
         
-        setTimeout(()=>{
-            let scrollValue = 1
-            let final = -1;
-            let lastScroll = 0
-            let currentScroll = 0
-            
-            window.addEventListener('scroll', ()=>{
-                
-                currentScroll = window.scrollY;
 
-                if(lastScroll > currentScroll && currentScroll ){
-                    scrollValue++
-                }else{
-                    scrollValue--
-                }
+   
+        window.addEventListener('scroll', translate)
 
-                if(isVisible(document.querySelector(".stodac-scrolling-frieze"))){
-                    
-                    document.querySelectorAll(".stodac-scrolling-frieze .line").forEach((line, index) => {
-                        gsap.to(line, {
-                            x: (index%2 === 0 ? -1 : 1) * scrollValue// - window.innerWidth/2
-                        })
-                    })
-                    
-                }
-                lastScroll = currentScroll
-
-            })
-
-        }, 500)
+        return () => window.removeEventListener("scroll", translate)
     }, [])
 
     return <div className="stodac-scrolling-frieze">
