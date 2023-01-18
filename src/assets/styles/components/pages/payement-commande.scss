@@ -32,9 +32,9 @@
                 margin-left: 16px;
             }
             a{
-                color: map-get($brands-primary, "green");
+                color: map-get($brands-primary, "black");
                 &:visited{
-                    color: map-get($brands-primary, "black");
+                    color: grey
                 }
             }
         }
