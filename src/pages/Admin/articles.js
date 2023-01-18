@@ -83,9 +83,11 @@ const Articles = () => {
     const removeArticle = ()=>{
         console.log(auth.token)
         fetch(`https://stodac.fr/api/stuff/${selectedArticle._id}`,{
-            method: 'DELETE', 
+            method: 'POST', 
             headers: {
                 'Authorization': 'Bearer ' + auth.token,  
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 userId: auth.id
@@ -126,6 +128,7 @@ const Articles = () => {
         fd.append('state', selectedArticle.state)
         fd.append('description', selectedArticle.description)
         fd.append('compatibility', JSON.stringify([selectedArticle.compatibility]))
+        fd.append('userId', auth.id)
 
         createStuff(fd)
         setShowCreateModale(false)
