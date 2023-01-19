@@ -1,6 +1,9 @@
 @import "../../utils/variables.scss";
 @import "../../utils/mixins.scss";
 
+.stodac-sfs{
+    overflow: hidden;
+}
 .stodac-scrolling-frieze{
     width: 100%;
     padding: 40px 0;
@@ -31,7 +34,7 @@
             // font-size: map-get($fonts-sizes-desktop, "scrolling-freeze");
             // line-height: map-get($fonts-sizes-desktop, "scrolling-freeze-line");
             @include mq("tablet", max){
-                font-size: 24px;
+                font-size: 28px;
                 // font-size: map-get($fonts-sizes-mobile, "scrolling-freeze");
                 // line-height: map-get($fonts-sizes-mobile, "scrolling-freeze-line");
                 margin-right: 12px;

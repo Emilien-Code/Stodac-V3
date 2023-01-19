@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/styles/components/modules/ScrollingFrieze.scss"
+import "../../assets/styles/components/sections/ScrollingFrieze.scss"
 import gsap from "gsap";
 
 const isVisible = (element) => {
@@ -39,7 +39,7 @@ const ScrollingFrieze = ()=>{
         return () => window.removeEventListener("scroll", translate)
     }, [])
 
-    return <div className="stodac-scrolling-frieze">
+    return <section className="stodac-sfs"><div className="stodac-scrolling-frieze">
         <div className="line">     
             <span>Accompagnement.</span>
             <span>Professionnalisme.</span>
@@ -80,7 +80,7 @@ const ScrollingFrieze = ()=>{
             <span>Engagement.</span>
             <span>Expertise.</span>
         </div>
-    </div>
+    </div></section>
 }
 
 export default ScrollingFrieze
