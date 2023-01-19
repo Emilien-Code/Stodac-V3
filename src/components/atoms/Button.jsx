@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../atoms/Icon"
 import "../../assets/styles/components/atoms/buttons.scss"
+import { Link } from "react-router-dom";
 
 const Button = ({content, type, color, value, callBack, maxValue, isDisabled=false}, ...props)=>{
 
@@ -28,6 +29,9 @@ const Button = ({content, type, color, value, callBack, maxValue, isDisabled=fal
     }
     if(type === "text"){
         return <button onClick={exec} className={"button " + `${isDisabled ? "disabled " : "" }` + type + " " + color + " "}><span className="span">{content}</span></button>
+    }
+    if(type === "link"){
+        return <button onClick={exec} className={"button text " + `${isDisabled ? "disabled " : "" }` + type + " " + color + " "}><span className="span"><Link to="/boutique">{content}</Link></span></button>
     }
     if(type === "selecteur"){
         return <button onClick={exec} className={"button " + type + " " + color + " "}><span className="span">{content}</span><Icon type="right"/></button>
