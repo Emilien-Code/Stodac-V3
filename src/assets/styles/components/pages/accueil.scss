@@ -1,0 +1,7 @@
+.stodac-accueil{
+    section{
+        &:not(section:first-of-type){
+            margin: 250px 0 ;
+        }
+    }
+}

@@ -28,7 +28,7 @@ import CommandesAdmin from "./pages/Admin/commandes.js"
 import ArticleAdmin from "./pages/Admin/articles.js"
 import ForgivenPassword from './pages/forgiven-password';
 import ConfirmationEmail from './pages/confirmationEmail';
-
+import Accueil from "./pages/accueil"
 import {useSelector, useDispatch} from 'react-redux';
 import { setData, setDisconnect } from "./assets/scripts/store/redux-slices/authentication";
 
@@ -202,7 +202,7 @@ root.render(
           <Route element={<AnimationLayout/>}>
             <Route
               path="/"
-              element={<Boutique/>}
+              element={<Accueil/>}
             />
             <Route
               path="/boutique/:page"
