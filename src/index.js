@@ -51,7 +51,6 @@ const AnimationLayout = ()=>{
   
   React.useEffect(() => {
 
-    console.log(window)
     dispatch(setCart(false))
     dispatch(setMenu(false))
     try {
