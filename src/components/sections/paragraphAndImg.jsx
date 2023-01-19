@@ -19,7 +19,7 @@ const PAndI = ()=>{
                     <source 
                         srcSet={desktopImg}
                     />
-                    <img src={desktopImg} alt="Illustration des stocks de stodac" />
+                    <img src={desktopImg} alt="Illustration des stocks de stodac" data-isparallax="true" data-axe="vertical" data-translate-speed="0.2"/>
                 </picture>
             </div>
         </section>
