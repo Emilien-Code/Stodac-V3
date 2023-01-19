@@ -1,0 +1,29 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.stodac-titleAndParagraph{
+    padding: 0 160px;
+    @include mq("tablet", max){
+        padding: 0 16px;
+    }
+    h1{
+        font-size: 32px;
+        line-height: 80px;
+        margin-bottom: 40px;
+
+        @include mq("tablet", max){
+            margin-bottom: 24px;
+            line-height: 32px;
+        }
+    }
+    p{
+        font-size: 24px;
+        line-height: 36px;
+        margin-bottom: 32px;
+        @include mq("tablet", max){
+            font-size: 24px;
+            line-height: 36px;
+            margin-bottom: 24px;
+        }
+
+    }
+}
