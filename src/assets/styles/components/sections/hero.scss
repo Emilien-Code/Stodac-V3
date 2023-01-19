@@ -1,0 +1,53 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/variables.scss";
+.stodac-hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 160px;
+    padding-right: 100px;
+    height: calc(100vh - 120px);
+    @include mq("tablet", max){
+        height: fit-content;
+        flex-direction: column;
+        justify-content: center;
+        padding: 64px 16px;
+
+    }
+    div{
+        width: 50%;
+        @include mq("tablet", max){
+            width: 100%;
+        }
+        h1{
+            font-size: 32px;
+            line-height: 38px;
+            margin-bottom: 8px;
+            @include mq("tablet", max){
+                font-size: 32px;
+                line-height: 38px;
+            }
+        }
+        p{
+            margin-bottom: 32px;
+            font-size: 40px;
+            line-height: 48px;
+            @include mq("tablet", max){
+                font-size: 28px;
+                line-height: 32px;
+            }
+        }
+        button{
+            max-width: 236px;
+        }
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include mq("tablet", max){
+            display: none;
+        }
+    }
+}
