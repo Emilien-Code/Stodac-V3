@@ -1,0 +1,60 @@
+@import "../../utils/variables.scss";
+@import "../../utils/mixins.scss";
+.stodac-img-and-paragraph{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 160px;
+    height: 100vh;
+    @include mq("tablet", max){
+        height: fit-content;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 16px;
+
+    }
+    .paragraphs{
+        @include mq("tablet", min){
+            padding-right: 100px;
+        }
+
+        h1{
+            font-size: 32px;
+            line-height: 80px;
+            margin-bottom: 40px;
+            
+            @include mq("tablet", max){
+                margin-bottom: 24px;
+                line-height: 32px;
+            }
+        }
+        p{
+            font-size: 24px;
+            line-height: 36px;
+            margin-bottom: 32px;
+            @include mq("tablet", max){
+                font-size: 24px;
+                line-height: 36px;
+            }
+            
+        }
+    }
+    .imgs{
+        width: 100%;
+        @include mq("tablet", min){
+            max-width: 30vw;
+            padding-left: 100px;
+        }
+        picture{
+            display: block;
+            width: 100%;
+            height: fit-content;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+        
+}
