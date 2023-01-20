@@ -51,9 +51,9 @@ footer{
         animation: marquee 60s infinite linear  ;
         font-family: "Roboto Black";
         font-size: map-get($fonts-sizes-desktop , "h1");
-        width: 200vw;
+        width: 2780px;
         @include mq("tablet", max) {
-            width: 250vw;
+            width: 1320px;
             font-size: map-get($fonts-sizes-mobile , "h1");
         }
 
