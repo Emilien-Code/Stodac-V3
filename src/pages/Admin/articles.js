@@ -157,7 +157,7 @@ const Articles = () => {
                 userId: auth.id
             })
         })
-        setShowCreateModale(false)
+        setShowChangeModale(false)
 
 
     }
