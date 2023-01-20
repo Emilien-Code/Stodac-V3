@@ -33,14 +33,16 @@ const Accueil = ()=>{
                 }else{
                     scv[index] = scv[index] - 2
                 }
-                
-                
-                gsap.to(p, {
-                    x: p.dataset.axe=="horizontal" ?  p.dataset.translateSpeed ? p.dataset.translateSpeed * scv[index] : 0 : 0,
-                    y: p.dataset.axe=="vertical" ?  p.dataset.translateSpeed ? p.dataset.translateSpeed * scv[index] : 0 : 0,
-                    rotate: p.dataset.rotateSpeed ? p.dataset.rotateSpeed * scv[index] : 0,
-                })
-                
+
+                if(window.innerWidth > 768 || p.classList.value==="line"){
+                    
+                    gsap.to(p, {
+                        x: p.dataset.axe=="horizontal" ?  p.dataset.translateSpeed ? p.dataset.translateSpeed * scv[index] : 0 : 0,
+                        y: p.dataset.axe=="vertical" ?  p.dataset.translateSpeed ? p.dataset.translateSpeed * scv[index] : 0 : 0,
+                        rotate: p.dataset.rotateSpeed ? p.dataset.rotateSpeed * scv[index] : 0,
+                    })
+                    
+                }
             }
         })
 
