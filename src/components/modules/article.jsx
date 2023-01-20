@@ -68,7 +68,7 @@ const Article = ({data, display})=>{
                             <h2>{data.name ? data.name : "chargement..."}</h2>
                             <div className="bottom">
                                 <p>Ref : {data.reference}</p>
-                                <span>{data.price ? `TTC ${formatNumber(data.price)}€` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
+                                <span>{data.price ? `${formatNumber(data.price)}€ TTC` : ""}</span>{/* {data.manufacturer ? <Bubble text={data.manufacturer} color="grey"/> : ""} {data.category ? <Bubble text={data.category} color="grey"/> : ""}*/}
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
                                 <Button color="green" type="text" callBack={addToCart} content="Ajouter au panier"/>
                             </div>
@@ -86,7 +86,7 @@ const Article = ({data, display})=>{
                         <figcaption>
                             <div className="top">
                                 <p>{data.name ? data.name : "chargement..."}</p>
-                                <span>TTC {formatNumber(data.price)}€</span>
+                                <span>{formatNumber(data.price)}€ TTC</span>
                             </div>
                             <div className="bottom">
                                 <Button color="" type="qty-select" value={quantity} callBack={changeQty} content=""/>
@@ -142,7 +142,7 @@ const Article = ({data, display})=>{
                             </picture>
                             <figcaption>
                                 <p>{data.name ? data.name : "chargement..."}</p>
-                                <span>{"TTC " +formatNumber(data.price)}€</span>
+                                <span>{formatNumber(data.price)}€ TTC</span>
                             </figcaption>
                         </figure>
                         {/* <hr /> */}
