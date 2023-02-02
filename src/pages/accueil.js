@@ -79,7 +79,7 @@ const Accueil = ()=>{
                 <TitleAndParagraph 
                 title="Des Pièces d'exception"
                 paragraph="Station technique des plus grandes marques, nous fournissons des pièces d’origine provenant dirèctement du fabriquant."
-                paragraph2="Nous vous proposons un catalogue fournit comptant motoréducteurs, bougies/résistances, écrans, cartes électroniques, creusets/brasiers, ventilateurs, extracteurs des fumées, pressostats, déflecteurs, câblage, vermiculites intérieur, déflecteurs, vitres et différents accessoires."
+                paragraph2="Nous vous proposons un catalogue fournit comptant motoréducteurs, bougies/résistances, écrans, cartes électroniques, creusets/brasiers, ventilateurs, extracteurs des fumées, pressostats, déflecteurs, câblage, vermiculites intérieur, vitres et différents accessoires."
                 />
             </main>
         </>
